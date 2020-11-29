@@ -24,9 +24,15 @@ namespace Entidades
         public string Direccion { get; set; }
         
         [Required]
+        public string Cedula { get; set; }
+        [Required]
+        public DateTime Fecha { get; set; }
+
+        [Required]
         public string Telefono { get; set; }
         public string Celular { get; set; }
         public string Email { get; set; }
+        
 
         [ForeignKey("ClienteId")]
         public virtual List<Facturas> Facturas { get; set; }
