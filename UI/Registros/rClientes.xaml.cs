@@ -161,7 +161,7 @@ namespace UI.Registros
                 SystemSounds.Beep.Play();
             }
 
-            if (EmailMask.Text.Length > 2)
+            if (EmailMask.Text.Length > 2 && EmailMask.Text.Length < 5)
             {
                 esValido = false;
                 AdvertenciaEmailLabel.Content = "Debe completar el email";

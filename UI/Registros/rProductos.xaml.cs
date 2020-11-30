@@ -120,6 +120,12 @@ namespace UI.Registros
                                 MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
+            if (PorcentajeITBISCombobox.SelectedIndex < 0)
+            {
+                MessageBox.Show("Seleccione un porcentaje de ITBIS", "Registro de productos",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
             if (PrecioTextbox.Text.Length == 0)
             {
                 MessageBox.Show("Introduzca un precio", "Registro de productos",
@@ -144,9 +150,21 @@ namespace UI.Registros
                                 MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
-            if (PorcentajeITBISCombobox.SelectedIndex < 0)
+            if(MaxDescuentoTextbox.Text.Any(char.IsLetter))
             {
-                MessageBox.Show("Seleccione un porcentaje de ITBIS", "Registro de productos",
+                MessageBox.Show("Introduzca un porcentaje válido", "Registro de productos",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+            if(Utilities.ToFloat(MaxDescuentoTextbox.Text) > 1.0 && Utilities.ToFloat(MaxDescuentoTextbox.Text) < 0.0)
+            {
+                MessageBox.Show("Máximo descuento no puede solo puede aceptar número del 1 al 0", "Registro de productos",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+            if(Utilities.ToFloat(MaxDescuentoTextbox.Text) > Utilities.ToFloat(MargenGananciaTextbox.Text))
+            {
+                MessageBox.Show("Máximo descuento no puede ser mayor al margen de ganancia", "Registro de productos",
                                 MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
@@ -159,6 +177,12 @@ namespace UI.Registros
             if (Utilities.ToDouble(MargenGananciaTextbox.Text) == 0)
             {
                 MessageBox.Show("Introduzca un margen de ganancia válido mayor a 0", "Registro de productos",
+                                MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+            if (Utilities.ToFloat(MargenGananciaTextbox.Text) > 1.0 && Utilities.ToFloat(MargenGananciaTextbox.Text) < 0.0)
+            {
+                MessageBox.Show("Margen de ganancia no puede solo puede aceptar número del 1 al 0", "Registro de productos",
                                 MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }

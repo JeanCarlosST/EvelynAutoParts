@@ -29,7 +29,7 @@ namespace UI.Consultas
 
             string criterio = CriterioTextbox.Text.Trim();
 
-            if (criterio.Length > 0 || (FiltroCombobox.SelectedIndex == 3 && ValidarFechas()) )
+            if (criterio.Length > 0)
             {
                 switch (FiltroCombobox.SelectedIndex)
                 {
@@ -38,16 +38,11 @@ namespace UI.Consultas
                         break;
 
                     case 1:
-                        listado.RemoveAll(f => !f.GetType().GetProperty("Cliente").GetValue(f).ToString().Equals(criterio));
+                        listado.RemoveAll(f => !f.GetType().GetProperty("Cliente").GetValue(f).ToString().ToLower().Contains(criterio.ToLower()));
                         break;
 
                     case 2:
-                        listado.RemoveAll(f => !f.GetType().GetProperty("Vendedor").GetValue(f).ToString().Equals(criterio));
-                        break;
-
-                    case 3:
-                        listado.RemoveAll(f => DateTime.Parse(f.GetType().GetProperty("Fecha").GetValue(f).ToString()) < (DateTime)DesdeDatePicker.SelectedDate &&
-                                               DateTime.Parse(f.GetType().GetProperty("Fecha").GetValue(f).ToString()) < (DateTime)HastaDatePicker.SelectedDate);
+                        listado.RemoveAll(f => !f.GetType().GetProperty("Vendedor").GetValue(f).ToString().ToLower().Contains(criterio.ToLower()));
                         break;
 
                 }

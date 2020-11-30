@@ -62,6 +62,8 @@ namespace UI.Registros
             ProductosDataGrid.ItemsSource = null;
             ProductosDataGrid.ItemsSource = detalle;
 
+            
+
             ProductoCombobox.SelectedIndex = -1;
             PrecioTextbox.Clear();
             CantidadTextbox.Clear();
@@ -75,8 +77,10 @@ namespace UI.Registros
 
                 FacturasDetalle detalle = factura.FacturasDetalle.Where(p => p.ProductoId == d.ProductoId).First();
 
-                factura.Total -= detalle.Cantidad * detalle.Precio;
+                factura.Total -= d.Total - d.Descuento;
                 factura.FacturasDetalle.Remove(detalle);
+                factura.ITBIS -= d.ITBIS;
+                factura.Balance = factura.Total;
 
                 this.detalle.Remove(d);
 
@@ -117,14 +121,15 @@ namespace UI.Registros
                 FacturaId = Utilities.ToInt(FacturaIdTextbox.Text),
                 ProductoId = Utilities.ToInt(ProductoCombobox.SelectedValue.ToString()),
                 Cantidad = Utilities.ToFloat(CantidadTextbox.Text),
-                Precio = Utilities.ToDouble(PrecioTextbox.Text)
+                Precio = Utilities.ToDouble(PrecioTextbox.Text),
+                Descuento = Utilities.ToFloat(DescuentoTextbox.Text) * Utilities.ToFloat(CantidadTextbox.Text)
             };
 
             foreach (FacturasDetalle d in factura.FacturasDetalle)
             {
                 if (d.ProductoId == nuevoDetalle.ProductoId)
                 {
-                    factura.Total -= d.Cantidad * d.Precio; // Falta logica aqui
+                    factura.Total -= (d.Cantidad * d.Precio - d.Descuento);
                     factura.FacturasDetalle.Remove(d);
 
                     this.detalle.RemoveAll(de => de.ProductoId == d.ProductoId);
@@ -132,10 +137,14 @@ namespace UI.Registros
                 }
             }
 
-            factura.FacturasDetalle.Add(nuevoDetalle);
-            factura.Total += nuevoDetalle.Cantidad * nuevoDetalle.Precio;
+            ProductoDetalle p = new ProductoDetalle(nuevoDetalle);
 
-            this.detalle.Add(new ProductoDetalle(nuevoDetalle));
+            factura.FacturasDetalle.Add(nuevoDetalle);
+            factura.ITBIS += p.ITBIS;
+            factura.Total += p.Total - p.Descuento;
+            factura.Balance = factura.Total;
+
+            this.detalle.Add(p);
 
             Actualizar();
         }
@@ -195,6 +204,13 @@ namespace UI.Registros
             if (p.Inventario < Utilities.ToFloat(CantidadTextbox.Text))
             {
                 MessageBox.Show("No existe esa cantidad en el inventario. Inventario: " + p.Inventario, "Registro de facturas",
+                                MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return false;
+            }
+
+            if(Utilities.ToDouble(DescuentoTextbox.Text) > p.MaxDescuento*p.Precio)
+            {
+                MessageBox.Show("El descuento unitario no puede ser mayor a " + (p.MaxDescuento * p.Precio).ToString("N2"), "Registro de facturas",
                                 MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return false;
             }

@@ -30,7 +30,7 @@
                 <MenuItem x:Name="cVendedoresMenuItem" Header="Consulta de vendedores" Click="cVendedoresMenuItem_Click"/>
             </MenuItem>
 
-            <MenuItem x:Name="cerrarSesionMenuItem" Header="Cerrar sesión" Margin="238,0,0,0" HorizontalAlignment="Right" Click="cerrarSesionMenuItem_Click"/>
+            <MenuItem x:Name="cerrarSesionMenuItem" Header="Cerrar sesión" Margin="210,0,0,0" HorizontalAlignment="Right" Click="cerrarSesionMenuItem_Click"/>
         </Menu>
 
         <Image Source="Imagenes/Logo.png" Height="380" Width="380" Opacity="0.843"/>

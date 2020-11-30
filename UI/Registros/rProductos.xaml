@@ -47,10 +47,26 @@
             <TextBox x:Name="DescripcionTextbox" Height="22"  Text="{Binding Descripcion}"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center">
-            <Label Content="Inventario"/>
-            <TextBox x:Name="InventarioTextbox" Height="22"  Text="{Binding Inventario}" Width="150"/>
-        </StackPanel>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Label Content="Inventario"/>
+                <TextBox x:Name="InventarioTextbox" Height="22"  Text="{Binding Inventario}" Width="150"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Label Content="Porcentaje ITBIS"/>
+                <ComboBox x:Name="PorcentajeITBISCombobox" Height="22" SelectedValue="{Binding PorcentajeITBIS}" Width="150">
+                    <ComboBoxItem Content="0%"/>
+                    <ComboBoxItem Content="12%"/>
+                    <ComboBoxItem Content="18%"/>
+                </ComboBox>
+            </StackPanel>
+        </Grid>
 
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
@@ -76,17 +92,12 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <Label Content="Porcentaje ITBIS"/>
-                <ComboBox x:Name="PorcentajeITBISCombobox" Height="22" SelectedValue="{Binding PorcentajeITBIS}" Width="150">
-                    <ComboBoxItem Content="0%"/>
-                    <ComboBoxItem Content="12%"/>
-                    <ComboBoxItem Content="18%"/>
-                </ComboBox>
-                <!--<TextBox x:Name="PorcentajeITBISTextbox" Height="22" Text="{Binding PorcentajeITBIS}" Width="150"/>-->
+                <Label Content="Máximo descuento %"/>
+                <TextBox x:Name="MaxDescuentoTextbox" Height="22" Text="{Binding MaxDescuento}" Width="150"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <Label Content="Margen de ganancia"/>
+                <Label Content="Margen de ganancia %"/>
                 <TextBox x:Name="MargenGananciaTextbox" Height="22" Text="{Binding MargenGanancia}" Width="150"/>
             </StackPanel>
         </Grid>

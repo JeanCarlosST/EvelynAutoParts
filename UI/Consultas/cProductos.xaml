@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:UI.Consultas"
         mc:Ignorable="d"
         Title="Consulta de productos" 
-        Height="450" Width="700"
+        Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
 
@@ -49,7 +49,8 @@
                 <DataGridTextColumn Header="Precio" Binding="{Binding Precio, StringFormat=C}"  Width=".4*"/>
                 <DataGridTextColumn Header="Costo" Binding="{Binding Costo, StringFormat=C}"  Width=".4*"/>
                 <DataGridTextColumn Header="Porcentaje ITBIS" Binding="{Binding PorcentajeITBIS}"  Width=".7*"/>
-                <DataGridTextColumn Header="Margen de ganancia" Binding="{Binding MargenGanancia}"  Width=".8*"/>
+                <DataGridTextColumn Header="Margen de ganancia" Binding="{Binding MargenGanancia}"  Width=".9*"/>
+                <DataGridTextColumn Header="Max descuento" Binding="{Binding MaxDescuento}"  Width=".7*"/>
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>

@@ -71,7 +71,8 @@
         <GroupBox Header="Productos" Grid.Row="3">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="100"/>
                     <ColumnDefinition Width="100"/>
                     <ColumnDefinition/>
@@ -85,7 +86,7 @@
 
                 <StackPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Label Content="Producto"/>
-                    <ComboBox x:Name="ProductoCombobox" Width="280" SelectionChanged="ProductoCombobox_SelectionChanged"/>
+                    <ComboBox x:Name="ProductoCombobox" Width="200" SelectionChanged="ProductoCombobox_SelectionChanged"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -98,7 +99,12 @@
                     <TextBox x:Name="CantidadTextbox" Width="90" Height="22"/>
                 </StackPanel>
 
-                <Button x:Name="AgregarBoton" Width="120" Margin="5,0,0,0" Grid.Row="0" Grid.Column="3"
+                <StackPanel Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Label Content="Descuento"/>
+                    <TextBox x:Name="DescuentoTextbox" Width="90" Height="22"/>
+                </StackPanel>
+
+                <Button x:Name="AgregarBoton" Width="120" Margin="5,0,0,0" Grid.Row="0" Grid.Column="4"
                         HorizontalAlignment="Center" VerticalAlignment="Center" Click="AgregarBoton_Click" 
                         Background="#FF44E240" BorderBrush="Black">
                     <StackPanel Orientation="Horizontal">
@@ -107,7 +113,7 @@
                     </StackPanel>
                 </Button>
 
-                <DataGrid x:Name="ProductosDataGrid" Grid.Row="1" Grid.ColumnSpan="4" Margin="8, 5" AutoGenerateColumns="False" IsReadOnly="True" RowHeaderWidth="0">
+                <DataGrid x:Name="ProductosDataGrid" Grid.Row="1" Grid.ColumnSpan="5" Margin="8, 5" AutoGenerateColumns="False" IsReadOnly="True" RowHeaderWidth="0">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ProductoId" Binding="{Binding ProductoId}" Width=".4*"/>
                         <DataGridTextColumn Header="Descripcion" Binding="{Binding Descripcion}" Width="*"/>
@@ -120,7 +126,7 @@
                     </DataGrid.Columns>
                 </DataGrid>
 
-                <Button x:Name="RemoverBoton" Width="120" Margin="0,5,0,0" Grid.Row="2" Grid.Column="3"
+                <Button x:Name="RemoverBoton" Width="120" Margin="0,5,0,0" Grid.Row="2" Grid.Column="4"
                         HorizontalAlignment="Center" VerticalAlignment="Center" Click="RemoverBoton_Click" 
                         Background="#FFF02121" BorderBrush="Black">
                     <StackPanel Orientation="Horizontal">
@@ -142,17 +148,17 @@
 
             <StackPanel Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <Label Content="ITBIS"/>
-                <TextBox x:Name="ITBISTextbox" Text="{Binding ITBIS}" Width="150" Height="22" IsReadOnly="True"/>
+                <TextBox x:Name="ITBISTextbox" Text="{Binding ITBIS, StringFormat=C}" Width="150" Height="22" IsReadOnly="True"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <Label Content="Balance"/>
-                <TextBox x:Name="BalanceTextbox" Text="{Binding Balance}" Width="150" Height="22" IsReadOnly="True"/>
+                <TextBox x:Name="BalanceTextbox" Text="{Binding Balance, StringFormat=C}" Width="150" Height="22" IsReadOnly="True"/>
             </StackPanel>
             
             <StackPanel Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <Label Content="Total"/>
-                <TextBox x:Name="TotalTextbox" Text="{Binding Total}" Width="150" Height="22" IsReadOnly="True"/>
+                <TextBox x:Name="TotalTextbox" Text="{Binding Total, StringFormat=C}" Width="150" Height="22" IsReadOnly="True"/>
             </StackPanel>
         </Grid>
 
