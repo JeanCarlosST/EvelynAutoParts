@@ -29,7 +29,7 @@
                 </StackPanel>
                 <Label x:Name="AdvertenciaCliente" Visibility="Hidden" Foreground="Red"/>
             </StackPanel>
-            <GroupBox Height="315" Header="Cobros" BorderBrush="Black" Width="750" Margin="0,10,0,0">
+            <GroupBox Height="355" Header="Cobros" BorderBrush="Black" Width="750" Margin="0,10,0,0">
                 <StackPanel Margin="10,0,10,0">
                     <StackPanel Height="49" Orientation="Horizontal" Width="919">
                         <StackPanel Height="65" Width="200">
@@ -37,42 +37,50 @@
                             <ComboBox x:Name="FacturasComboBox" Width="200" Height="21" SelectedValue="{Binding FacturaId}" SelectionChanged="FacturasComboBox_SelectionChanged"/>
                             <Label x:Name="AdvertenciaFacturas" Visibility="Hidden" Foreground="Red"/>
                         </StackPanel>
-                        <StackPanel Width="146" Margin="10,0,0,0" Height="65">
+                        <StackPanel Width="146" Margin="20
+                                    ,0,0,0" Height="63">
                             <Label Content="Balance actual" Width="143"/>
-                            <TextBox x:Name="BalanceTextBox"  TextWrapping="Wrap" Width="141" IsReadOnly="True"/>
+                            <TextBox x:Name="BalanceTextBox"  TextWrapping="Wrap" Width="141" IsReadOnly="True" Margin="0,3,0,0"/>
                         </StackPanel>
-                        <StackPanel Width="146" Margin="10,0,0,0" Height="44">
+                        <StackPanel Width="146" Margin="20,0,0,0" Height="44">
                             <Label Content="Monto" Width="143"/>
                             <TextBox x:Name="MontoTextBox"  TextWrapping="Wrap" Width="141" TextChanged="MontoTextBox_TextChanged"/>
                             <Label x:Name="AdvertenciaMonto" Visibility="Hidden" Foreground="Red"/>
                         </StackPanel>
-                        <Button x:Name="AgregarBoton" Height="25" Margin="0,20,0,0" Width="83" Click = "AgregarBoton_Click" Background="#FF44E240">
+                        <Button x:Name="AgregarBoton" Height="25" Margin="20,20,0,0" Width="136" Click = "AgregarBoton_Click" Background="#FF44E240">
                             <StackPanel Orientation="Horizontal" Height="26">
                                 <Image Source="\Imagenes\add.png" Width="17" Height="17"/>
                                 <Label Content="Agregar"/>
                             </StackPanel>
                         </Button>
-                        <Button x:Name="RemoverBoton" Height="25" Margin="10,20,0,0" Width="85" Click = "RemoverBoton_Click" Background="#FFF02121">
-                            <StackPanel Orientation="Horizontal" Height="26">
-                                <Image Source="\Imagenes\cancel.png" Width="17"/>
-                                <Label Content="Remover"/>
-                            </StackPanel>
-                        </Button>
+
                     </StackPanel>
                     <StackPanel Height="165" Width="714" Margin="0,20,0,0" >
                         <DataGrid x:Name="CobrosDataGrid" Height="165" ItemsSource="{Binding Detalle}" AutoGenerateColumns="False" Width="687"  IsReadOnly="True"  Margin="0,0,24,0" >
                             <DataGrid.Columns>
-                                <DataGridTextColumn x:Name="CobroIdDataGridTextColum" Header="CobroId" Binding="{Binding CobroId}" />
-                                <DataGridTextColumn Header="FacturaId" Binding="{Binding FacturaId}"/>
-                                <DataGridTextColumn Header="Monto" Binding="{Binding Monto}"/>
+                                <DataGridTextColumn x:Name="CobroIdDataGridTextColum" Header="CobroId" Width="*"  Binding="{Binding CobroId}" />
+                                <DataGridTextColumn Header="FacturaId" Binding="{Binding FacturaId}" Width="*"/>
+                                    <DataGridTextColumn Header="Monto" Binding="{Binding Monto}" Width="*"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </StackPanel>
-                    <StackPanel Width="142" Margin="525,0,0,0">
-                        <Label Content="Total" Width="119" />
-                        <TextBox x:Name="TotalTextBox"  TextWrapping="Wrap" Width="115"  Text = "{Binding Total}" IsReadOnly = "true"/>
-                    </StackPanel>
+                    <StackPanel Width="142" Margin="525,0,0,0" Orientation="Vertical">
 
+                        <StackPanel Width="139">
+                            <Button x:Name="RemoverBoton" Height="25" Margin="0,5,0,0" Width="132" Click = "RemoverBoton_Click" Background="#FFF02121">
+                                <StackPanel Orientation="Horizontal" Height="26">
+                                    <Image Source="\Imagenes\cancel.png" Width="17"/>
+                                    <Label Content="Remover"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+
+                        <StackPanel Margin="0,13,0,0">
+                            <Label Content="Total" Width="119" />
+                            <TextBox x:Name="TotalTextBox"  TextWrapping="Wrap" Width="115"  Text = "{Binding Total}" IsReadOnly = "true"/>
+                        </StackPanel>
+
+                    </StackPanel>
                 </StackPanel>
             </GroupBox>
 
