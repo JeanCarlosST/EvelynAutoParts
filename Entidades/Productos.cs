@@ -34,7 +34,15 @@ namespace Entidades
         [Required]
         public float MargenGanancia { get; set; }
 
+        [Required]
+        public float MaxDescuento { get; set; }
+
         [ForeignKey("ProductoId")]
         public virtual List<FacturasDetalle> FacturasDetalle { get; set; }
+
+        public Productos()
+        {
+            FacturasDetalle = new List<FacturasDetalle>();
+        }
     }
 }

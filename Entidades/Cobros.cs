@@ -29,6 +29,12 @@ namespace Entidades
 
         [ForeignKey("CobroId")]
         public virtual List<CobrosDetalle> Detalle { get; set; }
+
+        public Cobros()
+        {
+            Fecha = DateTime.Now;
+            Detalle = new List<CobrosDetalle>();
+        }
     }
     public class CobrosDetalle
     {

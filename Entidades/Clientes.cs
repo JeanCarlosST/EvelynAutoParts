@@ -39,5 +39,11 @@ namespace Entidades
 
         [ForeignKey("ClienteId")]
         public virtual List<Cobros> Cobros { get; set; }
+
+        public Clientes()
+        {
+            Facturas = new List<Facturas>();
+            Cobros = new List<Cobros>();
+        }
     }
 }

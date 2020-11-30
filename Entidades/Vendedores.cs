@@ -15,9 +15,6 @@ namespace Entidades
         public int UsuarioId { get; set; }
         
         [Required]
-        public int CobrosId { get; set; }
-        
-        [Required]
         public string Nombres { get; set; }
         
         [Required]
@@ -32,5 +29,11 @@ namespace Entidades
 
         [ForeignKey("VendedorId")]
         public virtual List<Cobros> Cobros { get; set; }
+
+        public Vendedores()
+        {
+            Facturas = new List<Facturas>();
+            Cobros = new List<Cobros>();
+        }
     }
 }

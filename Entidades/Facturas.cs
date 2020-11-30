@@ -40,14 +40,18 @@ namespace Entidades
 
         [ForeignKey("FacturaId")]
         public virtual List<CobrosDetalle> CobrosDetalle { get; set; }
+
+        public Facturas()
+        {
+            Fecha = DateTime.Now;
+            FacturasDetalle = new List<FacturasDetalle>();
+            CobrosDetalle = new List<CobrosDetalle>();
+        }
     }
     public class FacturasDetalle
     {
         [Key]
         public int FacturaDetalleId { get; set; }
-        
-        [Required]
-        public int UsuarioId { get; set; }
         
         [Required]
         public int FacturaId { get; set; }
