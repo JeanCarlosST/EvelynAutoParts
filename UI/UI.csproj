@@ -11,6 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
+	  <Content Include="Imagenes\*.*">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
     <ProjectReference Include="..\BLL\BLL.csproj" />
     <ProjectReference Include="..\Entidades\Entidades.csproj" />
   </ItemGroup>

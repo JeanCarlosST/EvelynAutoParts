@@ -1,0 +1,106 @@
+﻿<Window x:Class="UI.Registros.rCobros"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UI.Registros"
+        mc:Ignorable="d"
+        Title="rCobros" Height="620" Width="800">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" Height="567" VerticalAlignment="Center" Width="749">
+            <StackPanel Height="30" Orientation="Horizontal" Margin="0,10,0,0">
+                <Label Content="Id" Height="24" Width="27" RenderTransformOrigin="0.568,0.556" Margin="0,0,10,0"/>
+                <TextBox x:Name="CobroIdTextBox" Height="22"  TextWrapping="Wrap" Width="56" Margin="40,0,10,0" Text="{Binding CobroId}"/>
+                <Button x:Name="BuscarBoton" Height="22" Width="63" Click = "BuscarBoton_Click" Background="#FF02A5ED">
+                    <StackPanel Orientation="Horizontal" Height="26">
+                        <Image Source="\Imagenes\search.png" Width="17" Height="17"/>
+                        <Label Content="Buscar"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <StackPanel Height="36" Orientation="Horizontal" Margin="0,10,0,0">
+                <Label Content="Fecha" Height="28" Width="74"/>
+                <DatePicker x:Name="FechaDatePicker" Height="28" Width="130" SelectedDate="{Binding Fecha}"/>
+            </StackPanel>
+            <StackPanel Height="30" Orientation="Vertical" Margin="0,10,0,0" HorizontalAlignment="Left">
+                <StackPanel Height="33" Width="261" Orientation="Horizontal">
+                    <Label Content="Cliente"/>
+                    <ComboBox x:Name="ClientesComboBox" Width="200" Height="21" SelectedValue="{Binding ClienteId}"/>
+                </StackPanel>
+                <Label x:Name="AdvertenciaCliente" Visibility="Hidden" Foreground="Red"/>
+            </StackPanel>
+            <GroupBox Height="315" Header="Cobros" BorderBrush="Black" Width="750" Margin="0,10,0,0">
+                <StackPanel Margin="10,0,10,0">
+                    <StackPanel Height="49" Orientation="Horizontal" Width="919">
+                        <StackPanel Height="65" Width="200">
+                            <Label Content="No. Factura"/>
+                            <ComboBox x:Name="FacturasComboBox" Width="200" Height="21" SelectedValue="{Binding FacturaId}" SelectionChanged="FacturasComboBox_SelectionChanged"/>
+                            <Label x:Name="AdvertenciaFacturas" Visibility="Hidden" Foreground="Red"/>
+                        </StackPanel>
+                        <StackPanel Width="146" Margin="10,0,0,0" Height="65">
+                            <Label Content="Balance actual" Width="143"/>
+                            <TextBox x:Name="BalanceTextBox"  TextWrapping="Wrap" Width="141" IsReadOnly="True"/>
+                        </StackPanel>
+                        <StackPanel Width="146" Margin="10,0,0,0" Height="44">
+                            <Label Content="Monto" Width="143"/>
+                            <TextBox x:Name="MontoTextBox"  TextWrapping="Wrap" Width="141" TextChanged="MontoTextBox_TextChanged"/>
+                            <Label x:Name="AdvertenciaMonto" Visibility="Hidden" Foreground="Red"/>
+                        </StackPanel>
+                        <Button x:Name="AgregarBoton" Height="25" Margin="0,20,0,0" Width="83" Click = "AgregarBoton_Click" Background="#FF44E240">
+                            <StackPanel Orientation="Horizontal" Height="26">
+                                <Image Source="\Imagenes\add.png" Width="17" Height="17"/>
+                                <Label Content="Agregar"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="RemoverBoton" Height="25" Margin="10,20,0,0" Width="85" Click = "RemoverBoton_Click" Background="#FFF02121">
+                            <StackPanel Orientation="Horizontal" Height="26">
+                                <Image Source="\Imagenes\cancel.png" Width="17"/>
+                                <Label Content="Remover"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Height="165" Width="714" Margin="0,20,0,0" >
+                        <DataGrid x:Name="CobrosDataGrid" Height="165" ItemsSource="{Binding Detalle}" AutoGenerateColumns="False" Width="687"  IsReadOnly="True"  Margin="0,0,24,0" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn x:Name="CobroIdDataGridTextColum" Header="CobroId" Binding="{Binding CobroId}" />
+                                <DataGridTextColumn Header="FacturaId" Binding="{Binding FacturaId}"/>
+                                <DataGridTextColumn Header="Monto" Binding="{Binding Monto}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    <StackPanel Width="142" Margin="525,0,0,0">
+                        <Label Content="Total" Width="119" />
+                        <TextBox x:Name="TotalTextBox"  TextWrapping="Wrap" Width="115"  Text = "{Binding Total}" IsReadOnly = "true"/>
+                    </StackPanel>
+
+                </StackPanel>
+            </GroupBox>
+
+            <!--BARRA DE BOTONES-->
+            <StackPanel Height="27" Orientation="Horizontal" Width="400" Margin="0,20,0,0">
+                <Button x:Name="NuevoBoton" Margin="10,0,20,0" Click = "NuevoBoton_Click" Width="100" Background="#FFFDEE0C">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="\Imagenes\new.png"/>
+                        <Label Content="Nuevo"/>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="GuardarBoton" Click = "GuardarBoton_Click" Width="100" Background="#FF44E240">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="\Imagenes\save.png"/>
+                        <Label Content="Guardar"/>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="EliminarBoton" Width="100" Margin="20,0,0,0" Click = "EliminarBoton_Click" Background="#FFF02121">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="\Imagenes\delete.png"/>
+                        <Label Content="Eliminar"/>
+                    </StackPanel>
+                </Button>
+
+
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

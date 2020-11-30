@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:UI.Registros"
         mc:Ignorable="d"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-        Title="rClientes" Height="534" Width="709">
+        Title="rClientes" Height="550" Width="735">
     <Grid>
         <StackPanel Orientation="Vertical">
             <!--Panel de Cliente Id-->
@@ -27,7 +27,7 @@
                 <DatePicker x:Name="FechaDatePicker" Margin="20,0,0,0" BorderBrush="Black" Width="168" Height="34" SelectedDate="{Binding Fecha}"/>
             </StackPanel>
 
-            <GroupBox BorderBrush="Black" Header="Formulario" Margin="19,15,19,0" Height="341" Width="671">
+            <GroupBox BorderBrush="Black" Header="Datos del Cliente" Margin="19,15,19,0" Height="341" Width="671">
                 <StackPanel>
 
                     <!--Panel Nombres y Apellidos-->
@@ -64,13 +64,13 @@
                     <StackPanel Orientation="Horizontal">
                         <StackPanel Orientation="Vertical" Width="295" Margin="20,0,0,0">
                             <Label Content="Celular"/>
-                            <syncfusion:SfMaskedEdit x:Name="CelularMask" Height="23" MaskType="RegEx" Watermark="Digite el número celular del cliente" ValueMaskFormat="ExcludePromptAndLiterals" Mask="\([0-9]\d{2}\) [0-9]\d{2}-[0-9]\d{3}" Value ="{Binding Celular}"  Width="295" BorderBrush="Black" BorderThickness="1"/>
+                            <syncfusion:SfMaskedEdit x:Name="CelularMask" Height="23" MaskType="RegEx"  ValueMaskFormat="ExcludePromptAndLiterals" Mask="\([0-9]\d{2}\) [0-9]\d{2}-[0-9]\d{3}" Value ="{Binding Celular}"  Width="295" BorderBrush="Black" BorderThickness="1"/>
                             <Label x:Name="AdvertenciaCelularLabel"  Visibility="Hidden" Foreground="Red" Height="24" />
                         </StackPanel>
 
                         <StackPanel Orientation="Vertical" Width="295" Margin="30,0,0,0">
                             <Label Content="Cédula"/>
-                            <syncfusion:SfMaskedEdit x:Name="CedulaMask" Watermark="Digite la cédula del cliente" Height="23" MaskType="RegEx" ValueMaskFormat="ExcludePromptAndLiterals" Mask="\([0-9]\d{2}\) [0-9]\d{6}-[0-9]\d{0}" Value="{Binding Cedula}"  Width="295" BorderBrush="Black" BorderThickness="1"/>
+                            <syncfusion:SfMaskedEdit x:Name="CedulaMask" Height="23" MaskType="RegEx" ValueMaskFormat="ExcludePromptAndLiterals" Mask="\([0-9]\d{2}\) [0-9]\d{6}-[0-9]\d{0}" Value="{Binding Cedula}"  Width="295" BorderBrush="Black" BorderThickness="1"/>
                             <Label x:Name="AdvertenciaCedulaLabel"  Visibility="Hidden" Foreground="Red" Height="24" />
                         </StackPanel>
                     </StackPanel>

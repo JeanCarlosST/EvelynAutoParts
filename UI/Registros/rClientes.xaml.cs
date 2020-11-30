@@ -161,19 +161,20 @@ namespace UI.Registros
                 SystemSounds.Beep.Play();
             }
 
-            if (EmailMask.HasError || EmailMask.Text.Length < 2)
+            if (EmailMask.Text.Length > 2)
             {
                 esValido = false;
                 AdvertenciaEmailLabel.Content = "Debe completar el email";
                 AdvertenciaEmailLabel.Visibility = Visibility.Visible;
-            }
-            else if (ClientesBLL.Existe(1, convertInt(), EmailMask.Text))
-            {
-                esValido = false;
-                AdvertenciaEmailLabel.Content = "El email se encuentra registrado";
-                AdvertenciaEmailLabel.Visibility = Visibility.Visible;
-                SystemSounds.Beep.Play();
-            }
+
+                if (ClientesBLL.Existe(1, convertInt(), EmailMask.Text))
+                {
+                    esValido = false;
+                    AdvertenciaEmailLabel.Content = "El email se encuentra registrado";
+                    AdvertenciaEmailLabel.Visibility = Visibility.Visible;
+                    SystemSounds.Beep.Play();
+                }
+            }           
 
             if (DireccionTextBox.Text.Length < 2)
             {

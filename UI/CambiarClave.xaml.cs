@@ -33,8 +33,11 @@ namespace UI
             if (!Validar())
                 return;
 
-            var paso = UsuariosBLL.Buscar(usuario).Clave = GetHashSha256(ClaveActualPasswordBox.Password.Trim());
-            if (paso != null)
+            var user = UsuariosBLL.Buscar(usuario);
+            user.Clave = GetHashSha256(NuevaClavePasswordBox.Password.Trim());
+            var paso = UsuariosBLL.Guardar(user);
+
+            if (paso)
             {
                 //OcultarLabel();
                 this.Close();
@@ -80,19 +83,6 @@ namespace UI
             }
 
             return esValido;
-        }
-
-        public static string getHashSha256(string clave)
-        {
-            byte[] bytes = Encoding.Unicode.GetBytes(clave);
-            SHA256Managed hashstring = new SHA256Managed();
-            byte[] hash = hashstring.ComputeHash(bytes);
-            string hashString = string.Empty;
-            foreach (byte x in hash)
-            {
-                hashString += String.Format("{0:x2}", x);
-            }
-            return hashString;
         }
 
         private void NuevaClavePasswordBox_PasswordChanged(object sender, RoutedEventArgs e)

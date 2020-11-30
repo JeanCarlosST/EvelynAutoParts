@@ -314,7 +314,6 @@ namespace UI.Registros
 
         private void CambiarClaveButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(usuario.UsuarioId.ToString());
             CambiarClave cambio = new CambiarClave(usuario.UsuarioId);
             cambio.Show();
         }

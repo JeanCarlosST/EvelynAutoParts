@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:UI.Registros"
         mc:Ignorable="d"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-        Title="rUsuarios" Height="509" Width="719">
+        Title="rUsuarios" Height="509" Width="735">
     <Grid>
         <StackPanel Orientation="Vertical">
             <!--Panel de Cliente Id-->

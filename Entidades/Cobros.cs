@@ -17,9 +17,9 @@ namespace Entidades
         [Required]
         public int ClienteId { get; set; }
         
-        [Required]
-        public int VendedorId { get; set; }
-        
+        //[Required]
+        //public int VendedorId { get; set; }
+
         [Required]
         public DateTime Fecha { get; set; }
         
@@ -50,5 +50,12 @@ namespace Entidades
         [Column(TypeName = "money")]
         [Required]
         public double Monto { get; set; }
+
+        public CobrosDetalle(int cobroId, int FacturaId, double monto)
+        {
+            this.CobroId = cobroId;
+            this.FacturaId = FacturaId;
+            this.Monto = monto;
+        }
     }
 }

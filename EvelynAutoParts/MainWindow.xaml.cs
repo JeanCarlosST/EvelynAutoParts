@@ -39,7 +39,7 @@ namespace EvelynAutoParts
 
         private void rCobrosMenuItem_Click(object sender, RoutedEventArgs e)
         {
-
+            new rCobros(usuario).Show();
         }
 
         private void rFacturasMenuItem_Click(object sender, RoutedEventArgs e)
@@ -66,7 +66,7 @@ namespace EvelynAutoParts
 
         private void cCobrosMenuItem_Click(object sender, RoutedEventArgs e)
         {
-
+            new cCobros().Show();
         }
 
         private void cClientesMenuItem_Click(object sender, RoutedEventArgs e)
