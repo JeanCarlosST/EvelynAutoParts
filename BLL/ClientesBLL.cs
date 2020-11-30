@@ -100,6 +100,26 @@ namespace BLL
             return cliente;
         }
 
+        public static Clientes Buscar(string cedula)
+        {
+            Contexto contexto = new Contexto();
+            Clientes cliente;
+            try
+            {
+                cliente = (Clientes)contexto.Clientes.Where(c => c.Cedula == cedula).FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return cliente;
+        }
+
         public static bool Existe(int id)
         {
             Contexto contexto = new Contexto();
