@@ -101,6 +101,28 @@ namespace BLL
             return usuario;
         }
 
+        public static Usuarios Buscar(string user, string clave)
+        {
+            Contexto contexto = new Contexto();
+            Usuarios usuario;
+
+            try
+            {
+                usuario = contexto.Usuarios.Where(u => u.NombreUsuario == user && u.Clave == clave).FirstOrDefault();
+            }
+            catch
+            {
+                throw;
+
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return usuario;
+        }
+
         public static bool Existe(int id)
         {
             Contexto contexto = new Contexto();
