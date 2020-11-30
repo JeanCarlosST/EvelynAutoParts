@@ -5,15 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EvelynAutoParts"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="450">
+        Title="Ventana principal" 
+        Height="450" Width="450"
+        WindowStartupLocation="CenterScreen">
+    
     <Grid>
         <Menu Height="18" VerticalAlignment="Top">
             <MenuItem Header="_Registros">
-                <MenuItem x:Name="rMenuItem" Header="Registro de"/>
+                <MenuItem x:Name="rClientesMenuItem" Header="Registro de clientes" Click="rClientesMenuItem_Click"/>
+                <MenuItem x:Name="rCobrosMenuItem" Header="Registro de cobros" Click="rCobrosMenuItem_Click"/>
+                <MenuItem x:Name="rFacturasMenuItem" Header="Registro de facturas" Click="rFacturasMenuItem_Click"/>
+                <MenuItem x:Name="rProductosMenuItem" Header="Registro de productos" Click="rProductosMenuItem_Click"/>
+                <MenuItem x:Name="rUsuariosMenuItem" Header="Registro de usuarios" Click="rUsuariosMenuItem_Click"/>
+                <MenuItem x:Name="rVendedoresMenuItem" Header="Registro de vendedores" Click="rVendedoresMenuItem_Click"/>
             </MenuItem>
 
             <MenuItem Header="_Consultas">
-                <MenuItem x:Name="cMenuItem" Header="Consulta de "/>
+                <MenuItem x:Name="cClientesMenuItem" Header="Consulta de clientes" Click="cClientesMenuItem_Click"/>
+                <MenuItem x:Name="cCobrosMenuItem" Header="Consulta de cobros" Click="cCobrosMenuItem_Click"/>
+                <MenuItem x:Name="cProductosMenuItem" Header="Consulta de productos" Click="cProductosMenuItem_Click"/>
+                <MenuItem x:Name="cFacturasMenuItem" Header="Consulta de facturas" Click="cFacturasMenuItem_Click"/>
+                <MenuItem x:Name="cUsuariosMenuItem" Header="Consulta de usuarios" Click="cUsuariosMenuItem_Click"/>
+                <MenuItem x:Name="cVendedoresMenuItem" Header="Consulta de vendedores" Click="cVendedoresMenuItem_Click"/>
             </MenuItem>
         </Menu>
     </Grid>
