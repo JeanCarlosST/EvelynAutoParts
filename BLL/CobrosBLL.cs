@@ -54,7 +54,7 @@ namespace BLL
                 foreach (var item in ViejoCobro.Detalle)
                 {
                     var p = FacturasBLL.Buscar(item.FacturaId);
-                    p.Balance -= item.Monto;
+                    p.Balance += item.Monto;
                     FacturasBLL.Guardar(p);
                 }
 
@@ -67,7 +67,7 @@ namespace BLL
                 foreach (var item in cobro.Detalle)
                 {
                     var p = FacturasBLL.Buscar(item.FacturaId);
-                    p.Balance += item.Monto;
+                    p.Balance -= item.Monto;
                     FacturasBLL.Guardar(p);
                 }
 
@@ -96,7 +96,7 @@ namespace BLL
                 {
                     foreach (var item in cobro.Detalle)
                     {
-                        contexto.Facturas.Find(item.FacturaId).Balance -= item.Monto;
+                        contexto.Facturas.Find(item.FacturaId).Balance += item.Monto;
                     }
                     contexto.Cobros.Remove(cobro);
                     paso = contexto.SaveChanges() > 0;
