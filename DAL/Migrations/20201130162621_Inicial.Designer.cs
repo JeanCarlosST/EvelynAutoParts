@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20201130025101_Inicial")]
+    [Migration("20201130162621_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -81,7 +81,7 @@ namespace DAL.Migrations
                     b.Property<int>("UsuarioId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("VendedorId")
+                    b.Property<int?>("VendedorId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("CobroId");
@@ -260,7 +260,7 @@ namespace DAL.Migrations
                             UsuarioId = 1,
                             Apellidos = "Santos",
                             Clave = "7523c62abdb7628c5a9dad8f97d8d8c5c040ede36535e531a8a3748b6cae7e00",
-                            FechaCreacion = new DateTime(2020, 11, 29, 22, 51, 0, 985, DateTimeKind.Local).AddTicks(555),
+                            FechaCreacion = new DateTime(2020, 11, 30, 12, 26, 20, 623, DateTimeKind.Local).AddTicks(680),
                             NombreUsuario = "jean",
                             Nombres = "Jean Carlos"
                         },
@@ -269,7 +269,7 @@ namespace DAL.Migrations
                             UsuarioId = 2,
                             Apellidos = "Maria",
                             Clave = "7523c62abdb7628c5a9dad8f97d8d8c5c040ede36535e531a8a3748b6cae7e00",
-                            FechaCreacion = new DateTime(2020, 11, 29, 22, 51, 0, 986, DateTimeKind.Local).AddTicks(9023),
+                            FechaCreacion = new DateTime(2020, 11, 30, 12, 26, 20, 625, DateTimeKind.Local).AddTicks(7593),
                             NombreUsuario = "david",
                             Nombres = "David"
                         });
@@ -327,9 +327,7 @@ namespace DAL.Migrations
 
                     b.HasOne("Entidades.Vendedores", null)
                         .WithMany("Cobros")
-                        .HasForeignKey("VendedorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("VendedorId");
                 });
 
             modelBuilder.Entity("Entidades.CobrosDetalle", b =>

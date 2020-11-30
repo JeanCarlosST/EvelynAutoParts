@@ -107,9 +107,9 @@ namespace DAL.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     UsuarioId = table.Column<int>(type: "INTEGER", nullable: false),
                     ClienteId = table.Column<int>(type: "INTEGER", nullable: false),
-                    VendedorId = table.Column<int>(type: "INTEGER", nullable: false),
                     Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Total = table.Column<double>(type: "money", nullable: false)
+                    Total = table.Column<double>(type: "money", nullable: false),
+                    VendedorId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -131,7 +131,7 @@ namespace DAL.Migrations
                         column: x => x.VendedorId,
                         principalTable: "Vendedores",
                         principalColumn: "VendedorId",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -230,12 +230,12 @@ namespace DAL.Migrations
             migrationBuilder.InsertData(
                 table: "Usuarios",
                 columns: new[] { "UsuarioId", "Apellidos", "Clave", "FechaCreacion", "NombreUsuario", "Nombres" },
-                values: new object[] { 1, "Santos", "7523c62abdb7628c5a9dad8f97d8d8c5c040ede36535e531a8a3748b6cae7e00", new DateTime(2020, 11, 29, 22, 51, 0, 985, DateTimeKind.Local).AddTicks(555), "jean", "Jean Carlos" });
+                values: new object[] { 1, "Santos", "7523c62abdb7628c5a9dad8f97d8d8c5c040ede36535e531a8a3748b6cae7e00", new DateTime(2020, 11, 30, 12, 26, 20, 623, DateTimeKind.Local).AddTicks(680), "jean", "Jean Carlos" });
 
             migrationBuilder.InsertData(
                 table: "Usuarios",
                 columns: new[] { "UsuarioId", "Apellidos", "Clave", "FechaCreacion", "NombreUsuario", "Nombres" },
-                values: new object[] { 2, "Maria", "7523c62abdb7628c5a9dad8f97d8d8c5c040ede36535e531a8a3748b6cae7e00", new DateTime(2020, 11, 29, 22, 51, 0, 986, DateTimeKind.Local).AddTicks(9023), "david", "David" });
+                values: new object[] { 2, "Maria", "7523c62abdb7628c5a9dad8f97d8d8c5c040ede36535e531a8a3748b6cae7e00", new DateTime(2020, 11, 30, 12, 26, 20, 625, DateTimeKind.Local).AddTicks(7593), "david", "David" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Clientes_UsuarioId",
