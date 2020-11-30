@@ -34,7 +34,7 @@ namespace UI.Registros
 
             ClienteCombobox.ItemsSource = ClientesBLL.GetList(c => true);
             ClienteCombobox.SelectedValuePath = "ClienteId";
-            ClienteCombobox.DisplayMemberPath = "Nombres";
+            ClienteCombobox.DisplayMemberPath = "Cedula";
 
 
             VendedorCombobox.ItemsSource = VendedoresBLL.GetList(v => true);
@@ -186,6 +186,15 @@ namespace UI.Registros
             if (Utilities.ToFloat(CantidadTextbox.Text) == 0)
             {
                 MessageBox.Show("Introduzca una cantidad válida que sea mayor a cero", "Registro de facturas",
+                                MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return false;
+            }
+
+            Productos p = ProductosBLL.Buscar(Utilities.ToInt(ProductoCombobox.SelectedValue.ToString()));
+
+            if (p.Inventario < Utilities.ToFloat(CantidadTextbox.Text))
+            {
+                MessageBox.Show("No existe esa cantidad en el inventario. Inventario: " + p.Inventario, "Registro de facturas",
                                 MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return false;
             }

@@ -45,7 +45,7 @@
         <!--Fecha-->
         <StackPanel Grid.Row="1" VerticalAlignment="Center">
             <Label Content="Fecha"/>
-            <DatePicker x:Name="FechaDatePicker" SelectedDate="{Binding Fecha}" Width="150" HorizontalAlignment="Left"/>
+            <DatePicker x:Name="FechaDatePicker" SelectedDate="{Binding Fecha, StringFormat=MM/dd/yyyy}" Width="150" HorizontalAlignment="Left"/>
         </StackPanel>
 
         <Grid Grid.Row="2">
