@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="Ventana principal" 
         Height="450" Width="450"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
     
     <Grid>
         <Menu Height="18" VerticalAlignment="Top">
@@ -28,6 +29,10 @@
                 <MenuItem x:Name="cUsuariosMenuItem" Header="Consulta de usuarios" Click="cUsuariosMenuItem_Click"/>
                 <MenuItem x:Name="cVendedoresMenuItem" Header="Consulta de vendedores" Click="cVendedoresMenuItem_Click"/>
             </MenuItem>
+
+            <MenuItem x:Name="cerrarSesionMenuItem" Header="Cerrar sesión" Margin="238,0,0,0" HorizontalAlignment="Right" Click="cerrarSesionMenuItem_Click"/>
         </Menu>
+
+        <Image Source="Imagenes/Logo.png" Height="380" Width="380" Opacity="0.843"/>
     </Grid>
 </Window>

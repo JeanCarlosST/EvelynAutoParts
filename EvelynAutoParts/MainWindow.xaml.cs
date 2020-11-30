@@ -92,5 +92,14 @@ namespace EvelynAutoParts
         {
             new cVendedores().Show();
         }
+
+        private void cerrarSesionMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if(MessageBox.Show("Estás seguro que desea cerrar sesión?", "Ventana principal", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                new Login().Show();
+                this.Close();
+            }
+        }
     }
 }
