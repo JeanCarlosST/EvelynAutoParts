@@ -26,6 +26,17 @@ namespace BLL
 
             try
             {
+                foreach(FacturasDetalle detalle in factura.FacturasDetalle)
+                {
+                    Productos p = ProductosBLL.Buscar(detalle.ProductoId);
+                    p.Inventario -= detalle.Cantidad;
+                    ProductosBLL.Modificar(p);
+                }
+
+                Vendedores v = VendedoresBLL.Buscar(factura.VendedorId);
+                v.Comision += factura.Total * 0.1;
+                VendedoresBLL.Modificar(v);
+
                 context.Facturas.Add(factura);
                 found = context.SaveChanges() > 0;
             }
@@ -48,6 +59,24 @@ namespace BLL
 
             try
             {
+                //Eliminar los detalles viejos
+                Facturas viejaFactura = Buscar(factura.FacturaId);
+
+                if (viejaFactura != null)
+                {
+                    foreach (FacturasDetalle detalle in viejaFactura.FacturasDetalle)
+                    {
+                        Productos p = ProductosBLL.Buscar(detalle.ProductoId);
+                        p.Inventario += detalle.Cantidad;
+                        ProductosBLL.Modificar(p);
+                    }
+                }
+
+                //Resta la comision al vendedor
+                Vendedores v = VendedoresBLL.Buscar(factura.VendedorId);
+                v.Comision -= viejaFactura.Total * 0.1;
+                VendedoresBLL.Modificar(v);
+
                 context.Database.ExecuteSqlRaw($"delete from FacturasDetalle where FacturaId = {factura.FacturaId}");
                 foreach (var anterior in factura.FacturasDetalle)
                 {
@@ -56,6 +85,18 @@ namespace BLL
 
                 context.Entry(factura).State = EntityState.Modified;
                 found = context.SaveChanges() > 0;
+
+                //Resta la cantidad en el inventario
+                foreach (FacturasDetalle detalle in factura.FacturasDetalle)
+                {
+                    Productos p = ProductosBLL.Buscar(detalle.ProductoId);
+                    p.Inventario -= detalle.Cantidad;
+                    ProductosBLL.Modificar(p);
+                }
+
+                v = VendedoresBLL.Buscar(factura.VendedorId);
+                v.Comision += factura.Total * 0.1;
+                VendedoresBLL.Modificar(v);
             }
             catch
             {
@@ -80,6 +121,17 @@ namespace BLL
 
                 if (factura != null)
                 {
+                    foreach (FacturasDetalle detalle in factura.FacturasDetalle)
+                    {
+                        Productos p = ProductosBLL.Buscar(detalle.ProductoId);
+                        p.Inventario += detalle.Cantidad;
+                        ProductosBLL.Modificar(p);
+                    }
+
+                    Vendedores v = VendedoresBLL.Buscar(factura.VendedorId);
+                    v.Comision -= factura.Total * 0.1;
+                    VendedoresBLL.Modificar(v);
+
                     context.Facturas.Remove(factura);
                     found = context.SaveChanges() > 0;
                 }
