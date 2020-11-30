@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-	  <Content Include="Imagenes\*.*">
+	  <Content Include="..\EvelynAutoParts\Imagenes\*.*">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content>
     <ProjectReference Include="..\BLL\BLL.csproj" />

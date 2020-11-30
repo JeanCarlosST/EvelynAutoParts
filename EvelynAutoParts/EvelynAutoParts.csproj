@@ -9,6 +9,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\UI\UI.csproj" />
+	  <Content Include="Imagenes\*.*">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
   </ItemGroup>
 
 </Project>
