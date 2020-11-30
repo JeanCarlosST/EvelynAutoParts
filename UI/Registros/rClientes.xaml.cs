@@ -16,9 +16,11 @@ namespace UI.Registros
     public partial class rClientes : Window
     {
         private Clientes cliente;
-        public rClientes()
+        Usuarios usuario;
+        public rClientes(Usuarios user)
         {
             InitializeComponent();
+            usuario = user;
             Nuevo();
 
         }
@@ -91,7 +93,7 @@ namespace UI.Registros
 
         private void Nuevo()
         {
-            this.cliente = new Clientes();
+            this.cliente = new Clientes(){ UsuarioId = usuario.UsuarioId };
             this.cliente.Fecha = DateTime.Now;
             ClienteIdTextBox.Text = null;
             Cargar();
