@@ -38,11 +38,11 @@ namespace UI.Consultas
                         listado = CobrosBLL.GetList(c => c.CobroId == Convert.ToInt32(CriterioTextBox.Text));
                         break;
 
-                    /*case 1:
-                        listado = CobrosBLL.GetList(u => u.  == CriterioTextBox.Text);
-                        break;*/
+                    case 1:
+                        var usuario = UsuariosBLL.Buscar(CriterioTextBox.Text);
+                        listado = CobrosBLL.GetList(u => u.UsuarioId  == usuario.UsuarioId);
+                        break;
                     case 2:
-
                         var cliente = ClientesBLL.Buscar(CriterioTextBox.Text);
                         listado = CobrosBLL.GetList(c => c.ClienteId == cliente.ClienteId);
                         break;
@@ -89,7 +89,7 @@ namespace UI.Consultas
                     break;
                 case 1:
                     CriterioTextBox.AutoCompleteSource = UsuariosBLL.GetList(c => true);
-                    CriterioTextBox.SearchItemPath = "Nombres";
+                    CriterioTextBox.SearchItemPath = "NombreUsuario";
                     break;
                 case 2:
                     CriterioTextBox.AutoCompleteSource = ClientesBLL.GetList(c => true);

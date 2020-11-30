@@ -109,7 +109,7 @@ namespace UI.Registros
         private void AgregarBoton_Click(object sender, RoutedEventArgs e)
         {
             Contexto context = new Contexto();
-            if (!ValidarCobro())
+            if (!ValidarCobro() && !ValidarMonto())
                 return;
 
             cobros.Total += Convert.ToDouble(MontoTextBox.Text);
@@ -168,6 +168,12 @@ namespace UI.Registros
         public bool ValidarMonto()
         {
             bool esValido = true;
+            if(Convert.ToInt32(MontoTextBox.Text) <= 0)
+            {
+                esValido = false;
+                AdvertenciaMonto.Content = "No puede ingresar un monto menor o igual a 0";
+                AdvertenciaMonto.Visibility = Visibility.Visible;
+            }
             if (BalanceTextBox.Text == "0")
             {
                 esValido = false;
@@ -193,6 +199,12 @@ namespace UI.Registros
         public bool Validar()
         {
             bool esValido = true;
+            if(cobros.Detalle.Count < 1)
+            {
+                MessageBox.Show("Debe ingresar minimo un cobro", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                esValido = false;
+            }
+
             if (ClientesComboBox.SelectedIndex < 0)
             {
                 MessageBox.Show("Debe elegir un Cliente", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
