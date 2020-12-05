@@ -62,11 +62,10 @@ namespace UI.Registros
             ProductosDataGrid.ItemsSource = null;
             ProductosDataGrid.ItemsSource = detalle;
 
-            
-
             ProductoCombobox.SelectedIndex = -1;
             PrecioTextbox.Clear();
             CantidadTextbox.Clear();
+            DescuentoTextbox.Clear();
         }
 
         private void RemoverBoton_Click(object sender, RoutedEventArgs e)
@@ -78,9 +77,10 @@ namespace UI.Registros
                 FacturasDetalle detalle = factura.FacturasDetalle.Where(p => p.ProductoId == d.ProductoId).First();
 
                 factura.Total -= d.Total - d.Descuento;
-                factura.FacturasDetalle.Remove(detalle);
                 factura.ITBIS -= d.ITBIS;
                 factura.Balance = factura.Total;
+
+                factura.FacturasDetalle.Remove(detalle);
 
                 this.detalle.Remove(d);
 
@@ -116,20 +116,30 @@ namespace UI.Registros
             if (!ValidarDetalle())
                 return;
 
+            Productos producto = ProductosBLL.Buscar(Utilities.ToInt(ProductoCombobox.SelectedValue.ToString()));
+            float pCantidad = Utilities.ToFloat(CantidadTextbox.Text);
+            double pPrecio = Utilities.ToDouble(PrecioTextbox.Text);
+            double pITBIS = Math.Truncate(pCantidad * pPrecio * producto.PorcentajeITBIS *100) / 100;
+
             FacturasDetalle nuevoDetalle = new FacturasDetalle()
             {
                 FacturaId = Utilities.ToInt(FacturaIdTextbox.Text),
                 ProductoId = Utilities.ToInt(ProductoCombobox.SelectedValue.ToString()),
-                Cantidad = Utilities.ToFloat(CantidadTextbox.Text),
-                Precio = Utilities.ToDouble(PrecioTextbox.Text),
-                Descuento = Utilities.ToFloat(DescuentoTextbox.Text) * Utilities.ToFloat(CantidadTextbox.Text)
+                Cantidad = pCantidad,
+                Precio = pPrecio,
+                ITBIS = pITBIS,
+                Total = (pCantidad * pPrecio) + pITBIS,
+                Descuento = Math.Truncate(Utilities.ToDouble(DescuentoTextbox.Text) * pCantidad * 100) / 100
             };
 
             foreach (FacturasDetalle d in factura.FacturasDetalle)
             {
                 if (d.ProductoId == nuevoDetalle.ProductoId)
                 {
-                    factura.Total -= (d.Cantidad * d.Precio - d.Descuento);
+                    factura.Total -= (d.Total - d.Descuento);
+                    factura.ITBIS -= d.ITBIS;
+                    factura.Balance = factura.Total;
+
                     factura.FacturasDetalle.Remove(d);
 
                     this.detalle.RemoveAll(de => de.ProductoId == d.ProductoId);
@@ -141,7 +151,7 @@ namespace UI.Registros
 
             factura.FacturasDetalle.Add(nuevoDetalle);
             factura.ITBIS += p.ITBIS;
-            factura.Total += p.Total - p.Descuento;
+            factura.Total += (p.Total - p.Descuento);
             factura.Balance = factura.Total;
 
             this.detalle.Add(p);
@@ -272,7 +282,7 @@ namespace UI.Registros
             Cantidad = detalle.Cantidad;
             Precio = detalle.Precio;
             Subtotal = Cantidad * Precio;
-            ITBIS = Subtotal * p.PorcentajeITBIS;
+            ITBIS = detalle.ITBIS;
             Total = Subtotal + ITBIS;
             Descuento = detalle.Descuento;
         }

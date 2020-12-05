@@ -118,11 +118,11 @@
                         <DataGridTextColumn Header="ProductoId" Binding="{Binding ProductoId}" Width=".4*"/>
                         <DataGridTextColumn Header="Descripcion" Binding="{Binding Descripcion}" Width="*"/>
                         <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}" Width=".35*"/>
-                        <DataGridTextColumn Header="Precio" Binding="{Binding Precio, StringFormat=C}" Width=".35*"/>
-                        <DataGridTextColumn Header="Subtotal" Binding="{Binding Subtotal, StringFormat=C}" Width=".35*"/>
-                        <DataGridTextColumn Header="ITBIS" Binding="{Binding ITBIS, StringFormat=C}" Width=".3*"/>
-                        <DataGridTextColumn Header="Total" Binding="{Binding Total, StringFormat=C}" Width=".35*"/>
-                        <DataGridTextColumn Header="Descuento" Binding="{Binding Descuento, StringFormat=C}" Width=".4*"/>
+                        <DataGridTextColumn Header="Precio" Binding="{Binding Precio, StringFormat=N2}" Width=".35*"/>
+                        <DataGridTextColumn Header="Subtotal" Binding="{Binding Subtotal, StringFormat=N2}" Width=".35*"/>
+                        <DataGridTextColumn Header="ITBIS" Binding="{Binding ITBIS, StringFormat=N2}" Width=".3*"/>
+                        <DataGridTextColumn Header="Total" Binding="{Binding Total, StringFormat=N2}" Width=".35*"/>
+                        <DataGridTextColumn Header="Descuento" Binding="{Binding Descuento, StringFormat=N2}" Width=".4*"/>
                     </DataGrid.Columns>
                 </DataGrid>
 
@@ -148,17 +148,17 @@
 
             <StackPanel Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <Label Content="ITBIS"/>
-                <TextBox x:Name="ITBISTextbox" Text="{Binding ITBIS, StringFormat=C}" Width="150" Height="22" IsReadOnly="True"/>
+                <TextBox x:Name="ITBISTextbox" Text="{Binding ITBIS, StringFormat=N2}" HorizontalContentAlignment="Right" Width="150" Height="22" IsReadOnly="True"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <Label Content="Balance"/>
-                <TextBox x:Name="BalanceTextbox" Text="{Binding Balance, StringFormat=C}" Width="150" Height="22" IsReadOnly="True"/>
+                <TextBox x:Name="BalanceTextbox" Text="{Binding Balance, StringFormat=N2}" HorizontalContentAlignment="Right" Width="150" Height="22" IsReadOnly="True"/>
             </StackPanel>
             
             <StackPanel Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center">
                 <Label Content="Total"/>
-                <TextBox x:Name="TotalTextbox" Text="{Binding Total, StringFormat=C}" Width="150" Height="22" IsReadOnly="True"/>
+                <TextBox x:Name="TotalTextbox" Text="{Binding Total, StringFormat=N2}" HorizontalContentAlignment="Right" Width="150" Height="22" IsReadOnly="True"/>
             </StackPanel>
         </Grid>
 
