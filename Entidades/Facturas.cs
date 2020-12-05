@@ -68,7 +68,14 @@ namespace Entidades
 
         [Column(TypeName = "money")]
         [Required]
-        public double Descuento { get; set; }
+        public double ITBIS { get; set; }
 
+        [Column(TypeName = "money")]
+        [Required]
+        public double Total { get; set; }
+
+        [Column(TypeName = "money")]
+        [Required]
+        public double Descuento { get; set; }
     }
 }
