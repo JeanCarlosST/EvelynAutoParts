@@ -23,11 +23,14 @@ namespace UI.Registros
         Usuarios usuario;
         Facturas factura;
         List<ProductoDetalle> detalle;
+        double Subtotal = 0f;
+
         public rFacturas(Usuarios user)
         {
             InitializeComponent();
             usuario = user;
             factura = new Facturas(){ UsuarioId = usuario.UsuarioId };
+            SubtotalTextbox.Text = Subtotal.ToString("N2");
             DataContext = factura;
 
             detalle = new List<ProductoDetalle>();
@@ -66,6 +69,9 @@ namespace UI.Registros
             PrecioTextbox.Clear();
             CantidadTextbox.Clear();
             DescuentoTextbox.Clear();
+
+            Subtotal = factura.Total - factura.ITBIS;
+            SubtotalTextbox.Text = Subtotal.ToString("N2");
         }
 
         private void RemoverBoton_Click(object sender, RoutedEventArgs e)
@@ -76,6 +82,7 @@ namespace UI.Registros
 
                 FacturasDetalle detalle = factura.FacturasDetalle.Where(p => p.ProductoId == d.ProductoId).First();
 
+                Subtotal += d.Subtotal;
                 factura.Total -= d.Total - d.Descuento;
                 factura.ITBIS -= d.ITBIS;
                 factura.Balance = factura.Total;
@@ -107,7 +114,7 @@ namespace UI.Registros
             }
             else
             {
-                MessageBox.Show("Orden no encontrada.", "Registro de facturas");
+                MessageBox.Show("Factura no encontrada.", "Registro de facturas");
             }
         }
 
@@ -153,6 +160,7 @@ namespace UI.Registros
             factura.ITBIS += p.ITBIS;
             factura.Total += (p.Total - p.Descuento);
             factura.Balance = factura.Total;
+            
 
             this.detalle.Add(p);
 
