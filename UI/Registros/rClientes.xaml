@@ -15,7 +15,7 @@
                 <TextBox x:Name="ClienteIdTextBox" Height="26" TextWrapping="Wrap" Width="80" BorderBrush="Black"/>
                 <Button x:Name="BuscarButton" Height="25" Width="65" Margin="20,0,0,0" Click="BuscarButton_Click" Background="#FF02A5ED">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Imagenes/search.png"/>
+                        <Image Source="/search.png"/>
                         <Label Content="Buscar" Height="26"/>
                     </StackPanel>
                 </Button>

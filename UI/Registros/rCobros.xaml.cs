@@ -30,11 +30,11 @@ namespace UI.Registros
             cobros = new Cobros();
             ClientesComboBox.ItemsSource = ClientesBLL.GetList(c => true);
             ClientesComboBox.SelectedValuePath = "ClienteId";
-            ClientesComboBox.DisplayMemberPath = "Cedula";
+            //ClientesComboBox.DisplayMemberPath = "Cedula" + "Nombres";
 
-            FacturasComboBox.ItemsSource = FacturasBLL.GetList();
+            /*FacturasComboBox.ItemsSource = FacturasBLL.GetList();
             FacturasComboBox.SelectedValuePath = "FacturaId";
-            FacturasComboBox.DisplayMemberPath = "FacturaId";
+            FacturasComboBox.DisplayMemberPath = "FacturaId";*/
 
             Limpiar();
         }
@@ -86,9 +86,10 @@ namespace UI.Registros
         private void GuardarBoton_Click(object sender, RoutedEventArgs e)
         {
             bool paso = false;
-            if (Validar())
-                paso = CobrosBLL.Guardar(cobros);
-
+            if (!Validar())
+                return;
+            
+            paso = CobrosBLL.Guardar(cobros);
             if (paso)
             {
                 Limpiar();
@@ -109,7 +110,7 @@ namespace UI.Registros
         private void AgregarBoton_Click(object sender, RoutedEventArgs e)
         {
             Contexto context = new Contexto();
-            if (!ValidarCobro() && !ValidarMonto())
+            if (!ValidarCobro() || !ValidarMonto())
                 return;
 
             cobros.Total += Convert.ToDouble(MontoTextBox.Text);
@@ -152,11 +153,12 @@ namespace UI.Registros
         {
              try
              {
-                if(!ValidarMonto())
+                if (!ValidarMonto())
                     MontoTextBox.BorderBrush = new SolidColorBrush(Colors.Red);
-                
+
                 else
-                     MontoTextBox.BorderBrush = new SolidColorBrush(Colors.Black);
+                    AdvertenciaMonto.Text = "";
+                    MontoTextBox.BorderBrush = new SolidColorBrush(Colors.Black);
                 
              }
              catch
@@ -168,28 +170,34 @@ namespace UI.Registros
         public bool ValidarMonto()
         {
             bool esValido = true;
-            if(Convert.ToInt32(MontoTextBox.Text) <= 0)
+            if (Convert.ToDouble(MontoTextBox.Text) > Convert.ToDouble(BalanceTextBox.Text))
             {
                 esValido = false;
-                AdvertenciaMonto.Content = "No puede ingresar un monto menor o igual a 0";
+                AdvertenciaMonto.Text = "No puede ingresar un monto mayor al balance";
+                AdvertenciaMonto.Visibility = Visibility.Visible;
+            }
+            if (Convert.ToDouble(MontoTextBox.Text) <= 0)
+            {
+                esValido = false;
+                AdvertenciaMonto.Text = "No puede ingresar un monto menor o igual a 0";
                 AdvertenciaMonto.Visibility = Visibility.Visible;
             }
             if (BalanceTextBox.Text == "0")
             {
                 esValido = false;
-                AdvertenciaMonto.Content = "No puede ingresar un monto ya que el balance es 0";
+                AdvertenciaMonto.Text = "No puede ingresar un monto ya que el balance es 0";
                 AdvertenciaMonto.Visibility = Visibility.Visible;
             }
             else if (!MontoTextBox.Text.Any(Char.IsDigit))
             {
                 esValido = false;
-                AdvertenciaMonto.Content = "Solo puede ingresar digitos";
+                AdvertenciaMonto.Text = "Solo puede ingresar digitos";
                 AdvertenciaMonto.Visibility = Visibility.Visible;
             }
             else if (MontoTextBox.Text.Length < 1)
             {
                 esValido = false;
-                AdvertenciaMonto.Content = "Ingrese un monto";
+                AdvertenciaMonto.Text = "Ingrese un monto";
                 AdvertenciaMonto.Visibility = Visibility.Visible;
             }
             return esValido;
@@ -228,6 +236,19 @@ namespace UI.Registros
                 esValido = false;
             }
             return esValido;
+        }
+
+        private void ClientesComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ClientesComboBox.SelectedValue != null)
+            {
+                FacturasComboBox.ItemsSource = FacturasBLL.GetList(f => f.ClienteId == Convert.ToInt32(ClientesComboBox.SelectedValue));
+                FacturasComboBox.SelectedValuePath = "FacturaId";
+                FacturasComboBox.DisplayMemberPath = "FacturaId";
+            }
+            else
+                FacturasComboBox.ItemsSource = null;
+            
         }
     }
 }
