@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Consulta de vendedores" 
         Height="450" Width="600"
+        xmlns:editors="http://schemas.syncfusion.com/wpf"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
 
@@ -20,7 +21,7 @@
                 
                 <StackPanel Grid.Column="0" Margin="5,0" HorizontalAlignment="Left">
                     <Label Content="Filtro:"/>
-                    <ComboBox x:Name="FiltroComboBox" Width="120" Height="25">
+                    <ComboBox x:Name="FiltroComboBox" Width="120" Height="25" SelectionChanged="FiltroComboBox_SelectionChanged">
                         <ComboBoxItem Content="VendedorId"/>
                         <ComboBoxItem Content="Nombres"/>
                         <ComboBoxItem Content="Apellidos"/>
@@ -29,8 +30,11 @@
 
                 <StackPanel Grid.Column="1" Margin="5,0" HorizontalAlignment="Stretch">
                     <Label Content="Critero:" Width="Auto"/>
-                    <TextBox x:Name="CriterioTextBox" Width="Auto" Height="25" BorderBrush="Black"/>
-                </StackPanel>
+                    <editors:SfTextBoxExt  x:Name="CriterioTextBox" HorizontalAlignment="Center"
+                              AutoCompleteMode="Suggest"                   
+                              IgnoreCase="True"
+                              Visibility="Visible" Width="340" Height="21.96" />
+            </StackPanel>
 
                 <Button x:Name="BuscarBoton" Grid.Column="2" Width="85" Height="30" Margin="0,0,0,0" Click="BuscarBoton_Click" BorderBrush="Black" Background="#FF02A5ED"  VerticalAlignment="Center" HorizontalAlignment="Right">
                     <StackPanel Orientation="Horizontal">

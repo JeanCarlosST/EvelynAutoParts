@@ -1,4 +1,5 @@
 ﻿using BLL;
+using Entidades;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -27,7 +28,7 @@ namespace UI.Consultas
         {
             var listado = FacturasBLL.GetList();
 
-            string criterio = CriterioTextbox.Text.Trim();
+            string criterio = CriterioTextBox.Text.Trim();
 
             if (criterio.Length > 0)
             {
@@ -72,17 +73,35 @@ namespace UI.Consultas
 
         private void FiltroCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(FiltroCombobox.SelectedIndex == 3)
+            var listado = new List<Object>();
+            listado = FacturasBLL.GetList();
+
+            CriterioTextBox.AutoCompleteSource = listado;
+
+            CriterioStackPanel.Visibility = Visibility.Visible;
+            FechasGrid.Visibility = Visibility.Hidden;
+
+
+            switch (FiltroCombobox.SelectedIndex)
             {
-                CriterioStackPanel.Visibility = Visibility.Hidden;
-                FechasGrid.Visibility = Visibility.Visible;
+                case 0:
+                    CriterioTextBox.SearchItemPath = "FacturaId";
+                    break;
+                case 1:
+                    CriterioTextBox.AutoCompleteSource = ClientesBLL.GetList(c => true);
+                    CriterioTextBox.SearchItemPath = "Nombres";
+                    break;
+                case 2:
+                    CriterioTextBox.AutoCompleteSource = VendedoresBLL.GetList(c => true);
+                    CriterioTextBox.SearchItemPath = "Nombres";
+                    break;
+                case 3:
+                    CriterioStackPanel.Visibility = Visibility.Hidden;
+                    FechasGrid.Visibility = Visibility.Visible;
+                    break;
+
             }
-            else
-            {
-                CriterioStackPanel.Visibility = Visibility.Visible;
-                FechasGrid.Visibility = Visibility.Hidden;
-            }
-                
+
         }
     }
 }

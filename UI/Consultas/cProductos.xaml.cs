@@ -1,4 +1,5 @@
 ﻿using BLL;
+using DAL;
 using Entidades;
 using System;
 using System.Collections.Generic;
@@ -42,11 +43,11 @@ namespace UI.Consultas
                         break;
 
                     case 2:
-                        listado = ProductosBLL.GetList(p => p.Precio < Utilities.ToDouble(criterio));
+                        listado = ProductosBLL.GetList(p => p.Precio <= Utilities.ToDouble(criterio));
                         break;
 
                     case 3:
-                        listado = ProductosBLL.GetList(p => p.Costo < Utilities.ToDouble(criterio));
+                        listado = ProductosBLL.GetList(p => p.Costo <= Utilities.ToDouble(criterio));
                         break;
 
                 }
@@ -58,6 +59,33 @@ namespace UI.Consultas
 
             ProductosDataGrid.ItemsSource = null;
             ProductosDataGrid.ItemsSource = listado;
+        }
+
+        private void FiltroComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var listado = new List<Productos>();
+            listado = ProductosBLL.GetList(p => true);
+
+            CriterioTextBox.AutoCompleteSource = listado;
+
+            /*CriterioStackPanel.Visibility = Visibility.Visible;
+            FechasGrid.Visibility = Visibility.Hidden;*/
+
+
+            switch (FiltroComboBox.SelectedIndex)
+            {
+                case 0:
+                    CriterioTextBox.SearchItemPath = "ProductoId";
+                    break;
+                case 1:
+                    CriterioTextBox.SearchItemPath = "Descripcion";
+                    break;
+                    /*case 3:
+                        CriterioStackPanel.Visibility = Visibility.Hidden;
+                        FechasGrid.Visibility = Visibility.Visible;
+                        break;*/
+
+            }
         }
     }
 }

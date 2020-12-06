@@ -55,5 +55,35 @@ namespace UI.Consultas
             VendedoresDataGrid.ItemsSource = null;
             VendedoresDataGrid.ItemsSource = listado;
         }
+
+        private void FiltroComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var listado = new List<Vendedores>();
+            listado = VendedoresBLL.GetList(c => true);
+
+            CriterioTextBox.AutoCompleteSource = listado;
+
+            /*CriterioStackPanel.Visibility = Visibility.Visible;
+            FechasGrid.Visibility = Visibility.Hidden;*/
+
+
+            switch (FiltroComboBox.SelectedIndex)
+            {
+                case 0:
+                    CriterioTextBox.SearchItemPath = "VendedorId";
+                    break;
+                case 1:
+                    CriterioTextBox.SearchItemPath = "Nombres";
+                    break;
+                case 2:
+                    CriterioTextBox.SearchItemPath = "Apellidos";
+                    break;
+                /*case 3:
+                    CriterioStackPanel.Visibility = Visibility.Hidden;
+                    FechasGrid.Visibility = Visibility.Visible;
+                    break;*/
+
+            }
+        }
     }
 }

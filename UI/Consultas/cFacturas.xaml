@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="Consulta de facturas" 
         Height="400" Width="800"
+        xmlns:editors="http://schemas.syncfusion.com/wpf"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     <Grid>
@@ -33,7 +34,23 @@
 
             <StackPanel x:Name="CriterioStackPanel" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Visibility="Visible">
                 <Label Content="Criterio"/>
-                <TextBox x:Name="CriterioTextbox" Height="22"/>
+                <editors:SfTextBoxExt  x:Name="CriterioTextBox" HorizontalAlignment="Center"
+                              AutoCompleteMode="Suggest"                   
+                              IgnoreCase="True"
+                              Visibility="Visible" Width="540" Height="21.96">
+                    <editors:SfTextBoxExt.AutoCompleteItemTemplate>
+                        <DataTemplate>
+                            <Grid HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Padding="2,8,0,8" VerticalAlignment="Center" FontFamily="SegoeUI" FontSize="12" FontWeight="Normal" Text="{Binding Nombres}"/>
+                                <TextBlock Grid.Column="1" Padding="10,8,0,8" VerticalAlignment="Center" FontFamily="SegoeUI" FontSize="12" FontWeight="Normal" Text="{Binding Apellidos}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </editors:SfTextBoxExt.AutoCompleteItemTemplate>
+                </editors:SfTextBoxExt>
             </StackPanel>
 
             <Grid x:Name="FechasGrid" Grid.Column="1" Visibility="Hidden">

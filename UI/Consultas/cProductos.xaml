@@ -8,6 +8,7 @@
         Title="Consulta de productos" 
         Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
+        xmlns:editors="http://schemas.syncfusion.com/wpf"
         ResizeMode="NoResize">
 
     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
@@ -20,7 +21,7 @@
 
             <StackPanel Grid.Column="0" Margin="5,0" HorizontalAlignment="Left">
                 <Label Content="Filtro:"/>
-                <ComboBox x:Name="FiltroComboBox" Width="120" Height="25">
+                <ComboBox x:Name="FiltroComboBox" Width="120" Height="25" SelectionChanged="FiltroComboBox_SelectionChanged">
                     <ComboBoxItem Content="ProductoId"/>
                     <ComboBoxItem Content="Descripcion"/>
                     <ComboBoxItem Content="Precio"/>
@@ -30,7 +31,10 @@
 
             <StackPanel Grid.Column="1" Margin="5,0" HorizontalAlignment="Stretch">
                 <Label Content="Critero:" Width="Auto"/>
-                <TextBox x:Name="CriterioTextBox" Width="Auto" Height="25" BorderBrush="Black"/>
+                <editors:SfTextBoxExt  x:Name="CriterioTextBox" HorizontalAlignment="Center"
+                              AutoCompleteMode="Suggest"                   
+                              IgnoreCase="True"
+                              Visibility="Visible" Width="500" Height="21.96" />
             </StackPanel>
 
             <Button x:Name="BuscarBoton" Grid.Column="2" Width="85" Height="30" Margin="0,0,0,0" Click="BuscarBoton_Click" BorderBrush="Black" Background="#FF02A5ED"  VerticalAlignment="Center" HorizontalAlignment="Right">
