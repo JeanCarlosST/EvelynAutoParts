@@ -5,184 +5,199 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI.Registros"
         mc:Ignorable="d"
-        Title="Registro de facturas" 
-        Height="730" Width="700"
+        Title="Registro de facturas"
+        Height="680" Width="1000"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
-    
-    <Grid Margin="20,20">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="60"/>
-            <RowDefinition/>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="70"/>
-        </Grid.RowDefinitions>
+        ResizeMode="NoResize"
+        Icon="/Imagenes/Logo.png">
 
-        <!--FacturaId-->
-        <Grid Grid.Row="0">
+    <Grid>
+        <Rectangle  Height="40" Fill="#F15A24" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+        <Label Content="Registro de facturas" Margin="2,0,0,0" FontSize="23" FontWeight="Bold" Foreground="White"/>
+        <Image Source="/Imagenes/logoCircleGray.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Opacity="0.08"/>
+
+        <Grid Margin="20,60,20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+
             <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <Label Content="Factura Id"/>
-                <TextBox x:Name="FacturaIdTextbox" Width="150" Height="22" Text="{Binding FacturaId}"/>
-            </StackPanel>
-
-            <Button x:Name="BuscarBoton" Grid.Column="1" Width="85" Height="30" Margin="0,0,0,0"
-                    Click="BuscarBoton_Click" BorderBrush="Black" Background="#FF02A5ED" 
-                    VerticalAlignment="Center" HorizontalAlignment="Left">
-                <StackPanel Orientation="Horizontal">
-                    <Image Width="18" Height="18" Source="/Imagenes/search.png"/>
-                    <Label Content="Buscar" Foreground="White" FontWeight="Bold"/>
-                </StackPanel>
-            </Button>
-        </Grid>
-
-        <!--Fecha-->
-        <StackPanel Grid.Row="1" VerticalAlignment="Center">
-            <Label Content="Fecha"/>
-            <DatePicker x:Name="FechaDatePicker" SelectedDate="{Binding Fecha, StringFormat=MM/dd/yyyy}" Width="150" HorizontalAlignment="Left"/>
-        </StackPanel>
-
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            
-            <!--Cliente-->
-            <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                <Label Content="Cliente"/>
-                <ComboBox x:Name="ClienteCombobox" Width="150" HorizontalAlignment="Left" SelectedValue="{Binding ClienteId}"/>
-            </StackPanel>
-
-            <!--Vendedor-->
-            <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                <Label Content="Vendedor"/>
-                <ComboBox x:Name="VendedorCombobox" Width="150" HorizontalAlignment="Left" SelectedValue="{Binding VendedorId}"/>
-            </StackPanel>
-        </Grid>
-
-        <!--Productos-->
-        <GroupBox Header="Productos" Grid.Row="3">
-            <Grid>
+            <!--FacturaId-->
+            <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width=".5*"/>
                 </Grid.ColumnDefinitions>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition/>
-                    <RowDefinition Height="40"/>
-                </Grid.RowDefinitions>
-
-                <StackPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Label Content="Producto"/>
-                    <ComboBox x:Name="ProductoCombobox" Width="200" SelectionChanged="ProductoCombobox_SelectionChanged"/>
+                <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Label Content="Factura Id"/>
+                    <TextBox x:Name="FacturaIdTextbox" Width="200" Height="22" VerticalContentAlignment="Center" Text="{Binding FacturaId}"/>
                 </StackPanel>
 
-                <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Label Content="Precio"/>
-                    <TextBox x:Name="PrecioTextbox" IsReadOnly="True" Width="90" Height="22"/>
-                </StackPanel>
-                
-                <StackPanel Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Label Content="Cantidad"/>
-                    <TextBox x:Name="CantidadTextbox" Width="90" Height="22"/>
-                </StackPanel>
-
-                <StackPanel Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Label Content="Descuento"/>
-                    <TextBox x:Name="DescuentoTextbox" Width="90" Height="22"/>
-                </StackPanel>
-
-                <Button x:Name="AgregarBoton" Width="120" Margin="5,0,0,0" Grid.Row="0" Grid.Column="4"
-                        HorizontalAlignment="Center" VerticalAlignment="Center" Click="AgregarBoton_Click" 
-                        Background="#FF44E240" BorderBrush="Black">
+                <Button x:Name="BuscarBoton" Grid.Column="1" Width="85" Height="30" Margin="0,18,0,0"
+                    Click="BuscarBoton_Click" BorderBrush="Black" Background="#FF02A5ED" 
+                    VerticalAlignment="Center" HorizontalAlignment="Center">
                     <StackPanel Orientation="Horizontal">
-                        <Image Width="18" Height="18" Source="/Imagenes/add.png"/>
-                        <Label Content="Agregar" FontWeight="Bold"/>
-                    </StackPanel>
-                </Button>
-
-                <DataGrid x:Name="ProductosDataGrid" Grid.Row="1" Grid.ColumnSpan="5" Margin="8, 5" AutoGenerateColumns="False" IsReadOnly="True" RowHeaderWidth="0">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="ProductoId" Binding="{Binding ProductoId}" Width=".4*"/>
-                        <DataGridTextColumn Header="Descripcion" Binding="{Binding Descripcion}" Width="*"/>
-                        <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}" Width=".35*"/>
-                        <DataGridTextColumn Header="Precio" Binding="{Binding Precio, StringFormat=N2}" Width=".35*"/>
-                        <DataGridTextColumn Header="Subtotal" Binding="{Binding Subtotal, StringFormat=N2}" Width=".35*"/>
-                        <DataGridTextColumn Header="ITBIS" Binding="{Binding ITBIS, StringFormat=N2}" Width=".3*"/>
-                        <DataGridTextColumn Header="Total" Binding="{Binding Total, StringFormat=N2}" Width=".35*"/>
-                        <DataGridTextColumn Header="Descuento" Binding="{Binding Descuento, StringFormat=N2}" Width=".4*"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-
-                <Button x:Name="RemoverBoton" Width="120" Margin="0,5,0,0" Grid.Row="2" Grid.Column="4"
-                        HorizontalAlignment="Center" VerticalAlignment="Center" Click="RemoverBoton_Click" 
-                        Background="#FFF02121" BorderBrush="Black">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Width="18" Height="18" Source="/Imagenes/cancel.png"/>
-                        <Label Content="Remover" FontWeight="Bold"/>
+                        <Image Width="18" Height="18" Source="/Imagenes/search.png"/>
+                        <Label Content="Buscar" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
             </Grid>
-            
-        </GroupBox>
-        
-        <!--Totales-->
-        <Grid Grid.Row="4">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <Label Content="ITBIS"/>
-                <TextBox x:Name="ITBISTextbox" Text="{Binding ITBIS, StringFormat=N2}" HorizontalContentAlignment="Right" Width="150" Height="22" IsReadOnly="True"/>
+            <!--Fecha-->
+            <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">
+                <Label Content="Fecha"/>
+                <DatePicker x:Name="FechaDatePicker" SelectedDate="{Binding Fecha, StringFormat=MM/dd/yyyy}" Width="200" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
             </StackPanel>
 
-            <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <Label Content="Balance"/>
-                <TextBox x:Name="BalanceTextbox" Text="{Binding Balance, StringFormat=N2}" HorizontalContentAlignment="Right" Width="150" Height="22" IsReadOnly="True"/>
+            <!--Cliente-->
+            <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                <Label Content="Cliente"/>
+                <ComboBox x:Name="ClienteCombobox" Width="250" HorizontalAlignment="Left" SelectedValue="{Binding ClienteId}"/>
             </StackPanel>
-            
-            <StackPanel Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <Label Content="Total"/>
-                <TextBox x:Name="TotalTextbox" Text="{Binding Total, StringFormat=N2}" HorizontalContentAlignment="Right" Width="150" Height="22" IsReadOnly="True"/>
-            </StackPanel>
-        </Grid>
 
-        <!--Botones-->
-        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30">
-            <Button x:Name="NuevoBoton" Width="90" Margin="5,0,0,0" Background="#FFFDEE0C" BorderBrush="Black" Click="NuevoBoton_Click">
+            <!--Vendedor-->
+            <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">
+                <Label Content="Vendedor"/>
+                <ComboBox x:Name="VendedorCombobox" Width="250" HorizontalAlignment="Left" SelectedValue="{Binding VendedorId}"/>
+            </StackPanel>
+
+            <!--Productos-->
+            <GroupBox Header="Productos" Grid.Row="2" Grid.ColumnSpan="3">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Column="0" Grid.Row="0" Margin="8,0" VerticalAlignment="Center">
+                        <Label Content="Producto"/>
+                        <ComboBox x:Name="ProductoCombobox" SelectionChanged="ProductoCombobox_SelectionChanged"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Grid.Row="0" Margin="8,0" VerticalAlignment="Center">
+                        <Label Content="Precio"/>
+                        <TextBox x:Name="PrecioTextbox" VerticalContentAlignment="Center" IsReadOnly="True"  Height="22"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" Grid.Row="0" Margin="8,0" VerticalAlignment="Center">
+                        <Label Content="Cantidad"/>
+                        <TextBox x:Name="CantidadTextbox" VerticalContentAlignment="Center" Height="22"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="3" Grid.Row="0" Margin="8,0" VerticalAlignment="Center">
+                        <Label Content="Descuento"/>
+                        <TextBox x:Name="DescuentoTextbox" VerticalContentAlignment="Center" Height="22"/>
+                    </StackPanel>
+
+                    <Button x:Name="AgregarBoton" Width="120" Margin="5,0,0,0" Grid.Row="0" Grid.Column="4"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" Click="AgregarBoton_Click" 
+                        Background="#FF44E240" BorderBrush="Black">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="18" Height="18" Source="/Imagenes/add.png"/>
+                            <Label Content="Agregar" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Button>
+
+                    <DataGrid x:Name="ProductosDataGrid" Grid.Row="1" Grid.ColumnSpan="5" Margin="8, 5" 
+                              AutoGenerateColumns="False" IsReadOnly="True" RowHeaderWidth="0" Background="{x:Null}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ProductoId" Binding="{Binding ProductoId}" Width=".4*"/>
+                            <DataGridTextColumn Header="Descripcion" Binding="{Binding Descripcion}" Width="*"/>
+                            <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}" Width=".35*"/>
+                            <DataGridTextColumn Header="Precio" Binding="{Binding Precio, StringFormat=N2}" Width=".35*"/>
+                            <DataGridTextColumn Header="Subtotal" Binding="{Binding Subtotal, StringFormat=N2}" Width=".35*"/>
+                            <DataGridTextColumn Header="ITBIS" Binding="{Binding ITBIS, StringFormat=N2}" Width=".3*"/>
+                            <DataGridTextColumn Header="Total" Binding="{Binding Total, StringFormat=N2}" Width=".35*"/>
+                            <DataGridTextColumn Header="Descuento" Binding="{Binding Descuento, StringFormat=N2}" Width=".4*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Button x:Name="RemoverBoton" Width="120" Margin="0,5,0,0" Grid.Row="2" Grid.Column="4"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" Click="RemoverBoton_Click" 
+                        Background="#FFF02121" BorderBrush="Black">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="18" Height="18" Source="/Imagenes/cancel.png"/>
+                            <Label Content="Remover" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+
+            </GroupBox>
+
+            <!--Totales-->
+            <Grid Grid.Row="3" Grid.ColumnSpan="3" HorizontalAlignment="Right">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <Label Content="ITBIS"/>
+                    <TextBox x:Name="ITBISTextbox" VerticalContentAlignment="Center" Text="{Binding ITBIS, StringFormat=N2}" HorizontalContentAlignment="Right" Width="150" Height="22" IsReadOnly="True"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <Label Content="Subtotal"/>
+                    <TextBox x:Name="SubtotalTextbox" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Width="150" Height="22" IsReadOnly="True"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <Label Content="Total"/>
+                    <TextBox x:Name="TotalTextbox" VerticalContentAlignment="Center" Text="{Binding Total, StringFormat=N2}" HorizontalContentAlignment="Right" Width="150" Height="22" IsReadOnly="True"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Label Content="Balance"/>
+                    <TextBox x:Name="BalanceTextbox" VerticalContentAlignment="Center" Text="{Binding Balance, StringFormat=N2}" HorizontalContentAlignment="Right" Width="150" Height="22" IsReadOnly="True"/>
+                </StackPanel>
+            </Grid>
+
+            <!--Botones-->
+            <!--<StackPanel Grid.Row="5" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30">-->
+            <Button x:Name="NuevoBoton" Grid.Column="0" Grid.Row="4" Width="120" Height="30" 
+                    HorizontalAlignment="Right" Background="#FFFDEE0C" BorderBrush="Black" Click="NuevoBoton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Width="18" Height="18" Source="/Imagenes/new.png"/>
                     <Label Content="Nuevo" Foreground="Black" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
-            <Button x:Name="GuardarBoton" Width="90" Margin="20,0,0,0" Background="#FF44E240" BorderBrush="Black" Click="GuardarBoton_Click">
+            <Button x:Name="GuardarBoton" Grid.Column="1" Grid.Row="4" Width="120" Height="30" 
+                    Background="#FF44E240" BorderBrush="Black" Click="GuardarBoton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Width="18" Height="18" Source="/Imagenes/save.png"/>
                     <Label Content="Guardar" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
-            <Button x:Name="EliminarBoton" Width="90" Margin="20,0,0,0" Background="#FFF02121" BorderBrush="Black" Click="EliminarBoton_Click">
+            <Button x:Name="EliminarBoton" Grid.Column="2" Grid.Row="4" Width="120" Height="30" 
+                    HorizontalAlignment="Left" Background="#FFF02121" BorderBrush="Black" Click="EliminarBoton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Width="18" Height="18" Source="/Imagenes/delete.png"/>
                     <Label Content="Eliminar" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
 
-        </StackPanel>
+            <!--</StackPanel>-->
+        </Grid>
     </Grid>
 </Window>
