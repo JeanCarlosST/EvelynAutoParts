@@ -26,27 +26,42 @@ namespace UI.Consultas
 
         private void BuscarBoton_Click(object sender, RoutedEventArgs e)
         {
-            var listado = FacturasBLL.GetList();
+            List<object> listado = new List<object>();
 
             string criterio = CriterioTextBox.Text.Trim();
+
+            if (!ValidarFechas())
+                return;
+
+            DateTime? desde = DesdeDatePicker.SelectedDate;
+            DateTime? hasta = HastaDatePicker.SelectedDate != null ? ((DateTime)HastaDatePicker.SelectedDate).AddHours(24) : HastaDatePicker.SelectedDate;
+
+            if (desde != null)
+                hasta = DateTime.Now.AddDays(1);
+            if (hasta != null)
+                desde = new DateTime(1, 1, 1);
 
             if (criterio.Length > 0)
             {
                 switch (FiltroCombobox.SelectedIndex)
                 {
                     case 0:
-                        listado.RemoveAll(f => Utilities.ToInt(f.GetType().GetProperty("FacturaId").GetValue(f).ToString()) != Utilities.ToInt(criterio));
+                        listado = FacturasBLL.GetList("FacturaId", criterio, desde, hasta);
                         break;
 
                     case 1:
-                        listado.RemoveAll(f => !f.GetType().GetProperty("Cliente").GetValue(f).ToString().ToLower().Contains(criterio.ToLower()));
+                        listado = FacturasBLL.GetList("Cliente", criterio, desde, hasta);
                         break;
 
                     case 2:
-                        listado.RemoveAll(f => !f.GetType().GetProperty("Vendedor").GetValue(f).ToString().ToLower().Contains(criterio.ToLower()));
+                        listado = FacturasBLL.GetList("Vendedor", criterio, desde, hasta);
                         break;
 
                 }
+            }
+            else
+            {
+                listado = FacturasBLL.GetList("", "", desde, hasta);
             }
 
             FacturasDataGrid.ItemsSource = null;
@@ -55,13 +70,13 @@ namespace UI.Consultas
 
         private bool ValidarFechas()
         {
-            if(!DateTime.TryParse(DesdeDatePicker.Text, out _))
+            if (DesdeDatePicker.Text.Length != 0 && !DateTime.TryParse(DesdeDatePicker.Text, out _))
             {
                 MessageBox.Show("Introduzca una fecha inicial válida", "Registro de facturas",
                                 MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return false;
             }
-            if (!DateTime.TryParse(HastaDatePicker.Text, out _))
+            if (HastaDatePicker.Text.Length != 0 && !DateTime.TryParse(HastaDatePicker.Text, out _))
             {
                 MessageBox.Show("Introduzca una fecha final válida", "Registro de facturas",
                                 MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -73,34 +88,32 @@ namespace UI.Consultas
 
         private void FiltroCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var listado = new List<Object>();
-            listado = FacturasBLL.GetList();
+            //var listado = new List<Object>();
+            //listado = FacturasBLL.GetList();
 
-            CriterioTextBox.AutoCompleteSource = listado;
-
-            CriterioStackPanel.Visibility = Visibility.Visible;
-            FechasGrid.Visibility = Visibility.Hidden;
+            //CriterioTextBox.AutoCompleteSource = listado;
 
 
-            switch (FiltroCombobox.SelectedIndex)
-            {
-                case 0:
-                    CriterioTextBox.SearchItemPath = "FacturaId";
-                    break;
-                case 1:
-                    CriterioTextBox.AutoCompleteSource = ClientesBLL.GetList(c => true);
-                    CriterioTextBox.SearchItemPath = "Nombres";
-                    break;
-                case 2:
-                    CriterioTextBox.AutoCompleteSource = VendedoresBLL.GetList(c => true);
-                    CriterioTextBox.SearchItemPath = "Nombres";
-                    break;
-                case 3:
-                    CriterioStackPanel.Visibility = Visibility.Hidden;
-                    FechasGrid.Visibility = Visibility.Visible;
-                    break;
 
-            }
+            //switch (FiltroCombobox.SelectedIndex)
+            //{
+            //    case 0:
+            //        CriterioTextBox.SearchItemPath = "FacturaId";
+            //        break;
+            //    case 1:
+            //        CriterioTextBox.AutoCompleteSource = ClientesBLL.GetList(c => true);
+            //        CriterioTextBox.SearchItemPath = "Nombres";
+            //        break;
+            //    case 2:
+            //        CriterioTextBox.AutoCompleteSource = VendedoresBLL.GetList(c => true);
+            //        CriterioTextBox.SearchItemPath = "Nombres";
+            //        break;
+            //    case 3:
+            //        CriterioStackPanel.Visibility = Visibility.Hidden;
+            //        FechasGrid.Visibility = Visibility.Visible;
+            //        break;
+
+            //}
 
         }
     }

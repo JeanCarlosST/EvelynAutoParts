@@ -6,24 +6,37 @@
         xmlns:local="clr-namespace:UI.Consultas"
         mc:Ignorable="d"
         Title="Consulta de facturas" 
-        Height="400" Width="800"
+        Height="450" Width="900"
         xmlns:editors="http://schemas.syncfusion.com/wpf"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Icon="/Imagenes/Logo.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-
+        
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition Width="130"/>
                 <ColumnDefinition Width="130"/>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="120"/>
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Label Content="Desde"/>
+                <DatePicker x:Name="DesdeDatePicker" Width="120" Background="{x:Null}" BorderBrush="Black"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Label Content="Hasta"/>
+                <DatePicker x:Name="HastaDatePicker" Width="120" BorderBrush="Black"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Label Content="Filtro"/>
                 <ComboBox x:Name="FiltroCombobox" Width="120" SelectionChanged="FiltroCombobox_SelectionChanged">
                     <ComboBoxItem Content="FacturaId"/>
@@ -32,12 +45,10 @@
                 </ComboBox>
             </StackPanel>
 
-            <StackPanel x:Name="CriterioStackPanel" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Visibility="Visible">
+            <StackPanel x:Name="CriterioStackPanel" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Visibility="Visible">
                 <Label Content="Criterio"/>
-                <editors:SfTextBoxExt  x:Name="CriterioTextBox" HorizontalAlignment="Center"
-                              AutoCompleteMode="Suggest"                   
-                              IgnoreCase="True"
-                              Visibility="Visible" Width="540" Height="21.96">
+                <editors:SfTextBoxExt  x:Name="CriterioTextBox" AutoCompleteMode="Suggest"                   
+                                       IgnoreCase="True" Visibility="Visible" Height="21.96" BorderBrush="Black">
                     <editors:SfTextBoxExt.AutoCompleteItemTemplate>
                         <DataTemplate>
                             <Grid HorizontalAlignment="Stretch">
@@ -53,24 +64,7 @@
                 </editors:SfTextBoxExt>
             </StackPanel>
 
-            <Grid x:Name="FechasGrid" Grid.Column="1" Visibility="Hidden">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-
-                <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Label Content="Desde"/>
-                    <DatePicker x:Name="DesdeDatePicker" Width="120"/>
-                </StackPanel>
-
-                <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Label Content="Hasta"/>
-                    <DatePicker x:Name="HastaDatePicker" Width="120"/>
-                </StackPanel>
-            </Grid>
-
-            <Button x:Name="BuscarBoton" Grid.Column="2" Width="110" Height="30" Margin="0,0,0,0" 
+            <Button x:Name="BuscarBoton" Grid.Column="4" Width="110" Height="30" Margin="0,18,0,0" 
                     Click="BuscarBoton_Click" BorderBrush="Black" Background="#FF02A5ED"  
                     VerticalAlignment="Center" HorizontalAlignment="Center">
                 <StackPanel Orientation="Horizontal">
