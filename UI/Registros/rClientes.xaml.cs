@@ -183,10 +183,10 @@ namespace UI.Registros
                 SystemSounds.Beep.Play();
             }
 
-            if (CelularMask.Text.Length < 1 || TelefonoMask.Text.Length < 1)
+            if (CelularMask.Text.Length < 1 && TelefonoMask.Text.Length < 1)
             {
                 esValido = false;
-                MessageBox.Show("Debe ingresar un numero de telefono o celular", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Debe ingresar un numero de teléfono o celular", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             return esValido;
