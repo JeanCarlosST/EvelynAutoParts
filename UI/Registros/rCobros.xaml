@@ -30,16 +30,16 @@
                             <DataTemplate>
                                 <TextBlock>
                                     <TextBlock.Text>
-                                        <MultiBinding StringFormat="{}{0} - {1}">
+                                        <MultiBinding StringFormat="{}{0} {1} - {2} ">
                                             <Binding Path="Nombres"/>
-                                            <Binding Path="ClienteId"/>
+                                            <Binding Path="Apellidos"/>
+                                            <Binding Path="Cedula"/>
                                         </MultiBinding>
                                     </TextBlock.Text>
                                 </TextBlock>
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                    <!--<ComboBox x:Name="ClientesComboBox" Width="200" Height="21" SelectedValue="{Binding ClienteId}" SelectionChanged="ClientesComboBox_SelectionChanged"/>-->
                 </StackPanel>
                 <Label x:Name="AdvertenciaCliente" Visibility="Hidden" Foreground="Red"/>
             </StackPanel>
@@ -64,7 +64,7 @@
                         <StackPanel Height="78">
                         <Button x:Name="AgregarBoton" Height="25" Margin="20,20,0,0" Width="136" Click = "AgregarBoton_Click" Background="#FF44E240">
                             <StackPanel Orientation="Horizontal" Height="26">
-                                <Image Source="\add.png" Width="17" Height="17"/>
+                                <Image Source="/add.png" Width="17" Height="17"/>
                                 <Label Content="Agregar"/>
                             </StackPanel>
                         </Button>
