@@ -231,5 +231,24 @@ namespace BLL
             return lista;
         }
 
+        public static List<Facturas> GetList(Expression<Func<Facturas, bool>> criterio)
+        {
+            List<Facturas> lista = new List<Facturas>();
+            Contexto contexto = new Contexto();
+            try
+            {
+                lista = contexto.Facturas.Where(criterio).AsNoTracking().ToList();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+            return lista;
+        }
+
     }
 }
