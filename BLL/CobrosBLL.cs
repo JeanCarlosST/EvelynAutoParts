@@ -28,7 +28,7 @@ namespace BLL
                 contexto.Cobros.Add(cobro);
                 foreach (var item in cobro.Detalle)
                 {
-                    contexto.Facturas.Find(item.FacturaId).Balance += item.Monto;   
+                    contexto.Facturas.Find(item.FacturaId).Balance -= item.Monto;   
                 }
                 paso = contexto.SaveChanges() > 0;
             }
