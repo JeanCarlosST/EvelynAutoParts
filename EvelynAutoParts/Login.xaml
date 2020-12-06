@@ -13,15 +13,11 @@
 
     <Grid>
         <Rectangle Width="900" Height="60" Fill="#F15A24" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        
         <Rectangle Width="120" Height="60" Fill="#F15A24" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,60,0,0"/>
-
         <Polygon Points="900,0 970,0 870,120 800,120" Fill="#F15A24"/>
-
         <Label Content="Evelyn Auto Parts" Foreground="White" FontFamily="Oswald" FontSize="40" Margin="5,-7,0,0"/>
-
         <Polygon Points="0,535 400,535, 0,380" Fill="Black" Stroke="Black"/>
-
+        <Polygon Points="1000,535 1000,300, 900,535" Fill="Black" Stroke="Black" Opacity="0.4"/>
         <Image Source="/Imagenes/LoginFrame.png" Width="650" Margin="300,0,0,0"/>
 
         <Grid Margin="0,165">

@@ -6,33 +6,42 @@
         xmlns:local="clr-namespace:EvelynAutoParts"
         mc:Ignorable="d"
         Title="Ventana principal" 
-        Height="450" Width="450"
+        Height="550" Width="1000"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
-    
+        ResizeMode="NoResize"
+        Icon="Imagenes/Logo.png">
+
     <Grid>
-        <Menu Height="18" VerticalAlignment="Top">
-            <MenuItem Header="_Registros">
-                <MenuItem x:Name="rClientesMenuItem" Header="Registro de clientes" Click="rClientesMenuItem_Click"/>
-                <MenuItem x:Name="rCobrosMenuItem" Header="Registro de cobros" Click="rCobrosMenuItem_Click"/>
-                <MenuItem x:Name="rFacturasMenuItem" Header="Registro de facturas" Click="rFacturasMenuItem_Click"/>
-                <MenuItem x:Name="rProductosMenuItem" Header="Registro de productos" Click="rProductosMenuItem_Click"/>
-                <MenuItem x:Name="rUsuariosMenuItem" Header="Registro de usuarios" Click="rUsuariosMenuItem_Click"/>
-                <MenuItem x:Name="rVendedoresMenuItem" Header="Registro de vendedores" Click="rVendedoresMenuItem_Click"/>
-            </MenuItem>
+        <Rectangle Width="900" Height="60" Fill="#F15A24" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Rectangle Width="120" Height="60" Fill="#F15A24" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,60,0,0"/>
+        <Polygon Points="900,0 970,0 870,120 800,120" Fill="#F15A24"/>
+        <Polygon Points="1000,535 1000,300, 900,535" Fill="Black" Stroke="Black" Opacity="0.4"/>
+        <Polygon Points="0,535 400,535, 0,380" Fill="Black" Stroke="Black"/>
 
-            <MenuItem Header="_Consultas">
-                <MenuItem x:Name="cClientesMenuItem" Header="Consulta de clientes" Click="cClientesMenuItem_Click"/>
-                <MenuItem x:Name="cCobrosMenuItem" Header="Consulta de cobros" Click="cCobrosMenuItem_Click"/>
-                <MenuItem x:Name="cProductosMenuItem" Header="Consulta de productos" Click="cProductosMenuItem_Click"/>
-                <MenuItem x:Name="cFacturasMenuItem" Header="Consulta de facturas" Click="cFacturasMenuItem_Click"/>
-                <MenuItem x:Name="cUsuariosMenuItem" Header="Consulta de usuarios" Click="cUsuariosMenuItem_Click"/>
-                <MenuItem x:Name="cVendedoresMenuItem" Header="Consulta de vendedores" Click="cVendedoresMenuItem_Click"/>
-            </MenuItem>
+        <Grid>
+            <Menu Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="940" Background="#F15A24" FontWeight="Bold" FontSize="15"> 
+                <MenuItem Header="_Registros">
+                    <MenuItem x:Name="rClientesMenuItem" Header="Registro de clientes" Click="rClientesMenuItem_Click"/>
+                    <MenuItem x:Name="rCobrosMenuItem" Header="Registro de cobros" Click="rCobrosMenuItem_Click"/>
+                    <MenuItem x:Name="rFacturasMenuItem" Header="Registro de facturas" Click="rFacturasMenuItem_Click"/>
+                    <MenuItem x:Name="rProductosMenuItem" Header="Registro de productos" Click="rProductosMenuItem_Click"/>
+                    <MenuItem x:Name="rUsuariosMenuItem" Header="Registro de usuarios" Click="rUsuariosMenuItem_Click"/>
+                    <MenuItem x:Name="rVendedoresMenuItem" Header="Registro de vendedores" Click="rVendedoresMenuItem_Click"/>
+                </MenuItem>
 
-            <MenuItem x:Name="cerrarSesionMenuItem" Header="Cerrar sesión" Margin="210,0,0,0" HorizontalAlignment="Right" Click="cerrarSesionMenuItem_Click"/>
-        </Menu>
+                <MenuItem Header="_Consultas">
+                    <MenuItem x:Name="cClientesMenuItem" Header="Consulta de clientes" Click="cClientesMenuItem_Click"/>
+                    <MenuItem x:Name="cCobrosMenuItem" Header="Consulta de cobros" Click="cCobrosMenuItem_Click"/>
+                    <MenuItem x:Name="cProductosMenuItem" Header="Consulta de productos" Click="cProductosMenuItem_Click"/>
+                    <MenuItem x:Name="cFacturasMenuItem" Header="Consulta de facturas" Click="cFacturasMenuItem_Click"/>
+                    <MenuItem x:Name="cUsuariosMenuItem" Header="Consulta de usuarios" Click="cUsuariosMenuItem_Click"/>
+                    <MenuItem x:Name="cVendedoresMenuItem" Header="Consulta de vendedores" Click="cVendedoresMenuItem_Click"/>
+                </MenuItem>
 
-        <Image Source="Imagenes/Logo.png" Height="380" Width="380" Opacity="0.843"/>
+                <MenuItem x:Name="cerrarSesionMenuItem" Header="Cerrar sesión" Margin="670,0,0,0" HorizontalAlignment="Right" Click="cerrarSesionMenuItem_Click"/>
+            </Menu>
+
+            <Image Source="Imagenes/Logo.png" Height="380" Width="380" Margin="0,50,0,0" Opacity="0.843"/>
+        </Grid>
     </Grid>
 </Window>
