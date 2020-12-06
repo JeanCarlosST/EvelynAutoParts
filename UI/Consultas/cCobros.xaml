@@ -63,7 +63,7 @@
 
             <Button Grid.Column="2" x:Name="BuscarBoton" Height="30" Background="#FF02A5ED" VerticalAlignment="Top" Click="BuscarButton_Click" BorderBrush="Black" Margin="15,20,25,0" >
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="/Imagenes/search.png" Width="32" Height="22"/>
+                    <Image Source="/search.png" Width="32" Height="22"/>
                     <Label Content="Buscar" Foreground="White" FontWeight="Bold"/>
                 </StackPanel>
             </Button>

@@ -26,12 +26,12 @@
                     <ComboBoxItem Content="ClienteId"/>
                     <ComboBoxItem Content="Nombre"/>
                     <ComboBoxItem Content="Apellidos"/>
-                    <ComboBoxItem Content="Direccion"/>
-                    <ComboBoxItem Content="Telefono"/>
+                    <ComboBoxItem Content="Dirección"/>
+                    <ComboBoxItem Content="Teléfono"/>
                     <ComboBoxItem Content="Celular"/>
-                    <ComboBoxItem Content="Cedula"/>
+                    <ComboBoxItem Content="Cédula"/>
                     <ComboBoxItem Content="Email"/>
-                    <ComboBoxItem Content="Fecha de Creacion"/>
+                    <ComboBoxItem Content="Fecha de Creación"/>
                 </ComboBox>
             </StackPanel>
 
@@ -67,7 +67,7 @@
 
             <Button Grid.Column="2" x:Name="BuscarBoton" Height="30" Background="#FF02A5ED" VerticalAlignment="Bottom" Click="BuscarButton_Click" BorderBrush="Black" >
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="/Imagenes/search.png" Width="32" Height="22"/>
+                    <Image Source="/search.png" Width="32" Height="22"/>
                     <Label Content="Buscar" Foreground="White" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
@@ -79,10 +79,10 @@
                         <DataGridTextColumn Header="ClienteId" Width="*" Binding="{Binding IdCliente}"/>
                         <DataGridTextColumn Header="Nombres" Width="*" Binding="{Binding Nombres}"/>
                         <DataGridTextColumn Header="Apellidos" Width="*" Binding="{Binding Apellidos}"/>
-                        <DataGridTextColumn Header="Direccion" Width="*" Binding="{Binding Direccion}"/>
-                        <DataGridTextColumn Header="Telefono" Width="*" Binding="{Binding Telefono}"/>
+                        <DataGridTextColumn Header="Dirección" Width="*" Binding="{Binding Direccion}"/>
+                        <DataGridTextColumn Header="Teléfono" Width="*" Binding="{Binding Telefono}"/>
                         <DataGridTextColumn Header="Celular" Width="*" Binding="{Binding Celular}"/>
-                        <DataGridTextColumn Header="Cedula" Width="*" Binding="{Binding Cedula}"/>
+                        <DataGridTextColumn Header="Cédula" Width="*" Binding="{Binding Cedula}"/>
                         <DataGridTextColumn Header="Email" Width="*" Binding="{Binding Email}"/>
                         <DataGridTextColumn Header="Fecha registro" Width="*" Binding="{Binding Fecha}"/>
                     </DataGrid.Columns>
