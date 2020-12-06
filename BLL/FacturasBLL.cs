@@ -193,18 +193,18 @@ namespace BLL
             return found;
         }
 
-        public static List<object> GetList()
+        public static List<object> GetList(string criterio, string valor, DateTime? desde, DateTime? hasta)
         {
             List<object> lista;
             Contexto contexto = new Contexto();
             
             try
             {
-                lista = (
+                var query = (
                     from f in contexto.Facturas
-                    join c in contexto.Clientes   on f.ClienteId equals c.ClienteId
+                    join c in contexto.Clientes on f.ClienteId equals c.ClienteId
                     join v in contexto.Vendedores on f.VendedorId equals v.VendedorId
-                    join u in contexto.Usuarios   on f.UsuarioId equals u.UsuarioId
+                    join u in contexto.Usuarios on f.UsuarioId equals u.UsuarioId
                     select new
                     {
                         f.FacturaId,
@@ -217,7 +217,30 @@ namespace BLL
                         f.Total,
                         f.Balance
                     }
-                ).ToList<object>();
+                );
+
+                if(criterio.Length != 0)
+                {
+                    switch (criterio)
+                    {
+                        case "FacturaId":
+                            query = query.Where(f => f.FacturaId == Utilities.ToInt(valor));
+                            break;
+                        case "Cliente":
+                            query = query.Where(f => f.Cliente.ToLower().Contains(valor.ToLower()));
+                            break;
+                        case "Vendedor":
+                            query = query.Where(f => f.Vendedor.ToLower().Contains(valor.ToLower()));
+                            break;
+                    }
+                }
+
+                if(desde != null && hasta != null)
+                {
+                    query = query.Where(f => f.Fecha >= desde && f.Fecha <= hasta);
+                }
+
+                lista = query.ToList<object>();
             }
             catch
             {
