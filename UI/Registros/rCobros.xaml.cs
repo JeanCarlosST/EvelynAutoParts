@@ -30,11 +30,6 @@ namespace UI.Registros
             cobros = new Cobros();
             ClientesComboBox.ItemsSource = ClientesBLL.GetList(c => true);
             ClientesComboBox.SelectedValuePath = "ClienteId";
-            //ClientesComboBox.DisplayMemberPath = "Cedula" + "Nombres";
-
-            /*FacturasComboBox.ItemsSource = FacturasBLL.GetList();
-            FacturasComboBox.SelectedValuePath = "FacturaId";
-            FacturasComboBox.DisplayMemberPath = "FacturaId";*/
 
             Limpiar();
         }
