@@ -6,35 +6,52 @@
         xmlns:local="clr-namespace:EvelynAutoParts"
         mc:Ignorable="d"
         Title="Login" 
-        Height="400" Width="400"
-        WindowStartupLocation="CenterScreen">
-    
-    <Grid Margin="0,30">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+        Height="550" Width="1000"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Icon="Imagenes/Logo.png">
 
-        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Label Content="Nombre de usuario"/>
-            <TextBox x:Name="UsuarioTextbox" Width="230" Height="25" VerticalContentAlignment="Center"/>
-        </StackPanel>
+    <Grid>
+        <Rectangle Width="900" Height="60" Fill="#F15A24" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        
+        <Rectangle Width="120" Height="60" Fill="#F15A24" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,60,0,0"/>
 
-        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Label Content="Contraseña"/>
-            <PasswordBox x:Name="ClavePasswordbox" Width="230" Height="25" VerticalContentAlignment="Center"/>
-        </StackPanel>
+        <Polygon Points="900,0 970,0 870,120 800,120" Fill="#F15A24"/>
 
-        <StackPanel Grid.Row="2" VerticalAlignment="Center">
-            <Label x:Name="IncorrectoLabel" Content="Usuario o contraseña incorrectos" 
-                   Foreground="Red" HorizontalAlignment="Center" 
-                   FontWeight="Bold" Visibility="Hidden"/>
-            <Button x:Name="IniciarSesionButton" Grid.Row="2" Width="140" Height="40" 
-                    HorizontalAlignment="Center" VerticalAlignment="Center" 
-                    Background="#FF44E240" BorderBrush="Black" Click="IniciarSesionButton_Click">
-                <Label Content="Iniciar sesión" Foreground="Black" FontWeight="Bold"/>
-            </Button>
-        </StackPanel>
+        <Label Content="Evelyn Auto Parts" Foreground="White" FontFamily="Oswald" FontSize="40" Margin="5,-7,0,0"/>
+
+        <Polygon Points="0,535 400,535, 0,380" Fill="Black" Stroke="Black"/>
+
+        <Image Source="/Imagenes/LoginFrame.png" Width="650" Margin="300,0,0,0"/>
+
+        <Grid Margin="0,165">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <Label Content="Nombre de usuario"/>
+                <TextBox x:Name="UsuarioTextbox" Width="230" Height="25" VerticalContentAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <Label Content="Contraseña"/>
+                <PasswordBox x:Name="ClavePasswordbox" Width="230" Height="25" VerticalContentAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" VerticalAlignment="Center">
+                <Label x:Name="IncorrectoLabel" Content="Usuario o contraseña incorrectos" 
+                       Foreground="Red" HorizontalAlignment="Center" 
+                       FontWeight="Bold" Visibility="Hidden"/>
+                <Button x:Name="IniciarSesionButton" Grid.Row="2" Width="140" Height="28" 
+                        HorizontalAlignment="Center" VerticalAlignment="Top" 
+                        Background="#FF44E240" BorderBrush="Black" Click="IniciarSesionButton_Click">
+                    <Label Content="Iniciar sesión" Foreground="Black" FontWeight="Bold"/>
+                </Button>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
