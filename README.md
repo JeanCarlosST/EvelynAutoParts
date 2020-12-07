@@ -7,6 +7,7 @@ Tambien podra realizar consultas de productos, clientes, usuarios, cobros, factu
 
 
 **Usuarios y claves para acceder al sistema**
+
 User: jean
 Clave: admin
 
