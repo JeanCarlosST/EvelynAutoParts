@@ -151,18 +151,18 @@ namespace UI.Registros
             {
                 esValido = false;
                 NombresTextbox.BorderBrush = new SolidColorBrush(Colors.Red);
-                AdvertenciaNombresLabel.Content = "El nombre solo debe contener letras";
+                AdvertenciaNombresLabel.Text = "El nombre solo debe contener letras";
             }
             else if(NombresTextbox.Text.Length < 1)
             {
                 esValido = false;
-                AdvertenciaNombresLabel.Content = "Debe ingresar un nombre";
+                AdvertenciaNombresLabel.Text = "Debe ingresar un nombre";
                 AdvertenciaNombresLabel.Visibility = Visibility.Visible;
             }
             else if (NombresTextbox.Text.Length < 3)
             {
                 esValido = false;
-                AdvertenciaNombresLabel.Content = "El nombre debe contener más de 2 caracteres";
+                AdvertenciaNombresLabel.Text = "El nombre debe contener más de 2 caracteres";
                 AdvertenciaNombresLabel.Visibility = Visibility.Visible;
             }
 
@@ -177,18 +177,18 @@ namespace UI.Registros
             {
                 esValido = false;
                 ApellidosTextbox.BorderBrush = new SolidColorBrush(Colors.Red);
-                AdvertenciaApellidosLabel.Content = "El apellido solo debe contener letras";
+                AdvertenciaApellidosLabel.Text = "El apellido solo debe contener letras";
             }
             else if (ApellidosTextbox.Text.Length < 1)
             {
                 esValido = false;
-                AdvertenciaApellidosLabel.Content = "Debe ingresar un apellido";
+                AdvertenciaApellidosLabel.Text = "Debe ingresar un apellido";
                 AdvertenciaApellidosLabel.Visibility = Visibility.Visible;
             }
             else if (ApellidosTextbox.Text.Length < 3)
             {
                 esValido = false;
-                AdvertenciaApellidosLabel.Content = "El apellido debe contener más de 2 caracteres";
+                AdvertenciaApellidosLabel.Text = "El apellido debe contener más de 2 caracteres";
                 AdvertenciaApellidosLabel.Visibility = Visibility.Visible;
             }
 

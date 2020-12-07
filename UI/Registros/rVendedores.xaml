@@ -49,14 +49,14 @@
             <StackPanel Grid.Row="1" HorizontalAlignment="Center">
                 <Label Content="Nombres"/>
                 <TextBox x:Name="NombresTextbox" Width="180" Height="25" BorderBrush="Black" Text="{Binding Nombres}" VerticalContentAlignment="Center" TextChanged="NombresTextbox_TextChanged"/>
-                <Label x:Name="AdvertenciaNombresLabel"  Visibility="Hidden" Foreground="Red" Height="24" />
+                <TextBlock x:Name="AdvertenciaNombresLabel" Visibility="Hidden" Foreground="Red" Height="24" Width="180" FontSize="10"  TextWrapping="Wrap"/>
             </StackPanel>
 
             <!--Apellidos-->
             <StackPanel Grid.Row="2" HorizontalAlignment="Center">
                 <Label Content="Apellidos"/>
                 <TextBox x:Name="ApellidosTextbox" Width="180" Height="25" BorderBrush="Black" Text="{Binding Apellidos}" VerticalContentAlignment="Center" TextChanged="ApellidosTextbox_TextChanged"/>
-                <Label x:Name="AdvertenciaApellidosLabel"  Visibility="Hidden" Foreground="Red" Height="24" />
+                <TextBlock x:Name="AdvertenciaApellidosLabel"  Visibility="Hidden" Foreground="Red" Height="24" Width="180" FontSize="10"  TextWrapping="Wrap"/>
             </StackPanel>
 
             <!--Comisión-->

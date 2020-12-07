@@ -57,32 +57,32 @@
             <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center">
                 <Label Content="Nombres"/>
                 <TextBox x:Name="NombresTextBox" VerticalContentAlignment="Center" TextWrapping="Wrap" BorderBrush="Black" Width="180" Height="23" Text="{Binding Nombres}" TextChanged="NombresTextBox_TextChanged" />
-                <Label x:Name="AdvertenciaNombreLabel" Visibility="Hidden" Foreground="Red" Height="24" FontSize="11" />
+                <TextBlock x:Name="AdvertenciaNombreLabel" Visibility="Hidden" Foreground="Red" Width="180" Height="36" FontSize="10" />
             </StackPanel>
 
             <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center">
                 <Label Content="Apellidos"/>
                 <TextBox x:Name="ApellidosTextBox" VerticalContentAlignment="Center" TextWrapping="Wrap"  BorderBrush="Black" Width="180" Height="23" Text="{Binding Apellidos}" TextChanged="ApellidosTextBox_TextChanged"/>
-                <Label x:Name="AdvertenciaApellidoLabel" Visibility="Hidden" Foreground="Red" Height="24" />
+                <TextBlock x:Name="AdvertenciaApellidoLabel" Visibility="Hidden" Foreground="Red" Width="180" Height="36" FontSize="10" />
             </StackPanel>
 
             <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center">
                 <Label Content="Nombre de Usuario"/>
                 <TextBox x:Name="NombreUsuarioTextBox" VerticalContentAlignment="Center" TextWrapping="Wrap"  BorderBrush="Black" Width="180" Height="23" Text="{Binding NombreUsuario}" TextChanged="NombreusuarioTextBox_TextChanged"/>
-                <Label x:Name="AdvertenciaNombreUsuarioLabel" Visibility="Hidden" Foreground="Red" Height="24" />
+                <TextBlock x:Name="AdvertenciaNombreUsuarioLabel" Visibility="Hidden" Foreground="Red" Width="180" Height="36" FontSize="10" />
             </StackPanel>
 
             <StackPanel x:Name="ClaveStackPanel" Grid.Row="4" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center">
                 <Label Content="Clave"/>
                 <PasswordBox x:Name="ClavePasswordBox" VerticalContentAlignment="Center" Height="23" Width="180" BorderBrush="Black" PasswordChanged="ClaveTextBox_PasswordChanged"/>
-                <Label x:Name="AdvertenciaClaveLabel"  Visibility="Hidden" Foreground="Red" Height="24" />
+                <TextBlock x:Name="AdvertenciaClaveLabel"  Visibility="Hidden" Foreground="Red" Width="180" Height="36" FontSize="10" />
             </StackPanel>
 
                 <!--Panel celular y Cedula-->
             <StackPanel x:Name="ConfirmarClaveStackPanel" Grid.Row="4" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center">
                 <Label Content="Confirmar clave"/>
                 <PasswordBox x:Name="ConfirmarClavePasswordBox" VerticalContentAlignment="Center" Height="23" Width="180" BorderBrush="Black" PasswordChanged="ConfirmarClaveTextBox_PasswordChanged"/>
-                <Label x:Name="AdvertenciaConfirmarClaveLabel"  Visibility="Hidden" Foreground="Red" Height="24" />
+                <TextBlock x:Name="AdvertenciaConfirmarClaveLabel"  Visibility="Hidden" Foreground="Red" Width="180" Height="36" FontSize="10" />
             </StackPanel>
 
             <!--Barra de BOTONES-->

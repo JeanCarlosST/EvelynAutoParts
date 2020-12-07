@@ -107,7 +107,7 @@ namespace UI.Registros
                 if (ConfirmarClavePasswordBox.Password != ClavePasswordBox.Password)
                 {
                     ConfirmarClavePasswordBox.BorderBrush = new SolidColorBrush(Colors.Red);
-                    AdvertenciaConfirmarClaveLabel.Content = "Las claves no coinciden";
+                    AdvertenciaConfirmarClaveLabel.Text = "Las claves no coinciden";
                     AdvertenciaConfirmarClaveLabel.Visibility = Visibility.Visible;
                 }
                 else
@@ -129,7 +129,7 @@ namespace UI.Registros
                 if (ClavePasswordBox.Password.Any(Char.IsPunctuation))
                 {
                     ClavePasswordBox.BorderBrush = new SolidColorBrush(Colors.Red);
-                    AdvertenciaClaveLabel.Content = "La clave solo debe contener numeros, letras y simbolos";
+                    AdvertenciaClaveLabel.Text = "La clave solo debe contener números, letras y símbolos";
                     AdvertenciaClaveLabel.Visibility = Visibility.Visible;
                     SystemSounds.Beep.Play();
                 }
@@ -152,14 +152,14 @@ namespace UI.Registros
                 if (NombreUsuarioTextBox.Text.Any(Char.IsPunctuation) || NombreUsuarioTextBox.Text.Any(Char.IsSymbol))
                 {
                     NombreUsuarioTextBox.BorderBrush = new SolidColorBrush(Colors.Red);
-                    AdvertenciaNombreUsuarioLabel.Content = "El nombre usuario solo debe tener numeros y letras.";
+                    AdvertenciaNombreUsuarioLabel.Text = "El nombre usuario solo debe tener números y letras.";
                     AdvertenciaNombreUsuarioLabel.Visibility = Visibility.Visible;
                     SystemSounds.Beep.Play();
                 }
                 else if (NombreUsuarioTextBox.Text.Any(Char.IsWhiteSpace))
                 {
                     NombreUsuarioTextBox.BorderBrush = new SolidColorBrush(Colors.Red);
-                    AdvertenciaNombreUsuarioLabel.Content = "No debe tener espacios en blanco.";
+                    AdvertenciaNombreUsuarioLabel.Text = "No debe tener espacios en blanco.";
                     AdvertenciaNombreUsuarioLabel.Visibility = Visibility.Visible;
                     SystemSounds.Beep.Play();
                 }
@@ -182,7 +182,7 @@ namespace UI.Registros
                 if (ApellidosTextBox.Text.Any(Char.IsDigit) || ApellidosTextBox.Text.Any(Char.IsPunctuation) || ApellidosTextBox.Text.Any(Char.IsSymbol))
                 {
                     ApellidosTextBox.BorderBrush = new SolidColorBrush(Colors.Red);
-                    AdvertenciaApellidoLabel.Content = "El apellido solo debe contener letras";
+                    AdvertenciaApellidoLabel.Text = "El apellido solo debe contener letras";
                     AdvertenciaApellidoLabel.Visibility = Visibility.Visible;
                     SystemSounds.Beep.Play();
                 }
@@ -205,7 +205,7 @@ namespace UI.Registros
                 if (NombresTextBox.Text.Any(Char.IsDigit) || NombresTextBox.Text.Any(Char.IsPunctuation) || NombresTextBox.Text.Any(Char.IsSymbol))
                 {
                     NombresTextBox.BorderBrush = new SolidColorBrush(Colors.Red);
-                    AdvertenciaNombreLabel.Content = "El nombre solo debe contener letras";
+                    AdvertenciaNombreLabel.Text = "El nombre solo debe contener letras";
                     AdvertenciaNombreLabel.Visibility = Visibility.Visible;
                     SystemSounds.Beep.Play();
                 }
@@ -229,69 +229,69 @@ namespace UI.Registros
             if (NombresTextBox.Text.Length < 3)
             {
                 esValido = false;
-                AdvertenciaNombreLabel.Content = "El nombre debe contener más de 2 caracteres";
+                AdvertenciaNombreLabel.Text = "El nombre debe contener más de 2 caracteres";
                 AdvertenciaNombreLabel.Visibility = Visibility.Visible;
             }
             else if (!NombresTextBox.Text.Any(char.IsLetter))
             {
                 esValido = false;
-                AdvertenciaApellidoLabel.Content = "El nombre solo debe contener letras";
+                AdvertenciaApellidoLabel.Text = "El nombre solo debe contener letras";
                 AdvertenciaApellidoLabel.Visibility = Visibility.Visible;
             }
 
             if (ApellidosTextBox.Text.Length < 3)
             {
                 esValido = false;
-                AdvertenciaApellidoLabel.Content = "El apellido debe contener más de 2 caracteres";
+                AdvertenciaApellidoLabel.Text = "El apellido debe contener más de 2 caracteres";
                 AdvertenciaApellidoLabel.Visibility = Visibility.Visible;
             }
             else if (!ApellidosTextBox.Text.Any(char.IsLetter))
             {
                 esValido = false;
-                AdvertenciaApellidoLabel.Content = "El apellido solo debe contener letras";
+                AdvertenciaApellidoLabel.Text = "El apellido solo debe contener letras";
                 AdvertenciaApellidoLabel.Visibility = Visibility.Visible;
             }
 
             if (NombreUsuarioTextBox.Text.Length < 6)
             {
                 esValido = false;
-                AdvertenciaNombreUsuarioLabel.Content = "El nombre de usuario debe tener minimo 6 caracteres";
+                AdvertenciaNombreUsuarioLabel.Text = "El nombre de usuario debe tener mínimo 6 caracteres";
                 AdvertenciaNombreUsuarioLabel.Visibility = Visibility.Visible;
             }
             else if (!NombreUsuarioTextBox.Text.Any(char.IsLetterOrDigit))
             {
                 esValido = false;
-                AdvertenciaNombreUsuarioLabel.Content = "El nombre de usuario solo debe contener numeros y letras";
+                AdvertenciaNombreUsuarioLabel.Text = "El nombre de usuario solo debe contener números y letras";
                 AdvertenciaNombreUsuarioLabel.Visibility = Visibility.Visible;
             }
             else if (NombreUsuarioTextBox.Text.Any(Char.IsWhiteSpace))
             {
                 esValido = false;
-                AdvertenciaNombreUsuarioLabel.Content = "No debe tener espacios en blanco.";
+                AdvertenciaNombreUsuarioLabel.Text = "No debe tener espacios en blanco.";
                 AdvertenciaNombreUsuarioLabel.Visibility = Visibility.Visible;
             }
             else if (NombreUsuarioTextBox.Text.All(char.IsDigit))
             {
-                AdvertenciaNombreUsuarioLabel.Content = "Debe incluir letras";
+                AdvertenciaNombreUsuarioLabel.Text = "Debe incluir letras";
                 AdvertenciaNombreUsuarioLabel.Visibility = Visibility.Visible;
             }
             else if (UsuariosBLL.Existe(convertInt(), usuario.NombreUsuario))
             {
                 esValido = false;
-                AdvertenciaNombreUsuarioLabel.Content = "Este usuario se encuentra registrado";
+                AdvertenciaNombreUsuarioLabel.Text = "Este usuario se encuentra registrado";
                 AdvertenciaNombreUsuarioLabel.Visibility = Visibility.Visible;
             }
 
             if (ClavePasswordBox.Password.Length < 6)
             {
                 esValido = false;
-                AdvertenciaClaveLabel.Content = "La clave debe tener minimo 6 caracteres";
+                AdvertenciaClaveLabel.Text = "La clave debe tener mínimo 6 caracteres";
                 AdvertenciaClaveLabel.Visibility = Visibility.Visible;
             }
             else if (ClavePasswordBox.Password.Any(Char.IsPunctuation))
             {
                 esValido = false;
-                AdvertenciaClaveLabel.Content = "La clave solo debe contener numeros, letras y simbolos";
+                AdvertenciaClaveLabel.Text = "La clave solo debe contener números, letras y simbolos";
                 AdvertenciaClaveLabel.Visibility = Visibility.Visible;
             }
 
