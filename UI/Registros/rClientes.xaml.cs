@@ -25,7 +25,7 @@ namespace UI.Registros
 
         }
 
-        private void BuscarButton_Click(object sender, RoutedEventArgs e)
+        private void BuscarBoton_Click(object sender, RoutedEventArgs e)
         {
             Contexto context = new Contexto();
 
@@ -42,12 +42,12 @@ namespace UI.Registros
             Cargar();
         }
 
-        private void NuevoButton_Click(object sender, RoutedEventArgs e)
+        private void NuevoBoton_Click(object sender, RoutedEventArgs e)
         {
             Nuevo();
         }
 
-        private void GuardarButton_Click(object sender, RoutedEventArgs e)
+        private void GuardarBoton_Click(object sender, RoutedEventArgs e)
         {
             if (!Validar())
                 return;
@@ -74,7 +74,7 @@ namespace UI.Registros
 
         }
 
-        private void EliminarButton_Click(object sender, RoutedEventArgs e)
+        private void EliminarBoton_Click(object sender, RoutedEventArgs e)
         {
             if (ClientesBLL.Eliminar(Convert.ToInt32(ClienteIdTextBox.Text)))
             {
