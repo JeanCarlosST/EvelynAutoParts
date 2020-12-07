@@ -59,7 +59,7 @@ namespace UI.Registros
             if(CelularMask.Value != null)
                 cliente.Celular = CelularMask.Value.ToString();
 
-            if (CelularMask.Value != null)
+            if (EmailMask.Value != null)
                 cliente.Email = EmailMask.Value.ToString();
 
             var paso = ClientesBLL.Guardar(cliente);

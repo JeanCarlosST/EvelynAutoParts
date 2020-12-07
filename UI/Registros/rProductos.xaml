@@ -83,16 +83,17 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Label Content="Costo"/>
+                    <TextBox x:Name="CostoTextbox" Height="22" BorderBrush="Black" Text="{Binding Costo}" Width="150" TextChanged="CostoTextbox_TextChanged"/>
+                    <TextBlock x:Name="AdvertenciaCostoLabel" TextWrapping="Wrap"  Visibility="Hidden" Foreground="Red" Width="150" Height="36" FontSize="10"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
                     <Label Content="Precio"/>
                     <TextBox x:Name="PrecioTextbox" Height="22" BorderBrush="Black" Text="{Binding Precio}" Width="150" TextChanged="PrecioTextbox_TextChanged"/>
                     <TextBlock x:Name="AdvertenciaPrecioLabel"  Visibility="Hidden" Foreground="Red" Height="36" Width="150" FontSize="10"/>
                 </StackPanel>
 
-                <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
-                    <Label Content="Costo"/>
-                    <TextBox x:Name="CostoTextbox" Height="22" BorderBrush="Black" Text="{Binding Costo}" Width="150" TextChanged="CostoTextbox_TextChanged"/>
-                    <TextBlock x:Name="AdvertenciaCostoLabel" TextWrapping="Wrap"  Visibility="Hidden" Foreground="Red" Width="150" Height="36" FontSize="10"/>
-                </StackPanel>
             </Grid>
 
             <Grid Grid.Row="4">
@@ -102,15 +103,15 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-                    <Label Content="Máximo descuento %"/>
-                    <TextBox x:Name="MaxDescuentoTextbox" Height="22" BorderBrush="Black" Text="{Binding MaxDescuento}" Width="150" TextChanged="MaxDescuentoTextbox_TextChanged"/>
-                    <TextBlock x:Name="AdvertenciaDescuentoLabel"  TextWrapping="Wrap" Visibility="Hidden" Foreground="Red" Width="150" Height="36" FontSize="10" />
-                </StackPanel>
-
-                <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
                     <Label Content="Margen de ganancia %"/>
                     <TextBox x:Name="MargenGananciaTextbox" Height="22" BorderBrush="Black" Text="{Binding MargenGanancia}" Width="150" TextChanged="MargenGananciaTextbox_TextChanged"/>
                     <TextBlock x:Name="AdvertenciaGananciaLabel"  TextWrapping="Wrap" Visibility="Hidden" Foreground="Red" Width="150" Height="36" FontSize="10" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Label Content="Máximo descuento %"/>
+                    <TextBox x:Name="MaxDescuentoTextbox" Height="22" BorderBrush="Black" Text="{Binding MaxDescuento}" Width="150" TextChanged="MaxDescuentoTextbox_TextChanged"/>
+                    <TextBlock x:Name="AdvertenciaDescuentoLabel"  TextWrapping="Wrap" Visibility="Hidden" Foreground="Red" Width="150" Height="36" FontSize="10" />
                 </StackPanel>
             </Grid>
 
