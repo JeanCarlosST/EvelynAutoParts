@@ -9,53 +9,82 @@
         Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
         xmlns:editors="http://schemas.syncfusion.com/wpf"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Icon="/Imagenes/Logo.png">
+    <Window.Resources>
+        <Style x:Key="GridCellMoneyStyle" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+        <Style x:Key="GridCellNormalStyle" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
 
-    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
-        <Grid Height="58">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="130"/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="90"/>
-            </Grid.ColumnDefinitions>
+    <Grid>
+        <Image Source="/Imagenes/logoCircleGray.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Opacity="0.08"/>
+    
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+            <Grid Height="58">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="90"/>
+                </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0" Margin="5,0" HorizontalAlignment="Left">
-                <Label Content="Filtro:"/>
-                <ComboBox x:Name="FiltroComboBox" Width="120" Height="25" SelectionChanged="FiltroComboBox_SelectionChanged">
-                    <ComboBoxItem Content="ProductoId"/>
-                    <ComboBoxItem Content="Descripcion"/>
-                    <ComboBoxItem Content="Precio"/>
-                    <ComboBoxItem Content="Costo"/>
-                </ComboBox>
-            </StackPanel>
-
-            <StackPanel Grid.Column="1" Margin="5,0" HorizontalAlignment="Stretch">
-                <Label Content="Critero:" Width="Auto"/>
-                <editors:SfTextBoxExt  x:Name="CriterioTextBox" HorizontalAlignment="Center"
-                              AutoCompleteMode="Suggest"                   
-                              IgnoreCase="True"
-                              Visibility="Visible" Width="500" Height="21.96" />
-            </StackPanel>
-
-            <Button x:Name="BuscarBoton" Grid.Column="2" Width="85" Height="30" Margin="0,0,0,0" Click="BuscarBoton_Click" BorderBrush="Black" Background="#FF02A5ED"  VerticalAlignment="Center" HorizontalAlignment="Right">
-                <StackPanel Orientation="Horizontal">
-                    <Image Width="18" Height="18" Source="/Imagenes/search.png"/>
-                    <Label Content="Buscar" Foreground="White" FontWeight="Bold"/>
+                <StackPanel Grid.Column="0" Margin="5,0" HorizontalAlignment="Left">
+                    <Label Content="Filtro:"/>
+                    <ComboBox x:Name="FiltroComboBox" Width="120" Height="25" SelectionChanged="FiltroComboBox_SelectionChanged">
+                        <ComboBoxItem Content="ProductoId"/>
+                        <ComboBoxItem Content="Descripcion"/>
+                        <ComboBoxItem Content="Precio"/>
+                        <ComboBoxItem Content="Costo"/>
+                    </ComboBox>
                 </StackPanel>
-            </Button>
-        </Grid>
 
-        <DataGrid x:Name="ProductosDataGrid" Height="330" Width="Auto" AutoGenerateColumns="False" IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ProductoId" Binding="{Binding ProductoId}" Width=".5*"/>
-                <DataGridTextColumn Header="Descripcion" Binding="{Binding Descripcion}"  Width="*"/>
-                <DataGridTextColumn Header="Inventario" Binding="{Binding Inventario}"  Width=".6*"/>
-                <DataGridTextColumn Header="Precio" Binding="{Binding Precio, StringFormat=C}"  Width=".4*"/>
-                <DataGridTextColumn Header="Costo" Binding="{Binding Costo, StringFormat=C}"  Width=".4*"/>
-                <DataGridTextColumn Header="Porcentaje ITBIS" Binding="{Binding PorcentajeITBIS}"  Width=".7*"/>
-                <DataGridTextColumn Header="Margen de ganancia" Binding="{Binding MargenGanancia}"  Width=".9*"/>
-                <DataGridTextColumn Header="Max descuento" Binding="{Binding MaxDescuento}"  Width=".7*"/>
-            </DataGrid.Columns>
-        </DataGrid>
-    </StackPanel>
+                <StackPanel Grid.Column="1" Margin="5,0" HorizontalAlignment="Stretch">
+                    <Label Content="Critero:" Width="Auto"/>
+                    <editors:SfTextBoxExt  x:Name="CriterioTextBox" 
+                                  AutoCompleteMode="Suggest" IgnoreCase="True"
+                                  Visibility="Visible" Height="25" BorderBrush="Black"/>
+                </StackPanel>
+
+                <Button x:Name="BuscarBoton" Grid.Column="2" Width="85" Height="30" Margin="0,13,0,0"
+                        Click="BuscarBoton_Click" BorderBrush="Black" Background="#FF02A5ED"  VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="18" Height="18" Source="/Imagenes/search.png"/>
+                        <Label Content="Buscar" FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <DataGrid x:Name="ProductosDataGrid" Height="330" Width="Auto" AutoGenerateColumns="False" 
+                      IsReadOnly="True" Background="{x:Null}" RowHeaderWidth="0">
+                <DataGrid.Resources>
+                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="#F15A24"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Height" Value="24"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="BorderThickness" Value="0.2,0,0.5,0"/>
+                    </Style>
+                    <Style BasedOn="{StaticResource {x:Type DataGridRow}}" TargetType="{x:Type DataGridRow}">
+                        <Setter Property="Background" Value="{x:Null}"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ProductoId" Binding="{Binding ProductoId}" Width=".5*" ElementStyle="{StaticResource GridCellNormalStyle}"/>
+                    <DataGridTextColumn Header="Descripcion" Binding="{Binding Descripcion}"  Width="*" ElementStyle="{StaticResource GridCellNormalStyle}"/>
+                    <DataGridTextColumn Header="Inventario" Binding="{Binding Inventario}"  Width=".6*" ElementStyle="{StaticResource GridCellNormalStyle}"/>
+                    <DataGridTextColumn Header="Precio" Binding="{Binding Precio, StringFormat=N2}"  Width=".4*" ElementStyle="{StaticResource GridCellMoneyStyle}"/>
+                    <DataGridTextColumn Header="Costo" Binding="{Binding Costo, StringFormat=N2}"  Width=".4*" ElementStyle="{StaticResource GridCellMoneyStyle}"/>
+                    <DataGridTextColumn Header="Porcentaje ITBIS" Binding="{Binding PorcentajeITBIS}"  Width=".7*" ElementStyle="{StaticResource GridCellNormalStyle}"/>
+                    <DataGridTextColumn Header="Margen de ganancia" Binding="{Binding MargenGanancia}"  Width=".9*" ElementStyle="{StaticResource GridCellNormalStyle}"/>
+                    <DataGridTextColumn Header="Max descuento" Binding="{Binding MaxDescuento}"  Width=".7*" ElementStyle="{StaticResource GridCellNormalStyle}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
 </Window>

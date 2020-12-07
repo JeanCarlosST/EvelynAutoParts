@@ -51,8 +51,8 @@ namespace UI.Consultas
                 listado = UsuariosBLL.GetList(u => true);
             }
 
-            DatosDataGrid.ItemsSource = null;
-            DatosDataGrid.ItemsSource = listado;
+            UsuariosDataGrid.ItemsSource = null;
+            UsuariosDataGrid.ItemsSource = listado;
         }
 
         private void FiltroComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -61,10 +61,6 @@ namespace UI.Consultas
             listado = UsuariosBLL.GetList(u => true);
 
             CriterioTextBox.AutoCompleteSource = listado;
-
-            CriterioGrid.Visibility = Visibility.Visible;
-            DesdeStackPanel.Visibility = Visibility.Hidden;
-            HastatackPanel.Visibility = Visibility.Hidden;
 
             switch (FiltroComboBox.SelectedIndex)
             {
@@ -79,12 +75,6 @@ namespace UI.Consultas
                     break;
                 case 3:
                     CriterioTextBox.SearchItemPath = "NombreUsuario";
-                    break;
-                case 4:
-                    CriterioGrid.Visibility = Visibility.Hidden;
-                    DesdeStackPanel.Visibility = Visibility.Visible;
-                    HastatackPanel.Visibility = Visibility.Visible;
-
                     break;
             }
         }

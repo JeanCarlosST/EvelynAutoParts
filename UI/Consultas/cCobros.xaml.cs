@@ -65,8 +65,8 @@ namespace UI.Consultas
                 listado = CobrosBLL.GetList(c => true);
             }
 
-            DatosDataGrid.ItemsSource = null;
-            DatosDataGrid.ItemsSource = listado;
+            CobrosDataGrid.ItemsSource = null;
+            CobrosDataGrid.ItemsSource = listado;
 
         }
 
@@ -76,10 +76,6 @@ namespace UI.Consultas
             listado = CobrosBLL.GetList(c => true); ;
 
             CriterioTextBox.AutoCompleteSource = listado;
-
-            CriterioGrid.Visibility = Visibility.Visible;
-            DesdeStackPanel.Visibility = Visibility.Hidden;
-            HastatackPanel.Visibility = Visibility.Hidden;
 
 
             switch (FiltroComboBox.SelectedIndex)
@@ -98,13 +94,6 @@ namespace UI.Consultas
                 case 3:
                     CriterioTextBox.SearchItemPath = "Total";
                     break;
-                case 4:
-                    CriterioGrid.Visibility = Visibility.Hidden;
-                    DesdeStackPanel.Visibility = Visibility.Visible;
-                    HastatackPanel.Visibility = Visibility.Visible;
-
-                    break;
-
             }
         }
     }
