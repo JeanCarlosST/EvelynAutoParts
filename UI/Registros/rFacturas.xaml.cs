@@ -253,7 +253,13 @@ namespace UI.Registros
                                 MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return false;
             }
-            if(VendedorCombobox.SelectedIndex < 0)
+            if (ClienteCombobox.SelectedIndex < 0)
+            {
+                MessageBox.Show("Seleccione un cliente", "Registro de facturas",
+                                MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return false;
+            }
+            if (VendedorCombobox.SelectedIndex < 0)
             {
                 MessageBox.Show("Seleccione un vendedor", "Registro de facturas",
                                 MessageBoxButton.OK, MessageBoxImage.Exclamation);
