@@ -115,16 +115,16 @@ namespace UI.Registros
                 AdvertenciaDescripcionLabel.Content = "Introduzca una descripción";
                 AdvertenciaDescripcionLabel.Visibility = Visibility.Visible;
             }
-            if (InventarioTextbox.Text.Length < 1)
+            if (Utilities.ToDouble(InventarioTextbox.Text) == 0)
             {
                 esValido = false;
-                AdvertenciaInventarioLabel.Content = "Introduzca una cantidad para el inventario";
+                AdvertenciaInventarioLabel.Text = "Introduzca una cantidad para el inventario";
                 AdvertenciaInventarioLabel.Visibility = Visibility.Visible;
             }
             if (PorcentajeITBISCombobox.SelectedIndex < 0)
             {
                 esValido = false;
-                AdvertenciaItbisLabel.Content = "Seleccione un porcentaje de ITBIS";
+                AdvertenciaItbisLabel.Text = "Seleccione un porcentaje de ITBIS";
                 AdvertenciaItbisLabel.Visibility = Visibility.Visible;
             }
             if (!ValidarGanancia())
@@ -148,25 +148,25 @@ namespace UI.Registros
             if (MargenGananciaTextbox.Text.Length == 0)
             {
                 esValido = false;
-                AdvertenciaGananciaLabel.Content = "Introduzca un margen de ganancia";
+                AdvertenciaGananciaLabel.Text = "Introduzca un margen de ganancia";
                 AdvertenciaGananciaLabel.Visibility = Visibility.Visible;
             }
             else if (Utilities.ToDouble(MargenGananciaTextbox.Text) == 0)
             {
                 esValido = false;
-                AdvertenciaGananciaLabel.Content = "Introduzca un margen de ganancia válido mayor a 0";
+                AdvertenciaGananciaLabel.Text = "Introduzca un margen de ganancia válido mayor a 0";
                 AdvertenciaGananciaLabel.Visibility = Visibility.Visible;
             }
             else if (Utilities.ToFloat(MargenGananciaTextbox.Text) > 1.0 && Utilities.ToFloat(MargenGananciaTextbox.Text) < 0.0)
             {
                 esValido = false;
-                AdvertenciaGananciaLabel.Content =  "Margen de ganancia no puede solo puede aceptar número del 1 al 0";
+                AdvertenciaGananciaLabel.Text =  "Margen de ganancia no puede solo puede aceptar número del 1 al 0";
                 AdvertenciaGananciaLabel.Visibility = Visibility.Visible;
             }
             else if (!MargenGananciaTextbox.Text.Any(Char.IsDigit))
             {
                 esValido = false;
-                AdvertenciaGananciaLabel.Content = "Solo debe introducir digitos";
+                AdvertenciaGananciaLabel.Text = "Solo debe introducir digitos";
                 AdvertenciaGananciaLabel.Visibility = Visibility.Visible;
             }
 
@@ -175,22 +175,28 @@ namespace UI.Registros
         public bool ValidarMaxDescuento()
         {
             bool esValido = true;
-            if (MaxDescuentoTextbox.Text.Any(char.IsLetter))
+            if (Utilities.ToDouble(MaxDescuentoTextbox.Text) == 0)
             {
                 esValido = false;
-                AdvertenciaDescuentoLabel.Content = "Introduzca un porcentaje valido";
+                AdvertenciaDescuentoLabel.Text = "Introduzca un porcentaje valido";
+                AdvertenciaDescuentoLabel.Visibility = Visibility.Visible;
+            }
+            else if (MaxDescuentoTextbox.Text.Any(char.IsLetter))
+            {
+                esValido = false;
+                AdvertenciaDescuentoLabel.Text = "Introduzca un porcentaje valido";
                 AdvertenciaDescuentoLabel.Visibility = Visibility.Visible;
             }
             else if (Utilities.ToFloat(MaxDescuentoTextbox.Text) > 1.0 && Utilities.ToFloat(MaxDescuentoTextbox.Text) < 0.0)
             {
                 esValido = false;
-                AdvertenciaDescuentoLabel.Content =  "Máximo descuento no puede solo puede aceptar número del 1 al 0";
+                AdvertenciaDescuentoLabel.Text =  "Máximo descuento no puede solo puede aceptar número del 1 al 0";
                 AdvertenciaDescuentoLabel.Visibility = Visibility.Visible;
             }
             else if (Utilities.ToFloat(MaxDescuentoTextbox.Text) > Utilities.ToFloat(MargenGananciaTextbox.Text))
             {
                 esValido = false;
-                AdvertenciaDescuentoLabel.Content = "Máximo descuento no puede ser mayor a margen de ganancia";
+                AdvertenciaDescuentoLabel.Text = "Máximo descuento no puede ser mayor a margen de ganancia";
                 AdvertenciaDescuentoLabel.Visibility = Visibility.Visible;
             }
 
@@ -202,19 +208,19 @@ namespace UI.Registros
             if (CostoTextbox.Text.Length == 0)
             {
                 esValido = false;
-                AdvertenciaCostoLabel.Content = "Introduzca un costo";
+                AdvertenciaCostoLabel.Text = "Introduzca un costo";
                 AdvertenciaCostoLabel.Visibility = Visibility.Visible;
             }
             else if (Utilities.ToDouble(CostoTextbox.Text) == 0)
             {
                 esValido = false;
-                AdvertenciaCostoLabel.Content = "Introduzca un costo válido mayor a 0";
+                AdvertenciaCostoLabel.Text = "Introduzca un costo válido mayor a 0";
                 AdvertenciaCostoLabel.Visibility = Visibility.Visible;
             }
             else if (!CostoTextbox.Text.Any(Char.IsDigit))
             {
                 esValido = false;
-                AdvertenciaCostoLabel.Content = "Solo debe introducir digitos";
+                AdvertenciaCostoLabel.Text = "Solo debe introducir digitos";
                 AdvertenciaCostoLabel.Visibility = Visibility.Visible;
             }
 
@@ -227,19 +233,19 @@ namespace UI.Registros
             if (PrecioTextbox.Text.Length == 0)
             {
                 esValido = false;
-                AdvertenciaPrecioLabel.Content = "Introduzca un precio";
+                AdvertenciaPrecioLabel.Text = "Introduzca un precio";
                 AdvertenciaPrecioLabel.Visibility = Visibility.Visible;
             }
             else if (Utilities.ToDouble(PrecioTextbox.Text) == 0)
             {
                 esValido = false;
-                AdvertenciaPrecioLabel.Content = "Introduzca un precio válido mayor a 0";
+                AdvertenciaPrecioLabel.Text = "Introduzca un precio válido mayor a 0";
                 AdvertenciaPrecioLabel.Visibility = Visibility.Visible;
             }
             else if (!PrecioTextbox.Text.Any(Char.IsDigit))
             {
                 esValido = false;
-                AdvertenciaPrecioLabel.Content = "Solo debe introducir digitos";
+                AdvertenciaPrecioLabel.Text = "Solo debe introducir digitos";
                 AdvertenciaPrecioLabel.Visibility = Visibility.Visible;
             }
 
@@ -252,7 +258,7 @@ namespace UI.Registros
             {
                 if (!InventarioTextbox.Text.Any(Char.IsDigit) && InventarioTextbox.Text.Length > 0)
                 {
-                    AdvertenciaInventarioLabel.Content = "Solo debe ingresar digitos";
+                    AdvertenciaInventarioLabel.Text = "Solo debe ingresar digitos";
                     AdvertenciaInventarioLabel.Visibility = Visibility.Visible;
                     InventarioTextbox.BorderBrush = new SolidColorBrush(Colors.Red);
                 }
@@ -314,7 +320,7 @@ namespace UI.Registros
         {
             try
             {
-                if (!ValidarMaxDescuento())
+                if (!ValidarMaxDescuento() && MaxDescuentoTextbox.Text.Length > 1)
                 {
                     AdvertenciaDescuentoLabel.Visibility = Visibility.Visible;
                     MaxDescuentoTextbox.BorderBrush = new SolidColorBrush(Colors.Red);
