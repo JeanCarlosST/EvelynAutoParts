@@ -5,126 +5,203 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI.Registros"
         mc:Ignorable="d"
-        Title="rCobros" Height="620" Width="800">
+        Title="Registro de cobros" 
+        Height="680" Width="1000"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Icon="/Imagenes/Logo.png">
+    <Window.Resources>
+        <Style x:Key="GridCellMoneyStyle" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+        <Style x:Key="GridCellNormalStyle" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+
     <Grid>
-        <StackPanel HorizontalAlignment="Center" Height="567" VerticalAlignment="Center" Width="749">
-            <StackPanel Height="30" Orientation="Horizontal" Margin="0,10,0,0">
-                <Label Content="Id" Height="24" Width="27" RenderTransformOrigin="0.568,0.556" Margin="0,0,10,0"/>
-                <TextBox x:Name="CobroIdTextBox" Height="22"  TextWrapping="Wrap" Width="56" Margin="40,0,10,0" Text="{Binding CobroId}"/>
-                <Button x:Name="BuscarBoton" Height="22" Width="63" Click = "BuscarBoton_Click" Background="#FF02A5ED">
-                    <StackPanel Orientation="Horizontal" Height="26">
-                        <Image Source="\Imagenes\search.png" Width="17" Height="17"/>
-                        <Label Content="Buscar"/>
+        <Rectangle  Height="40" Fill="#F15A24" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+        <Label Content="Registro de cobros" Margin="2,0,0,0" FontSize="23" FontWeight="Bold" Foreground="White"/>
+        <Image Source="/Imagenes/logoCircleGray.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Opacity="0.08"/>
+
+        <Grid Margin="20,50,20,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <!--FacturaId-->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width=".5*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Label Content="Cobro Id"/>
+                    <TextBox x:Name="CobroIdTextBox" Width="200" Height="22" VerticalContentAlignment="Center" Text="{Binding CobroId}" BorderBrush="Black"/>
+                </StackPanel>
+
+                <Button x:Name="BuscarBoton" Grid.Column="1" Width="85" Height="30" Margin="0,18,0,0"
+                    Click="BuscarBoton_Click" BorderBrush="Black" Background="#FF02A5ED" 
+                    VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="18" Height="18" Source="/Imagenes/search.png"/>
+                        <Label Content="Buscar" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
+            </Grid>
+
+            <!--Fecha-->
+            <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">
+                <Label Content="Fecha"/>
+                <DatePicker x:Name="FechaDatePicker" SelectedDate="{Binding Fecha, StringFormat=MM/dd/yyyy}" 
+                            Width="200" VerticalContentAlignment="Center" HorizontalAlignment="Left" BorderBrush="Black"/>
+                <TextBlock Height="18"/>
             </StackPanel>
-            <StackPanel Height="36" Orientation="Horizontal" Margin="0,10,0,0">
-                <Label Content="Fecha" Height="28" Width="74"/>
-                <DatePicker x:Name="FechaDatePicker" Height="28" Width="130" SelectedDate="{Binding Fecha}"/>
+
+            <!--Cliente-->
+            <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                <Label Content="Cliente"/>
+                <ComboBox x:Name="ClientesComboBox" Width="250" HorizontalAlignment="Left" SelectedValue="{Binding ClienteId}" SelectionChanged="ClientesComboBox_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} {1} - {2} ">
+                                        <Binding Path="Nombres"/>
+                                        <Binding Path="Apellidos"/>
+                                        <Binding Path="Cedula"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <TextBlock x:Name="AdvertenciaCliente" Visibility="Hidden" Foreground="Red"/>
             </StackPanel>
-            <StackPanel Height="30" Orientation="Vertical" Margin="0,10,0,0" HorizontalAlignment="Left">
-                <StackPanel Height="33" Width="261" Orientation="Horizontal">
-                    <Label Content="Cliente"/>
-                    <ComboBox x:Name="ClientesComboBox" Width="200" Height="21" SelectedValue="{Binding ClienteId}" SelectionChanged="ClientesComboBox_SelectionChanged">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock>
-                                    <TextBlock.Text>
-                                        <MultiBinding StringFormat="{}{0} {1} - {2} ">
-                                            <Binding Path="Nombres"/>
-                                            <Binding Path="Apellidos"/>
-                                            <Binding Path="Cedula"/>
-                                        </MultiBinding>
-                                    </TextBlock.Text>
-                                </TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </StackPanel>
-                <Label x:Name="AdvertenciaCliente" Visibility="Hidden" Foreground="Red"/>
-            </StackPanel>
-            <GroupBox Height="380" Header="Cobros" BorderBrush="Black" Width="750" Margin="0,10,0,0">
-                <StackPanel Margin="10,0,10,0">
-                    <StackPanel Height="88" Orientation="Horizontal" Width="919">
-                        <StackPanel Height="78" Width="200">
-                            <Label Content="No. Factura"/>
-                            <ComboBox x:Name="FacturasComboBox" Width="200" Height="21" SelectedValue="{Binding FacturaId}" SelectionChanged="FacturasComboBox_SelectionChanged"/>
-                            <Label x:Name="AdvertenciaFacturas" Visibility="Hidden" Foreground="Red"/>
-                        </StackPanel>
-                        <StackPanel Width="146" Margin="20
-                                    ,0,0,0" Height="78">
-                            <Label Content="Balance actual" Width="143"/>
-                            <TextBox x:Name="BalanceTextBox"  TextWrapping="Wrap" Width="141" IsReadOnly="True" Margin="0,3,0,0"/>
-                        </StackPanel>
-                        <StackPanel Width="146" Margin="20,0,0,0" Height="78">
-                            <Label Content="Monto" Width="143"/>
-                            <TextBox x:Name="MontoTextBox"  TextWrapping="Wrap" Width="141" TextChanged="MontoTextBox_TextChanged"/>
-                            <TextBlock x:Name="AdvertenciaMonto" Visibility="Visible" Foreground="Red" Height="27" TextWrapping="WrapWithOverflow" FontSize="10"/>
-                        </StackPanel>
-                        <StackPanel Height="78">
-                        <Button x:Name="AgregarBoton" Height="25" Margin="20,20,0,0" Width="136" Click = "AgregarBoton_Click" Background="#FF44E240">
-                            <StackPanel Orientation="Horizontal" Height="26">
-                                <Image Source="/add.png" Width="17" Height="17"/>
-                                <Label Content="Agregar"/>
-                            </StackPanel>
-                        </Button>
-                        </StackPanel>
 
+            <!--Productos-->
+            <GroupBox Header="Facturas" Grid.Row="2" Grid.ColumnSpan="3">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="0.86*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Column="0" Grid.Row="0" Margin="8,0" VerticalAlignment="Center">
+                        <Label Content="Factura"/>
+                        <ComboBox x:Name="FacturasComboBox" SelectionChanged="FacturasComboBox_SelectionChanged" SelectedValue="{Binding FacturaId}"/>
+                        <TextBlock x:Name="AdvertenciaFacturas" Visibility="Hidden" Foreground="Red" Height="27" TextWrapping="WrapWithOverflow" FontSize="10"/>
                     </StackPanel>
-                    <StackPanel Height="165" Width="714" >
-                        <DataGrid x:Name="CobrosDataGrid" Height="165" ItemsSource="{Binding Detalle}" AutoGenerateColumns="False" Width="687"  IsReadOnly="True"  Margin="0,0,24,0" >
-                            <DataGrid.Columns>
-                                <DataGridTextColumn x:Name="CobroIdDataGridTextColum" Header="CobroId" Width="*"  Binding="{Binding CobroId}" />
-                                <DataGridTextColumn Header="FacturaId" Binding="{Binding FacturaId}" Width="*"/>
-                                    <DataGridTextColumn Header="Monto" Binding="{Binding Monto}" Width="*"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
+
+                    <StackPanel Grid.Column="1" Grid.Row="0" Margin="8,0" VerticalAlignment="Center">
+                        <Label Content="Balance"/>
+                        <TextBox x:Name="BalanceTextBox" VerticalContentAlignment="Center" IsReadOnly="True" Height="22" BorderBrush="Black"/>
+                        <TextBlock Height="27"/>
                     </StackPanel>
-                    <StackPanel Width="142" Margin="525,0,0,0" Orientation="Vertical">
 
-                        <StackPanel Width="139">
-                            <Button x:Name="RemoverBoton" Height="25" Margin="0,5,0,0" Width="132" Click = "RemoverBoton_Click" Background="#FFF02121">
-                                <StackPanel Orientation="Horizontal" Height="26">
-                                    <Image Source="\cancel.png" Width="51" Height="22"/>
-                                    <Label Content="Remover"/>
-                                </StackPanel>
-                            </Button>
-                        </StackPanel>
-
-                        <StackPanel Margin="0,13,0,0">
-                            <Label Content="Total" Width="119" />
-                            <TextBox x:Name="TotalTextBox"  TextWrapping="Wrap" Width="115"  Text = "{Binding Total}" IsReadOnly = "true"/>
-                        </StackPanel>
-
+                    <StackPanel Grid.Column="2" Grid.Row="0" Margin="8,0" VerticalAlignment="Center">
+                        <Label Content="Monto"/>
+                        <TextBox x:Name="MontoTextBox" VerticalContentAlignment="Center" Height="22" BorderBrush="Black"/>
+                        <TextBlock x:Name="AdvertenciaMonto" Visibility="Visible" Foreground="Red" Height="27" TextWrapping="WrapWithOverflow" FontSize="10"/>
                     </StackPanel>
-                </StackPanel>
+
+                    <Button x:Name="AgregarBoton" Width="120" Margin="0,18,0,0" Grid.Row="0" Grid.Column="4"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" Click="AgregarBoton_Click" 
+                        Background="#FF44E240" BorderBrush="Black">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="18" Height="18" Source="/Imagenes/add.png"/>
+                            <Label Content="Agregar" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Button>
+
+                    <DataGrid x:Name="CobrosDataGrid" Grid.Row="1" Grid.ColumnSpan="4" Margin="8, 5" ItemsSource="{Binding Detalle}"
+                              AutoGenerateColumns="False" IsReadOnly="True" RowHeaderWidth="0" Background="{x:Null}">
+                        <DataGrid.Resources>
+                            <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="Background" Value="#F15A24"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="Height" Value="24"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="BorderBrush" Value="White"/>
+                                <Setter Property="BorderThickness" Value="0.2,0,0.5,0"/>
+                            </Style>
+                            <Style BasedOn="{StaticResource {x:Type DataGridRow}}" TargetType="{x:Type DataGridRow}">
+                                <Setter Property="Background" Value="{x:Null}"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                            </Style>
+
+                        </DataGrid.Resources>
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="FacturaId" Binding="{Binding FacturaId}" Width=".35*" ElementStyle="{StaticResource GridCellNormalStyle}"/>
+                            <DataGridTextColumn Header="Monto" Binding="{Binding Monto, StringFormat=N2}" Width=".4*" ElementStyle="{StaticResource GridCellMoneyStyle}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Button x:Name="RemoverBoton" Width="120" Grid.Row="2" Grid.Column="4"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" Click="RemoverBoton_Click" 
+                        Background="#FFF02121" BorderBrush="Black">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="18" Height="18" Source="/Imagenes/cancel.png"/>
+                            <Label Content="Remover" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+
             </GroupBox>
 
-            <!--BARRA DE BOTONES-->
-            <StackPanel Height="27" Orientation="Horizontal" Width="400" Margin="0,20,0,0">
-                <Button x:Name="NuevoBoton" Margin="10,0,20,0" Click = "NuevoBoton_Click" Width="100" Background="#FFFDEE0C">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="\new.png"/>
-                        <Label Content="Nuevo"/>
-                    </StackPanel>
-                </Button>
 
-                <Button x:Name="GuardarBoton" Click = "GuardarBoton_Click" Width="100" Background="#FF44E240">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="\save.png"/>
-                        <Label Content="Guardar"/>
-                    </StackPanel>
-                </Button>
-
-                <Button x:Name="EliminarBoton" Width="100" Margin="20,0,0,0" Click = "EliminarBoton_Click" Background="#FFF02121">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="\delete.png"/>
-                        <Label Content="Eliminar"/>
-                    </StackPanel>
-                </Button>
-
-
+            <StackPanel Grid.Row="3" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                <Label Content="Total"/>
+                <TextBox x:Name="TotalTextBox" VerticalContentAlignment="Center" Text="{Binding Total, StringFormat=N2}" 
+                         HorizontalContentAlignment="Right" Width="150" Height="22" IsReadOnly="True" BorderBrush="Black"/>
             </StackPanel>
-        </StackPanel>
+
+
+            <!--Botones-->
+            <Button x:Name="NuevoBoton" Grid.Column="0" Grid.Row="4" Width="120" Height="30" 
+                    HorizontalAlignment="Right" Background="#FFFDEE0C" BorderBrush="Black" Click="NuevoBoton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="18" Height="18" Source="/Imagenes/new.png"/>
+                    <Label Content="Nuevo" Foreground="Black" FontWeight="Bold"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="GuardarBoton" Grid.Column="1" Grid.Row="4" Width="120" Height="30" 
+                    Background="#FF44E240" BorderBrush="Black" Click="GuardarBoton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="18" Height="18" Source="/Imagenes/save.png"/>
+                    <Label Content="Guardar" FontWeight="Bold"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="EliminarBoton" Grid.Column="2" Grid.Row="4" Width="120" Height="30" 
+                    HorizontalAlignment="Left" Background="#FFF02121" BorderBrush="Black" Click="EliminarBoton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="18" Height="18" Source="/Imagenes/delete.png"/>
+                    <Label Content="Eliminar" FontWeight="Bold"/>
+                </StackPanel>
+            </Button>
+
+            <!--</StackPanel>-->
+        </Grid>
     </Grid>
 </Window>

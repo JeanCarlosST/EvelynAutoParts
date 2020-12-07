@@ -127,22 +127,6 @@
 
                     <DataGrid x:Name="ProductosDataGrid" Grid.Row="1" Grid.ColumnSpan="5" Margin="8, 5" 
                               AutoGenerateColumns="False" IsReadOnly="True" RowHeaderWidth="0" Background="{x:Null}">
-                        <!--<DataGrid.CellStyle>
-                            <Style x:Name="DineroStyle" TargetType="DataGridCell">
-                                <Setter Property="TextBlock.TextAlignment" Value="Center"/>
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type DataGridCell}">
-                                            <Grid Background="{TemplateBinding Background}" Height="20">
-                                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Right"/>
-                                                
-                                            </Grid>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                            
-                        </DataGrid.CellStyle>-->
 
                         <DataGrid.Resources>
                             <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">

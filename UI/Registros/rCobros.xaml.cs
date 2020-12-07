@@ -222,12 +222,12 @@ namespace UI.Registros
 
             if(ClientesComboBox.SelectedIndex < 0)
             {
-                AdvertenciaCliente.Content = "Primero debe seleccionar un Cliente";
+                AdvertenciaCliente.Text = "Primero debe seleccionar un Cliente";
                 esValido = false;
             }
             else if (FacturasComboBox.SelectedIndex < 0)
             {
-                AdvertenciaFacturas.Content = "Debe seleccionar una factura";
+                AdvertenciaFacturas.Text = "Debe seleccionar una factura";
                 esValido = false;
             }
             return esValido;
