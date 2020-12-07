@@ -39,8 +39,8 @@ namespace DAL
                 Precio = 60,
                 Costo = 30,
                 PorcentajeITBIS = 0.18f,
-                MargenGanancia = 0.4f,
-                MaxDescuento = 0.5f,
+                MargenGanancia = 0.5f,
+                MaxDescuento = 0.4f,
             });
 
             modelBuilder.Entity<Vendedores>().HasData(new Vendedores()
@@ -62,6 +62,7 @@ namespace DAL
                 Cedula = "05612345671",
                 Telefono = "8092348079",
                 Email = "juanp@gmail.com",
+                Fecha = DateTime.Now
             });
         } 
     }

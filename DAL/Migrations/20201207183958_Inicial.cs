@@ -208,6 +208,8 @@ namespace DAL.Migrations
                     ProductoId = table.Column<int>(type: "INTEGER", nullable: false),
                     Cantidad = table.Column<float>(type: "REAL", nullable: false),
                     Precio = table.Column<double>(type: "money", nullable: false),
+                    ITBIS = table.Column<double>(type: "money", nullable: false),
+                    Total = table.Column<double>(type: "money", nullable: false),
                     Descuento = table.Column<double>(type: "money", nullable: false)
                 },
                 constraints: table =>
@@ -230,12 +232,27 @@ namespace DAL.Migrations
             migrationBuilder.InsertData(
                 table: "Usuarios",
                 columns: new[] { "UsuarioId", "Apellidos", "Clave", "FechaCreacion", "NombreUsuario", "Nombres" },
-                values: new object[] { 1, "Santos", "7523c62abdb7628c5a9dad8f97d8d8c5c040ede36535e531a8a3748b6cae7e00", new DateTime(2020, 11, 30, 12, 26, 20, 623, DateTimeKind.Local).AddTicks(680), "jean", "Jean Carlos" });
+                values: new object[] { 1, "Santos", "7523c62abdb7628c5a9dad8f97d8d8c5c040ede36535e531a8a3748b6cae7e00", new DateTime(2020, 12, 7, 14, 39, 58, 160, DateTimeKind.Local).AddTicks(3028), "jean", "Jean Carlos" });
 
             migrationBuilder.InsertData(
                 table: "Usuarios",
                 columns: new[] { "UsuarioId", "Apellidos", "Clave", "FechaCreacion", "NombreUsuario", "Nombres" },
-                values: new object[] { 2, "Maria", "7523c62abdb7628c5a9dad8f97d8d8c5c040ede36535e531a8a3748b6cae7e00", new DateTime(2020, 11, 30, 12, 26, 20, 625, DateTimeKind.Local).AddTicks(7593), "david", "David" });
+                values: new object[] { 2, "Maria", "7523c62abdb7628c5a9dad8f97d8d8c5c040ede36535e531a8a3748b6cae7e00", new DateTime(2020, 12, 7, 14, 39, 58, 162, DateTimeKind.Local).AddTicks(1094), "david", "David" });
+
+            migrationBuilder.InsertData(
+                table: "Clientes",
+                columns: new[] { "ClienteId", "Apellidos", "Cedula", "Celular", "Direccion", "Email", "Fecha", "Nombres", "Telefono", "UsuarioId" },
+                values: new object[] { 1, "Perez", "05612345671", null, "Calle G", "juanp@gmail.com", new DateTime(2020, 12, 7, 14, 39, 58, 163, DateTimeKind.Local).AddTicks(1847), "Juan", "8092348079", 1 });
+
+            migrationBuilder.InsertData(
+                table: "Productos",
+                columns: new[] { "ProductoId", "Costo", "Descripcion", "Inventario", "MargenGanancia", "MaxDescuento", "PorcentajeITBIS", "Precio", "UsuarioId" },
+                values: new object[] { 1, 30.0, "Aceite", 100f, 0.5f, 0.4f, 0.18f, 60.0, 1 });
+
+            migrationBuilder.InsertData(
+                table: "Vendedores",
+                columns: new[] { "VendedorId", "Apellidos", "Comision", "Nombres", "UsuarioId" },
+                values: new object[] { 1, "Jimenez", 0.0, "Paco", 2 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Clientes_UsuarioId",

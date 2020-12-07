@@ -59,6 +59,20 @@ namespace DAL.Migrations
                     b.HasIndex("UsuarioId");
 
                     b.ToTable("Clientes");
+
+                    b.HasData(
+                        new
+                        {
+                            ClienteId = 1,
+                            Apellidos = "Perez",
+                            Cedula = "05612345671",
+                            Direccion = "Calle G",
+                            Email = "juanp@gmail.com",
+                            Fecha = new DateTime(2020, 12, 7, 14, 39, 58, 163, DateTimeKind.Local).AddTicks(1847),
+                            Nombres = "Juan",
+                            Telefono = "8092348079",
+                            UsuarioId = 1
+                        });
                 });
 
             modelBuilder.Entity("Entidades.Cobros", b =>
@@ -170,11 +184,17 @@ namespace DAL.Migrations
                     b.Property<int>("FacturaId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<double>("ITBIS")
+                        .HasColumnType("money");
+
                     b.Property<double>("Precio")
                         .HasColumnType("money");
 
                     b.Property<int>("ProductoId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<double>("Total")
+                        .HasColumnType("money");
 
                     b.HasKey("FacturaDetalleId");
 
@@ -221,6 +241,20 @@ namespace DAL.Migrations
                     b.HasIndex("UsuarioId");
 
                     b.ToTable("Productos");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductoId = 1,
+                            Costo = 30.0,
+                            Descripcion = "Aceite",
+                            Inventario = 100f,
+                            MargenGanancia = 0.5f,
+                            MaxDescuento = 0.4f,
+                            PorcentajeITBIS = 0.18f,
+                            Precio = 60.0,
+                            UsuarioId = 1
+                        });
                 });
 
             modelBuilder.Entity("Entidades.Usuarios", b =>
@@ -258,7 +292,7 @@ namespace DAL.Migrations
                             UsuarioId = 1,
                             Apellidos = "Santos",
                             Clave = "7523c62abdb7628c5a9dad8f97d8d8c5c040ede36535e531a8a3748b6cae7e00",
-                            FechaCreacion = new DateTime(2020, 11, 30, 12, 26, 20, 623, DateTimeKind.Local).AddTicks(680),
+                            FechaCreacion = new DateTime(2020, 12, 7, 14, 39, 58, 160, DateTimeKind.Local).AddTicks(3028),
                             NombreUsuario = "jean",
                             Nombres = "Jean Carlos"
                         },
@@ -267,7 +301,7 @@ namespace DAL.Migrations
                             UsuarioId = 2,
                             Apellidos = "Maria",
                             Clave = "7523c62abdb7628c5a9dad8f97d8d8c5c040ede36535e531a8a3748b6cae7e00",
-                            FechaCreacion = new DateTime(2020, 11, 30, 12, 26, 20, 625, DateTimeKind.Local).AddTicks(7593),
+                            FechaCreacion = new DateTime(2020, 12, 7, 14, 39, 58, 162, DateTimeKind.Local).AddTicks(1094),
                             NombreUsuario = "david",
                             Nombres = "David"
                         });
@@ -298,6 +332,16 @@ namespace DAL.Migrations
                     b.HasIndex("UsuarioId");
 
                     b.ToTable("Vendedores");
+
+                    b.HasData(
+                        new
+                        {
+                            VendedorId = 1,
+                            Apellidos = "Jimenez",
+                            Comision = 0.0,
+                            Nombres = "Paco",
+                            UsuarioId = 2
+                        });
                 });
 
             modelBuilder.Entity("Entidades.Clientes", b =>
