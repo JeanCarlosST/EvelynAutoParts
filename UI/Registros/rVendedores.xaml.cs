@@ -92,32 +92,107 @@ namespace UI.Registros
 
         private bool Validar()
         {
-            if(NombresTextbox.Text.Length == 0)
+            bool esValido = true;
+
+            if (!ValidarApellidos())
+                esValido = false;
+
+            if (!ValidarNombres())
+                esValido = false;
+
+            return esValido;
+        }
+
+        private void NombresTextbox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
             {
-                MessageBox.Show("Introduzca un nombre", "Registro de vendedores",
-                                MessageBoxButton.OK, MessageBoxImage.Warning);
-                return false;
+                if (!ValidarNombres() && NombresTextbox.Text.Length > 0)
+                {
+                    AdvertenciaNombresLabel.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    NombresTextbox.BorderBrush = new SolidColorBrush(Colors.Black);
+                    AdvertenciaNombresLabel.Visibility = Visibility.Hidden;
+                }
             }
-            if (NombresTextbox.Text.Any(char.IsDigit))
+            catch
             {
-                MessageBox.Show("Introduzca un nombre que no contenga dígitos", "Registro de vendedores",
-                                MessageBoxButton.OK, MessageBoxImage.Warning);
-                return false;
+                NombresTextbox.Foreground = SystemColors.ControlTextBrush;
             }
-            if (ApellidosTextbox.Text.Length == 0)
+        }
+
+        private void ApellidosTextbox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
             {
-                MessageBox.Show("Introduzca un apellido", "Registro de vendedores",
-                                MessageBoxButton.OK, MessageBoxImage.Warning);
-                return false;
+                if (!ValidarApellidos() && ApellidosTextbox.Text.Length > 0)
+                {
+                    AdvertenciaApellidosLabel.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    ApellidosTextbox.BorderBrush = new SolidColorBrush(Colors.Black);
+                    AdvertenciaApellidosLabel.Visibility = Visibility.Hidden;
+                }
             }
-            if (ApellidosTextbox.Text.Any(char.IsDigit))
+            catch
             {
-                MessageBox.Show("Introduzca un apellido que no contenga dígitos", "Registro de vendedores",
-                                MessageBoxButton.OK, MessageBoxImage.Warning);
-                return false;
+                ApellidosTextbox.Foreground = SystemColors.ControlTextBrush;
+            }
+        }
+
+        public bool ValidarNombres()
+        {
+            bool esValido = true;
+
+            if (NombresTextbox.Text.Any(Char.IsDigit) || NombresTextbox.Text.Any(Char.IsPunctuation) || NombresTextbox.Text.Any(Char.IsSymbol))
+            {
+                esValido = false;
+                NombresTextbox.BorderBrush = new SolidColorBrush(Colors.Red);
+                AdvertenciaNombresLabel.Content = "El nombre solo debe contener letras";
+            }
+            else if(NombresTextbox.Text.Length < 1)
+            {
+                esValido = false;
+                AdvertenciaNombresLabel.Content = "Debe ingresar un nombre";
+                AdvertenciaNombresLabel.Visibility = Visibility.Visible;
+            }
+            else if (NombresTextbox.Text.Length < 3)
+            {
+                esValido = false;
+                AdvertenciaNombresLabel.Content = "El nombre debe contener más de 2 caracteres";
+                AdvertenciaNombresLabel.Visibility = Visibility.Visible;
             }
 
-            return true;
+            return esValido;
+        }
+
+        public bool ValidarApellidos()
+        {
+            bool esValido = true;
+
+            if (ApellidosTextbox.Text.Any(Char.IsDigit) || ApellidosTextbox.Text.Any(Char.IsPunctuation) || ApellidosTextbox.Text.Any(Char.IsSymbol))
+            {
+                esValido = false;
+                ApellidosTextbox.BorderBrush = new SolidColorBrush(Colors.Red);
+                AdvertenciaApellidosLabel.Content = "El apellido solo debe contener letras";
+            }
+            else if (ApellidosTextbox.Text.Length < 1)
+            {
+                esValido = false;
+                AdvertenciaApellidosLabel.Content = "Debe ingresar un apellido";
+                AdvertenciaApellidosLabel.Visibility = Visibility.Visible;
+            }
+            else if (ApellidosTextbox.Text.Length < 3)
+            {
+                esValido = false;
+                AdvertenciaApellidosLabel.Content = "El apellido debe contener más de 2 caracteres";
+                AdvertenciaApellidosLabel.Visibility = Visibility.Visible;
+            }
+
+            return esValido;
         }
     }
 }

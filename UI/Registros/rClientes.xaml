@@ -48,13 +48,13 @@
                     <StackPanel Orientation="Horizontal">
                         <StackPanel Orientation="Vertical" Width="295" Margin="20,0,0,0">
                             <Label Content="Dirección"/>
-                            <TextBox x:Name="DireccionTextBox" TextWrapping="Wrap"  BorderBrush="Black" Height="23" Text="{Binding Direccion}"/>
+                            <TextBox x:Name="DireccionTextBox" TextWrapping="Wrap"  BorderBrush="Black" Height="23" Text="{Binding Direccion}" TextChanged="DireccionTextBox_TextChanged"/>
                             <Label x:Name="AdvertenciaDireccionLabel" Content="Debe incluir una dirección" Visibility="Hidden" Foreground="Red" Height="24" />
                         </StackPanel>
 
                         <StackPanel Orientation="Vertical" Width="295" Margin="30,0,0,0">
                             <Label Content="Teléfono"/>
-                            <syncfusion:SfMaskedEdit x:Name="TelefonoMask" Height="23" ValueMaskFormat="ExcludePromptAndLiterals" MaskType="RegEx" Mask="\([0-9]\d{2}\) [0-9]\d{2}-[0-9]\d{3}" Value="{Binding Telefono}"  Width="295
+                            <syncfusion:SfMaskedEdit x:Name="TelefonoMask" Height="23" TextChanged="TelefonoMask_TextChanged" ValueMaskFormat="ExcludePromptAndLiterals" MaskType="RegEx" Mask="\([0-9]\d{2}\) [0-9]\d{2}-[0-9]\d{3}" Value="{Binding Telefono}"  Width="295
                                                      " BorderBrush="Black" BorderThickness="1"/>
                             <Label x:Name="AdvertenciaTelefonoLabel"  Visibility="Hidden" Foreground="Red" Height="24" />
                         </StackPanel>
@@ -64,13 +64,13 @@
                     <StackPanel Orientation="Horizontal">
                         <StackPanel Orientation="Vertical" Width="295" Margin="20,0,0,0">
                             <Label Content="Celular"/>
-                            <syncfusion:SfMaskedEdit x:Name="CelularMask" Height="23" MaskType="RegEx"  ValueMaskFormat="ExcludePromptAndLiterals" Mask="\([0-9]\d{2}\) [0-9]\d{2}-[0-9]\d{3}" Value ="{Binding Celular}"  Width="295" BorderBrush="Black" BorderThickness="1"/>
+                            <syncfusion:SfMaskedEdit x:Name="CelularMask" TextChanged="CelularMask_TextChanged" Height="23" MaskType="RegEx"  ValueMaskFormat="ExcludePromptAndLiterals" Mask="\([0-9]\d{2}\) [0-9]\d{2}-[0-9]\d{3}" Value ="{Binding Celular}"  Width="295" BorderBrush="Black" BorderThickness="1"/>
                             <Label x:Name="AdvertenciaCelularLabel"  Visibility="Hidden" Foreground="Red" Height="24" />
                         </StackPanel>
 
                         <StackPanel Orientation="Vertical" Width="295" Margin="30,0,0,0">
                             <Label Content="Cédula"/>
-                            <syncfusion:SfMaskedEdit x:Name="CedulaMask" Height="23" MaskType="RegEx" ValueMaskFormat="ExcludePromptAndLiterals" Mask="\([0-9]\d{2}\) [0-9]\d{6}-[0-9]\d{0}" Value="{Binding Cedula}"  Width="295" BorderBrush="Black" BorderThickness="1"/>
+                            <syncfusion:SfMaskedEdit x:Name="CedulaMask" TextChanged="CedulaMask_TextChanged" Height="23" MaskType="RegEx" ValueMaskFormat="ExcludePromptAndLiterals" Mask="\([0-9]\d{2}\) [0-9]\d{6}-[0-9]\d{0}" Value="{Binding Cedula}"  Width="295" BorderBrush="Black" BorderThickness="1"/>
                             <Label x:Name="AdvertenciaCedulaLabel"  Visibility="Hidden" Foreground="Red" Height="24" />
                         </StackPanel>
                     </StackPanel>
@@ -79,7 +79,7 @@
                     <StackPanel Orientation="Horizontal">
                         <StackPanel Orientation="Vertical" Width="295" Margin="20,0,0,0">
                             <Label Content="Email"/>
-                            <syncfusion:SfMaskedEdit x:Name="EmailMask" Height="23" MaskType="RegEx" Mask="[A-Za-z0-9._%-]+@[A-Za-z0-9]+.[A-Za-z]{2,3}" Value="{Binding Email}"  Width="295" BorderBrush="Black" BorderThickness="1"/>
+                            <syncfusion:SfMaskedEdit x:Name="EmailMask" TextChanged="EmailMask_TextChanged" Height="23" MaskType="RegEx" Mask="[A-Za-z0-9._%-]+@[A-Za-z0-9]+.[A-Za-z]{2,3}" Value="{Binding Email}"  Width="295" BorderBrush="Black" BorderThickness="1"/>
                             <Label x:Name="AdvertenciaEmailLabel"  Visibility="Hidden" Foreground="Red" Height="24" />
                         </StackPanel>
                     </StackPanel>

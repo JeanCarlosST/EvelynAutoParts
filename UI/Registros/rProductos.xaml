@@ -50,6 +50,7 @@
             <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
                 <Label Content="Descripción"/>
                 <TextBox x:Name="DescripcionTextbox" Height="22" BorderBrush="Black" Text="{Binding Descripcion}"/>
+                <Label x:Name="AdvertenciaDescripcionLabel"  Visibility="Hidden" Foreground="Red" Height="24" />
             </StackPanel>
 
             <Grid Grid.Row="2">
@@ -60,7 +61,8 @@
 
                 <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <Label Content="Inventario"/>
-                    <TextBox x:Name="InventarioTextbox" Height="22" BorderBrush="Black" Text="{Binding Inventario}" Width="150"/>
+                    <TextBox x:Name="InventarioTextbox" Height="22" BorderBrush="Black" Text="{Binding Inventario}" Width="150" TextChanged="InventarioTextbox_TextChanged"/>
+                    <Label x:Name="AdvertenciaInventarioLabel"  Visibility="Hidden" Foreground="Red" Height="24" />
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
@@ -70,6 +72,7 @@
                         <ComboBoxItem Content="12%"/>
                         <ComboBoxItem Content="18%"/>
                     </ComboBox>
+                    <Label x:Name="AdvertenciaItbisLabel"  Visibility="Hidden" Foreground="Red" Height="24" />
                 </StackPanel>
             </Grid>
 
@@ -81,12 +84,14 @@
 
                 <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <Label Content="Precio"/>
-                    <TextBox x:Name="PrecioTextbox" Height="22" BorderBrush="Black" Text="{Binding Precio}" Width="150"/>
+                    <TextBox x:Name="PrecioTextbox" Height="22" BorderBrush="Black" Text="{Binding Precio}" Width="150" TextChanged="PrecioTextbox_TextChanged"/>
+                    <Label x:Name="AdvertenciaPrecioLabel"  Visibility="Hidden" Foreground="Red" Height="24" />
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
                     <Label Content="Costo"/>
-                    <TextBox x:Name="CostoTextbox" Height="22" BorderBrush="Black" Text="{Binding Costo}" Width="150"/>
+                    <TextBox x:Name="CostoTextbox" Height="22" BorderBrush="Black" Text="{Binding Costo}" Width="150" TextChanged="CostoTextbox_TextChanged"/>
+                    <Label x:Name="AdvertenciaCostoLabel"  Visibility="Hidden" Foreground="Red" Height="24" />
                 </StackPanel>
             </Grid>
 
@@ -98,12 +103,14 @@
 
                 <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <Label Content="Máximo descuento %"/>
-                    <TextBox x:Name="MaxDescuentoTextbox" Height="22" BorderBrush="Black" Text="{Binding MaxDescuento}" Width="150"/>
+                    <TextBox x:Name="MaxDescuentoTextbox" Height="22" BorderBrush="Black" Text="{Binding MaxDescuento}" Width="150" TextChanged="MaxDescuentoTextbox_TextChanged"/>
+                    <Label x:Name="AdvertenciaDescuentoLabel"  Visibility="Hidden" Foreground="Red" Height="24" />
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
                     <Label Content="Margen de ganancia %"/>
-                    <TextBox x:Name="MargenGananciaTextbox" Height="22" BorderBrush="Black" Text="{Binding MargenGanancia}" Width="150"/>
+                    <TextBox x:Name="MargenGananciaTextbox" Height="22" BorderBrush="Black" Text="{Binding MargenGanancia}" Width="150" TextChanged="MargenGananciaTextbox_TextChanged"/>
+                    <Label x:Name="AdvertenciaGananciaLabel"  Visibility="Hidden" Foreground="Red" Height="24" />
                 </StackPanel>
             </Grid>
 
