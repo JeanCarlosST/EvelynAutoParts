@@ -68,10 +68,6 @@ namespace UI.Consultas
 
             CriterioTextBox.AutoCompleteSource = listado;
 
-            /*CriterioStackPanel.Visibility = Visibility.Visible;
-            FechasGrid.Visibility = Visibility.Hidden;*/
-
-
             switch (FiltroComboBox.SelectedIndex)
             {
                 case 0:
@@ -80,10 +76,12 @@ namespace UI.Consultas
                 case 1:
                     CriterioTextBox.SearchItemPath = "Descripcion";
                     break;
-                    /*case 3:
-                        CriterioStackPanel.Visibility = Visibility.Hidden;
-                        FechasGrid.Visibility = Visibility.Visible;
-                        break;*/
+                case 2:
+                    CriterioTextBox.AutoCompleteSource = null;
+                    break;
+                case 3:
+                    CriterioTextBox.AutoCompleteSource = null;
+                    break;
 
             }
         }

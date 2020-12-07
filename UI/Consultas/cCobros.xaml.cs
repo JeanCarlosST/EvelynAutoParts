@@ -105,27 +105,17 @@ namespace UI.Consultas
 
         private void FiltroComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var listado = new List<Cobros>();
-            listado = CobrosBLL.GetList(c => true); ;
-
-            CriterioTextBox.AutoCompleteSource = listado;
-
+            CriterioTextBox.AutoCompleteSource = null;
 
             switch (FiltroComboBox.SelectedIndex)
             {
-                case 0:
-                    CriterioTextBox.SearchItemPath = "CobroId";
-                    break;
                 case 1:
-                    CriterioTextBox.AutoCompleteSource = UsuariosBLL.GetList(c => true);
-                    CriterioTextBox.SearchItemPath = "NombreUsuario";
+                    CriterioTextBox.AutoCompleteSource = ClientesBLL.GetList(c => true);
+                    CriterioTextBox.SearchItemPath = "Nombres";
                     break;
                 case 2:
-                    CriterioTextBox.AutoCompleteSource = ClientesBLL.GetList(c => true);
-                    CriterioTextBox.SearchItemPath = "Cedula";
-                    break;
-                case 3:
-                    CriterioTextBox.SearchItemPath = "Total";
+                    CriterioTextBox.AutoCompleteSource = UsuariosBLL.GetList(c => true);
+                    CriterioTextBox.SearchItemPath = "Nombres";
                     break;
             }
         }

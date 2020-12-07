@@ -101,32 +101,24 @@ namespace UI.Consultas
 
         private void FiltroCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //var listado = new List<Object>();
-            //listado = FacturasBLL.GetList();
+            CriterioTextBox.AutoCompleteSource = null;
 
-            //CriterioTextBox.AutoCompleteSource = listado;
+            switch (FiltroCombobox.SelectedIndex)
+            {
+                case 1:
+                    CriterioTextBox.AutoCompleteSource = ClientesBLL.GetList(c => true);
+                    CriterioTextBox.SearchItemPath = "Nombres";
+                    break;
+                case 2:
+                    CriterioTextBox.AutoCompleteSource = VendedoresBLL.GetList(c => true);
+                    CriterioTextBox.SearchItemPath = "Nombres";
+                    break;
+                case 3:
+                    CriterioTextBox.AutoCompleteSource = UsuariosBLL.GetList(c => true);
+                    CriterioTextBox.SearchItemPath = "Nombres";
+                    break;
 
-
-
-            //switch (FiltroCombobox.SelectedIndex)
-            //{
-            //    case 0:
-            //        CriterioTextBox.SearchItemPath = "FacturaId";
-            //        break;
-            //    case 1:
-            //        CriterioTextBox.AutoCompleteSource = ClientesBLL.GetList(c => true);
-            //        CriterioTextBox.SearchItemPath = "Nombres";
-            //        break;
-            //    case 2:
-            //        CriterioTextBox.AutoCompleteSource = VendedoresBLL.GetList(c => true);
-            //        CriterioTextBox.SearchItemPath = "Nombres";
-            //        break;
-            //    case 3:
-            //        CriterioStackPanel.Visibility = Visibility.Hidden;
-            //        FechasGrid.Visibility = Visibility.Visible;
-            //        break;
-
-            //}
+            }
 
         }
     }

@@ -103,7 +103,7 @@ namespace UI.Consultas
             switch (FiltroComboBox.SelectedIndex)
             {
                 case 0:
-                    CriterioTextBox.SearchItemPath = "IdUsuario";
+                    CriterioTextBox.SearchItemPath = "UsuarioId";
                     break;
                 case 1:
                     CriterioTextBox.SearchItemPath = "Nombres";

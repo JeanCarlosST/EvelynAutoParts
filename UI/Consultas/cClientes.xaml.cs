@@ -129,7 +129,7 @@ namespace UI.Consultas
             switch (FiltroComboBox.SelectedIndex)
             {
                 case 0:
-                    CriterioTextBox.SearchItemPath = "IdCliente";
+                    CriterioTextBox.SearchItemPath = "ClienteId";
                     break;
                 case 1:
                     CriterioTextBox.SearchItemPath = "Nombres";
@@ -150,6 +150,13 @@ namespace UI.Consultas
                     CriterioTextBox.SearchItemPath = "Cedula";
                     break;
                 case 7:
+                    var lista = new List<Clientes>();
+                    foreach (var item in listado)
+                    {
+                        if (item.Email != null)
+                            lista.Add(item);
+                    }
+                    CriterioTextBox.AutoCompleteSource = lista;
                     CriterioTextBox.SearchItemPath = "Email";
                     break;
 

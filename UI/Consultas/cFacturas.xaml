@@ -71,9 +71,11 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Padding="2,8,0,8" VerticalAlignment="Center" FontFamily="SegoeUI" FontSize="12" FontWeight="Normal" Text="{Binding Nombres}"/>
                                 <TextBlock Grid.Column="1" Padding="10,8,0,8" VerticalAlignment="Center" FontFamily="SegoeUI" FontSize="12" FontWeight="Normal" Text="{Binding Apellidos}"/>
+                                <TextBlock Grid.Column="2" Padding="10,8,0,8" VerticalAlignment="Center" FontFamily="SegoeUI" FontSize="12" FontWeight="Normal" Text="{Binding Cedula}"/>
                             </Grid>
                         </DataTemplate>
                     </editors:SfTextBoxExt.AutoCompleteItemTemplate>
