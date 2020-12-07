@@ -212,7 +212,7 @@ namespace UI.Registros
                                 MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return false;
             }
-            if (Utilities.ToFloat(CantidadTextbox.Text) == 0)
+            if (Utilities.ToFloat(CantidadTextbox.Text) <= 0)
             {
                 MessageBox.Show("Introduzca una cantidad válida que sea mayor a cero", "Registro de facturas",
                                 MessageBoxButton.OK, MessageBoxImage.Exclamation);
@@ -231,6 +231,13 @@ namespace UI.Registros
             if(Utilities.ToDouble(DescuentoTextbox.Text) > p.MaxDescuento*p.Precio)
             {
                 MessageBox.Show("El descuento unitario no puede ser mayor a " + (p.MaxDescuento * p.Precio).ToString("N2"), "Registro de facturas",
+                                MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return false;
+            }
+
+            if (Utilities.ToFloat(DescuentoTextbox.Text) < 0)
+            {
+                MessageBox.Show("Introduzca un descuento válido que no sea negativo", "Registro de facturas",
                                 MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return false;
             }
