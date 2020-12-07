@@ -105,7 +105,7 @@ namespace UI.Registros
         private void AgregarBoton_Click(object sender, RoutedEventArgs e)
         {
             Contexto context = new Contexto();
-            if (!ValidarCobro() || !ValidarMonto())
+            if (!ValidarCobro() && !ValidarMonto())
                 return;
 
             cobros.Total += Convert.ToDouble(MontoTextBox.Text);
@@ -165,19 +165,27 @@ namespace UI.Registros
         public bool ValidarMonto()
         {
             bool esValido = true;
-            if (Convert.ToDouble(MontoTextBox.Text) > Convert.ToDouble(BalanceTextBox.Text))
+            if(MontoTextBox.Text.Length < 1)
+            {
+                esValido = false;
+                AdvertenciaMonto.Text = "Debe ingresar un monto";
+                AdvertenciaMonto.Visibility = Visibility.Visible;
+            }
+
+            else if (Convert.ToDouble(MontoTextBox.Text) > Convert.ToDouble(BalanceTextBox.Text))
             {
                 esValido = false;
                 AdvertenciaMonto.Text = "No puede ingresar un monto mayor al balance";
                 AdvertenciaMonto.Visibility = Visibility.Visible;
             }
-            if (Convert.ToDouble(MontoTextBox.Text) <= 0)
+            else if (Convert.ToDouble(MontoTextBox.Text) <= 0)
             {
                 esValido = false;
                 AdvertenciaMonto.Text = "No puede ingresar un monto menor o igual a 0";
                 AdvertenciaMonto.Visibility = Visibility.Visible;
             }
-            if (BalanceTextBox.Text == "0")
+
+            if (BalanceTextBox.Text == "0" && BalanceTextBox.Text.Length > 0)
             {
                 esValido = false;
                 AdvertenciaMonto.Text = "No puede ingresar un monto ya que el balance es 0";
