@@ -36,7 +36,7 @@ namespace UI.Registros
             else
             {
                 this.cliente = new Clientes();
-                MessageBox.Show("No encontrado", "Error", MessageBoxButton.OK);
+                MessageBox.Show("Cliente no encontrado", "Registro de clientes");
             }
 
             Cargar();
@@ -67,10 +67,12 @@ namespace UI.Registros
             {
                 OcultarLabel();
                 Nuevo();
-                MessageBox.Show("Guardado con Exito", "Exito!!", MessageBoxButton.OK);
+                MessageBox.Show("Cliente guardado con éxito.", "Registro de clientes",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
-                MessageBox.Show("Error al guardar", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("No fue posible guardar", "Registro de clientes",
+                               MessageBoxButton.OK, MessageBoxImage.Error);
 
         }
 
@@ -79,11 +81,12 @@ namespace UI.Registros
             if (ClientesBLL.Eliminar(Convert.ToInt32(ClienteIdTextBox.Text)))
             {
                 Nuevo();
-                MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK);
+                MessageBox.Show("Cliente eliminado", "Registro de clientes",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
-                MessageBox.Show("Error al eliminar", "Error", MessageBoxButton.OK);
-
+                MessageBox.Show("No se pudo eliminar el cliente", "Registro de clientes",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private void Cargar()
@@ -120,7 +123,7 @@ namespace UI.Registros
             else if (ClientesBLL.Existe(3, convertInt(), CedulaMask.Value.ToString()))
             {
                 esValido = false;
-                AdvertenciaCedulaLabel.Content = "El numero de cedula se encuentra registrado";
+                AdvertenciaCedulaLabel.Text = "El número de cédula se encuentra registrado";
                 AdvertenciaCedulaLabel.Visibility = Visibility.Visible;
                 SystemSounds.Beep.Play();
             }
@@ -130,7 +133,7 @@ namespace UI.Registros
             else if (ClientesBLL.Existe(4, convertInt(), TelefonoMask.Value.ToString()))
             {
                 esValido = false;
-                AdvertenciaTelefonoLabel.Content = "El numero de telefono se encuentra registrado";
+                AdvertenciaTelefonoLabel.Text = "El número de teléfono se encuentra registrado";
                 AdvertenciaTelefonoLabel.Visibility = Visibility.Visible;
                 SystemSounds.Beep.Play();
             }
@@ -140,7 +143,7 @@ namespace UI.Registros
                 else if (ClientesBLL.Existe(2, convertInt(), CelularMask.Value.ToString()))
                 {
                     esValido = false;
-                    AdvertenciaCelularLabel.Content = "El numero de celular se encuentra registrado";
+                    AdvertenciaCelularLabel.Text = "El número de celular se encuentra registrado";
                     AdvertenciaCelularLabel.Visibility = Visibility.Visible;
                     SystemSounds.Beep.Play();
                 }
@@ -159,7 +162,7 @@ namespace UI.Registros
             if (TelefonoMask.Text.Length < 1)
             {
                 esValido = false;
-                MessageBox.Show("Debe ingresar un numero de teléfono", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Debe ingresar un número de teléfono", "Registro de clientes", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             return esValido;
@@ -212,12 +215,12 @@ namespace UI.Registros
             {
                 esValido = false;
                 NombresTextBox.BorderBrush = new SolidColorBrush(Colors.Red);
-                AdvertenciaNombreLabel.Content = "El nombre solo debe contener letras";
+                AdvertenciaNombreLabel.Text = "El nombre solo debe contener letras";
             }
             else if (NombresTextBox.Text.Length < 3)
             {
                 esValido = false;
-                AdvertenciaNombreLabel.Content = "El nombre debe contener más de 2 caracteres";
+                AdvertenciaNombreLabel.Text = "El nombre debe contener más de 2 caracteres";
                 AdvertenciaNombreLabel.Visibility = Visibility.Visible;
             }
 
@@ -231,12 +234,12 @@ namespace UI.Registros
             {
                 esValido = false;
                 ApellidosTextBox.BorderBrush = new SolidColorBrush(Colors.Red);
-                AdvertenciaApellidoLabel.Content = "El apellido solo debe contener letras";
+                AdvertenciaApellidoLabel.Text = "El apellido solo debe contener letras";
             }
             else if (ApellidosTextBox.Text.Length < 3)
             {
                 esValido = false;
-                AdvertenciaApellidoLabel.Content = "El apellido debe contener más de 2 caracteres";
+                AdvertenciaApellidoLabel.Text = "El apellido debe contener más de 2 caracteres";
                 AdvertenciaApellidoLabel.Visibility = Visibility.Visible;
             }
 
@@ -249,7 +252,7 @@ namespace UI.Registros
             if (CelularMask.HasError || CelularMask.Text.Length < 11)
             {
                 esValido = false;
-                AdvertenciaCelularLabel.Content = "Debe completar el numero celular";
+                AdvertenciaCelularLabel.Text = "Debe completar el número celular";
                 AdvertenciaCelularLabel.Visibility = Visibility.Visible;
             }
             
@@ -263,7 +266,7 @@ namespace UI.Registros
             if (CedulaMask.HasError || CedulaMask.Text.Length < 11)
             {
                 esValido = false;
-                AdvertenciaCedulaLabel.Content = "Debe completar el numero de cedula";
+                AdvertenciaCedulaLabel.Text = "Debe completar el numero de cédula";
                 AdvertenciaCedulaLabel.Visibility = Visibility.Visible;
             }
 
@@ -276,7 +279,7 @@ namespace UI.Registros
             if (TelefonoMask.HasError || TelefonoMask.Text.Length < 11)
             {
                 esValido = false;
-                AdvertenciaTelefonoLabel.Content = "Debe completar el numero de Telefono";
+                AdvertenciaTelefonoLabel.Text = "Debe completar el número de teléfono";
                 AdvertenciaTelefonoLabel.Visibility = Visibility.Visible;
             }
             
@@ -289,13 +292,13 @@ namespace UI.Registros
             if (EmailMask.Text.Length > 2 && EmailMask.Text.Length < 5)
             {
                 esValido = false;
-                AdvertenciaEmailLabel.Content = "Debe completar el email";
+                AdvertenciaEmailLabel.Text = "Debe completar el email";
                 AdvertenciaEmailLabel.Visibility = Visibility.Visible;
 
                 if (ClientesBLL.Existe(1, convertInt(), EmailMask.Text))
                 {
                     esValido = false;
-                    AdvertenciaEmailLabel.Content = "El email se encuentra registrado";
+                    AdvertenciaEmailLabel.Text = "El email se encuentra registrado";
                     AdvertenciaEmailLabel.Visibility = Visibility.Visible;
                     SystemSounds.Beep.Play();
                 }
