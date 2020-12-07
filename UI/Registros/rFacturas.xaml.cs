@@ -114,7 +114,7 @@ namespace UI.Registros
             }
             else
             {
-                MessageBox.Show("Factura no encontrada.", "Registro de facturas");
+                MessageBox.Show("Factura no encontrada", "Registro de facturas");
             }
         }
 
@@ -182,11 +182,13 @@ namespace UI.Registros
             if (paso)
             {
                 Limpiar();
-                MessageBox.Show("Factura guardada con éxito.", "Registro de facturas", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Factura guardada con éxito.", "Registro de facturas", 
+                                MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("No fue posible guardar.", "Registro de facturas", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("No fue posible guardar", "Registro de facturas", 
+                                MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -197,9 +199,11 @@ namespace UI.Registros
             Limpiar();
 
             if (FacturasBLL.Eliminar(id))
-                MessageBox.Show("Factura eliminada.", "Registro de facturas", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Factura eliminada", "Registro de facturas", 
+                                MessageBoxButton.OK, MessageBoxImage.Information);
             else
-                MessageBox.Show("No se pudo eliminar la factura", "Registro de facturas", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("No se pudo eliminar la factura", "Registro de facturas", 
+                                MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private bool ValidarDetalle()

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:UI.Registros"
         mc:Ignorable="d"
         Title="Registro de cobros" 
-        Height="680" Width="1000"
+        Height="680" Width="800"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Icon="/Imagenes/Logo.png">
@@ -43,12 +43,12 @@
             <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width=".5*"/>
+                    <ColumnDefinition Width=".6*"/>
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <Label Content="Cobro Id"/>
-                    <TextBox x:Name="CobroIdTextBox" Width="200" Height="22" VerticalContentAlignment="Center" Text="{Binding CobroId}" BorderBrush="Black"/>
+                    <TextBox x:Name="CobroIdTextBox" Width="150" Height="22" VerticalContentAlignment="Center" Text="{Binding CobroId}" BorderBrush="Black"/>
                 </StackPanel>
 
                 <Button x:Name="BuscarBoton" Grid.Column="1" Width="85" Height="30" Margin="0,18,0,0"

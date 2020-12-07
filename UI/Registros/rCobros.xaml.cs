@@ -56,7 +56,7 @@ namespace UI.Registros
             else
             {
                 Limpiar();
-                MessageBox.Show("El numero de cobro no existe", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Cobro no encontrado", "Registro de cobros");
             }
         }
 
@@ -66,15 +66,15 @@ namespace UI.Registros
 
             if (existe == null)
             {
-                MessageBox.Show("No existe cobro en la base de datos", "Fallo",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("No se pudo eliminar el cobro", "Registro de cobros",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             else
             {
                 CobrosBLL.Eliminar(this.cobros.CobroId);
-                MessageBox.Show("Eliminado", "Exito",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Cobro eliminado", "Registro de cobros",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
                 Limpiar();
             }
         }
@@ -88,12 +88,12 @@ namespace UI.Registros
             if (paso)
             {
                 Limpiar();
-                MessageBox.Show("Guardado!", "Exito",
-                    MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Cobro guardada con éxito", "Registro de cobros",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
-                MessageBox.Show("Fallo al guardar", "Fallo",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("No fue posible guardar", "Registro de cobros",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         private bool Existe()
@@ -186,7 +186,7 @@ namespace UI.Registros
             else if (!MontoTextBox.Text.Any(Char.IsDigit))
             {
                 esValido = false;
-                AdvertenciaMonto.Text = "Solo puede ingresar digitos";
+                AdvertenciaMonto.Text = "Solo puede ingresar dígitos";
                 AdvertenciaMonto.Visibility = Visibility.Visible;
             }
             else if (MontoTextBox.Text.Length < 1)
@@ -210,7 +210,7 @@ namespace UI.Registros
 
             if (ClientesComboBox.SelectedIndex < 0)
             {
-                MessageBox.Show("Debe elegir un Cliente", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Debe elegir un cliente", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 esValido = false;
             }
             return esValido;
@@ -222,7 +222,7 @@ namespace UI.Registros
 
             if(ClientesComboBox.SelectedIndex < 0)
             {
-                AdvertenciaCliente.Text = "Primero debe seleccionar un Cliente";
+                AdvertenciaCliente.Text = "Primero debe seleccionar un cliente";
                 esValido = false;
             }
             else if (FacturasComboBox.SelectedIndex < 0)
