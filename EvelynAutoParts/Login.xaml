@@ -30,12 +30,12 @@
 
             <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                 <Label Content="Nombre de usuario"/>
-                <TextBox x:Name="UsuarioTextbox" Width="230" Height="25" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="UsuarioTextbox" Width="230" Height="25" BorderBrush="Black" VerticalContentAlignment="Center"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                 <Label Content="Contraseña"/>
-                <PasswordBox x:Name="ClavePasswordbox" Width="230" Height="25" VerticalContentAlignment="Center"/>
+                <PasswordBox x:Name="ClavePasswordbox" Width="230" Height="25"  BorderBrush="Black" VerticalContentAlignment="Center"/>
             </StackPanel>
 
             <StackPanel Grid.Row="2" VerticalAlignment="Center">

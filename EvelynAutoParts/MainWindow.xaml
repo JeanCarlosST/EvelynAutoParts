@@ -41,7 +41,7 @@
                 <MenuItem x:Name="cerrarSesionMenuItem" Header="Cerrar sesión" Margin="670,0,0,0" HorizontalAlignment="Right" Click="cerrarSesionMenuItem_Click"/>
             </Menu>
 
-            <Image Source="Imagenes/Logo.png" Height="380" Width="380" Margin="0,50,0,0" Opacity="0.843"/>
+            <Image Source="Imagenes/Logo.png" Height="380" Width="380" Margin="0,50,0,0" />
         </Grid>
     </Grid>
 </Window>
