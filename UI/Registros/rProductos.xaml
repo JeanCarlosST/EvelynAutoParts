@@ -50,7 +50,7 @@
             <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
                 <Label Content="Descripción"/>
                 <TextBox x:Name="DescripcionTextbox" Height="22" BorderBrush="Black" Text="{Binding Descripcion}"/>
-                <Label x:Name="AdvertenciaDescripcionLabel"  Visibility="Hidden" Foreground="Red" Height="24" FontSize="10"/>
+                <TextBlock x:Name="AdvertenciaDescripcionLabel" TextWrapping="WrapWithOverflow" Visibility="Hidden" Foreground="Red" FontSize="10"/>
             </StackPanel>
 
             <Grid Grid.Row="2">

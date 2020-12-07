@@ -115,10 +115,10 @@ namespace UI.Registros
                 AdvertenciaDescripcionLabel.Content = "Introduzca una descripción";
                 AdvertenciaDescripcionLabel.Visibility = Visibility.Visible;
             }
-            if (Utilities.ToDouble(InventarioTextbox.Text) == 0)
+            if (Utilities.ToDouble(InventarioTextbox.Text) <= 0)
             {
                 esValido = false;
-                AdvertenciaInventarioLabel.Text = "Introduzca una cantidad para el inventario";
+                AdvertenciaInventarioLabel.Text = "Introduzca una cantidad para el inventario válido mayor a 0";
                 AdvertenciaInventarioLabel.Visibility = Visibility.Visible;
             }
             if (PorcentajeITBISCombobox.SelectedIndex < 0)
@@ -151,7 +151,7 @@ namespace UI.Registros
                 AdvertenciaGananciaLabel.Text = "Introduzca un margen de ganancia";
                 AdvertenciaGananciaLabel.Visibility = Visibility.Visible;
             }
-            else if (Utilities.ToDouble(MargenGananciaTextbox.Text) == 0)
+            else if (Utilities.ToDouble(MargenGananciaTextbox.Text) <= 0)
             {
                 esValido = false;
                 AdvertenciaGananciaLabel.Text = "Introduzca un margen de ganancia válido mayor a 0";
@@ -175,7 +175,7 @@ namespace UI.Registros
         public bool ValidarMaxDescuento()
         {
             bool esValido = true;
-            if (Utilities.ToDouble(MaxDescuentoTextbox.Text) == 0)
+            if (Utilities.ToDouble(MaxDescuentoTextbox.Text) <= 0)
             {
                 esValido = false;
                 AdvertenciaDescuentoLabel.Text = "Introduzca un porcentaje valido";
@@ -211,7 +211,7 @@ namespace UI.Registros
                 AdvertenciaCostoLabel.Text = "Introduzca un costo";
                 AdvertenciaCostoLabel.Visibility = Visibility.Visible;
             }
-            else if (Utilities.ToDouble(CostoTextbox.Text) == 0)
+            else if (Utilities.ToDouble(CostoTextbox.Text) <= 0)
             {
                 esValido = false;
                 AdvertenciaCostoLabel.Text = "Introduzca un costo válido mayor a 0";
@@ -236,7 +236,7 @@ namespace UI.Registros
                 AdvertenciaPrecioLabel.Text = "Introduzca un precio";
                 AdvertenciaPrecioLabel.Visibility = Visibility.Visible;
             }
-            else if (Utilities.ToDouble(PrecioTextbox.Text) == 0)
+            else if (Utilities.ToDouble(PrecioTextbox.Text) <= 0)
             {
                 esValido = false;
                 AdvertenciaPrecioLabel.Text = "Introduzca un precio válido mayor a 0";
