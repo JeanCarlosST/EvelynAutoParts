@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:UI.Consultas"
         mc:Ignorable="d"
         Title="Consulta de facturas" 
-        Height="450" Width="900"
+        Height="450" Width="1000"
         xmlns:editors="http://schemas.syncfusion.com/wpf"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
@@ -32,7 +32,7 @@
         </Grid.RowDefinitions>
         
         
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Margin="10,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="130"/>
                 <ColumnDefinition Width="130"/>
@@ -57,6 +57,7 @@
                     <ComboBoxItem Content="FacturaId"/>
                     <ComboBoxItem Content="Cliente"/>
                     <ComboBoxItem Content="Vendedor"/>
+                    <ComboBoxItem Content="Usuario"/>
                 </ComboBox>
             </StackPanel>
 
@@ -109,7 +110,7 @@
             </DataGrid.Resources>
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="FacturaId" Binding="{Binding FacturaId}" Width=".8*" ElementStyle="{StaticResource GridCellNormalStyle}"/>
+                <DataGridTextColumn Header="FacturaId" Binding="{Binding FacturaId}" Width=".6*" ElementStyle="{StaticResource GridCellNormalStyle}"/>
                 <DataGridTextColumn Header="Cliente" Binding="{Binding Cliente}" Width="*" ElementStyle="{StaticResource GridCellNormalStyle}"/>
                 <DataGridTextColumn Header="Vendedor" Binding="{Binding Vendedor}" Width="*" ElementStyle="{StaticResource GridCellNormalStyle}"/>
                 <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha, StringFormat=dd/MM/yyyy}" Width="*" ElementStyle="{StaticResource GridCellNormalStyle}"/>
@@ -117,6 +118,7 @@
                 <DataGridTextColumn Header="ITBIS" Binding="{Binding ITBIS}" Width="*" ElementStyle="{StaticResource GridCellMoneyStyle}"/>
                 <DataGridTextColumn Header="Total" Binding="{Binding Total}" Width="*" ElementStyle="{StaticResource GridCellMoneyStyle}"/>
                 <DataGridTextColumn Header="Balance" Binding="{Binding Balance}" Width="*" ElementStyle="{StaticResource GridCellMoneyStyle}"/>
+                <DataGridTextColumn Header="Usuario" Binding="{Binding Usuario}" Width="*" ElementStyle="{StaticResource GridCellNormalStyle}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

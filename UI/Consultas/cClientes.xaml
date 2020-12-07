@@ -60,14 +60,13 @@
                         <ComboBoxItem Content="Celular"/>
                         <ComboBoxItem Content="Cédula"/>
                         <ComboBoxItem Content="Email"/>
-                        <ComboBoxItem Content="Fecha de Creación"/>
                     </ComboBox>
                 </StackPanel>
 
                 <StackPanel Grid.Column="3" Margin="5,0">
                     <Label Content="Critero:"/>
                     <editors:SfTextBoxExt  x:Name="CriterioTextBox" BorderBrush="Black"
-                              AutoCompleteMode="Suggest" IgnoreCase="True"
+                              AutoCompleteMode="Suggest" IgnoreCase="True" VerticalContentAlignment="Center"
                               Visibility="Visible" Height="25" />
                 </StackPanel>
 
@@ -112,7 +111,7 @@
                     </Style>
                 </DataGrid.Resources>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ClienteId" Width="*" Binding="{Binding ClienteId}"/>
+                        <DataGridTextColumn Header="ClienteId" Width=".8*" Binding="{Binding ClienteId}"/>
                         <DataGridTextColumn Header="Nombres" Width="*" Binding="{Binding Nombres}"/>
                         <DataGridTextColumn Header="Apellidos" Width="*" Binding="{Binding Apellidos}"/>
                         <DataGridTextColumn Header="Dirección" Width="*" Binding="{Binding Direccion}"/>

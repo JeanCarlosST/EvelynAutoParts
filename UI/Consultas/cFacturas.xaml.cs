@@ -36,10 +36,13 @@ namespace UI.Consultas
             DateTime? desde = DesdeDatePicker.SelectedDate;
             DateTime? hasta = HastaDatePicker.SelectedDate != null ? ((DateTime)HastaDatePicker.SelectedDate).AddHours(24) : HastaDatePicker.SelectedDate;
 
-            if (desde != null)
-                hasta = DateTime.Now.AddDays(1);
-            if (hasta != null)
-                desde = new DateTime(1, 1, 1);
+            if (desde == null || hasta == null)
+            {
+                if (desde != null)
+                    hasta = DateTime.Now.AddDays(1);
+                else if (hasta != null)
+                    desde = new DateTime(1, 1, 1);
+            }
 
             if (criterio.Length > 0)
             {
@@ -57,6 +60,10 @@ namespace UI.Consultas
                         listado = FacturasBLL.GetList("Vendedor", criterio, desde, hasta);
                         break;
 
+                    case 3:
+                        listado = FacturasBLL.GetList("Usuario", criterio, desde, hasta);
+                        break;
+
                 }
             }
             else
@@ -72,13 +79,19 @@ namespace UI.Consultas
         {
             if (DesdeDatePicker.Text.Length != 0 && !DateTime.TryParse(DesdeDatePicker.Text, out _))
             {
-                MessageBox.Show("Introduzca una fecha inicial válida", "Registro de facturas",
+                MessageBox.Show("Introduzca una fecha inicial válida", "Consulta de facturas",
                                 MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return false;
             }
             if (HastaDatePicker.Text.Length != 0 && !DateTime.TryParse(HastaDatePicker.Text, out _))
             {
-                MessageBox.Show("Introduzca una fecha final válida", "Registro de facturas",
+                MessageBox.Show("Introduzca una fecha final válida", "Consulta de facturas",
+                                MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return false;
+            }
+            if (DesdeDatePicker.SelectedDate > HastaDatePicker.SelectedDate)
+            {
+                MessageBox.Show("La fecha inicial no puede ser mayor a la fecha final", "Consulta de facturas",
                                 MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return false;
             }

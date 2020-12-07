@@ -61,9 +61,8 @@
 
                 <StackPanel Grid.Column="3" Margin="5,0">
                     <Label Content="Critero:"/>
-                    <editors:SfTextBoxExt  x:Name="CriterioTextBox" BorderBrush="Black"
-                                            AutoCompleteMode="Suggest" IgnoreCase="True"
-                                            Visibility="Visible" Height="25" />
+                    <editors:SfTextBoxExt  x:Name="CriterioTextBox" BorderBrush="Black" VerticalContentAlignment="Center"
+                                            AutoCompleteMode="Suggest" IgnoreCase="True" Visibility="Visible" Height="25" />
                 </StackPanel>
 
                 <Button Grid.Column="4" x:Name="BuscarBoton" Height="30" Background="#FF02A5ED" VerticalAlignment="Bottom" Click="BuscarButton_Click" BorderBrush="Black" >
@@ -92,7 +91,7 @@
                     </Style>
                 </DataGrid.Resources>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="UsuarioId" Width="*" Binding="{Binding UsuarioId}" ElementStyle="{StaticResource GridCellNormalStyle}"/>
+                    <DataGridTextColumn Header="UsuarioId" Width=".5*" Binding="{Binding UsuarioId}" ElementStyle="{StaticResource GridCellNormalStyle}"/>
                     <DataGridTextColumn Header="Nombres" Width="*" Binding="{Binding Nombres}"  ElementStyle="{StaticResource GridCellNormalStyle}"/>
                     <DataGridTextColumn Header="Apellidos" Width="*" Binding="{Binding Apellidos}" ElementStyle="{StaticResource GridCellNormalStyle}"/>
                     <DataGridTextColumn Header="Nombre de usuario" Width="*" Binding="{Binding NombreUsuario}" ElementStyle="{StaticResource GridCellNormalStyle}"/>

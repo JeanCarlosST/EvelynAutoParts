@@ -43,7 +43,7 @@
 
                 <StackPanel Grid.Column="1" Margin="5,0" HorizontalAlignment="Stretch">
                     <Label Content="Critero:" Width="Auto"/>
-                    <editors:SfTextBoxExt  x:Name="CriterioTextBox" 
+                    <editors:SfTextBoxExt  x:Name="CriterioTextBox" VerticalContentAlignment="Center"
                                   AutoCompleteMode="Suggest" IgnoreCase="True"
                                   Visibility="Visible" Height="25" BorderBrush="Black"/>
                 </StackPanel>

@@ -54,15 +54,15 @@
                     <ComboBox x:Name="FiltroComboBox"  SelectionChanged="FiltroComboBox_SelectionChanged" Margin="0,0,15,0">
                         <ComboBoxItem Content="CobroId"/>
                         <ComboBoxItem Content="Nombre de Usuario"/>
-                        <ComboBoxItem Content="Cedula de cliente"/>
-                        <ComboBoxItem Content="Total"/>
+                        <ComboBoxItem Content="Cliente"/>
+                        <ComboBoxItem Content="Usuario"/>
                     </ComboBox>
                 </StackPanel>
 
                 <StackPanel Grid.Column="3" VerticalAlignment="Center">
                     <Label Content="Critero:"/>
-                    <editors:SfTextBoxExt  x:Name="CriterioTextBox"
-                                  AutoCompleteMode="Suggest" IgnoreCase="True"
+                    <editors:SfTextBoxExt  x:Name="CriterioTextBox" VerticalContentAlignment="Center"
+                                  AutoCompleteMode="Suggest" IgnoreCase="True" BorderBrush="Black"
                                   Visibility="Visible" Height="25" />
                 </StackPanel>
                 
@@ -93,11 +93,11 @@
                     </Style>
                 </DataGrid.Resources>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="CobroId" Width="*" Binding="{Binding CobroId}" ElementStyle="{StaticResource GridCellNormalStyle}"/>
-                    <DataGridTextColumn Header="UsuarioId" Width="*" Binding="{Binding UsuarioId}" ElementStyle="{StaticResource GridCellNormalStyle}"/>
-                    <DataGridTextColumn Header="ClienteId" Width="*" Binding="{Binding ClienteId}" ElementStyle="{StaticResource GridCellNormalStyle}"/>
-                    <DataGridTextColumn Header="Total" Width="*" Binding="{Binding Total}" ElementStyle="{StaticResource GridCellMoneyStyle}"/>
+                    <DataGridTextColumn Header="CobroId" Width=".4*" Binding="{Binding CobroId}" ElementStyle="{StaticResource GridCellNormalStyle}"/>
+                    <DataGridTextColumn Header="Cliente" Width="*" Binding="{Binding Cliente}" ElementStyle="{StaticResource GridCellNormalStyle}"/>
                     <DataGridTextColumn Header="Fecha" Width="*" Binding="{Binding Fecha, StringFormat=dd/MM/yyyy}" ElementStyle="{StaticResource GridCellNormalStyle}"/>
+                    <DataGridTextColumn Header="Total" Width="*" Binding="{Binding Total, StringFormat=N2}" ElementStyle="{StaticResource GridCellMoneyStyle}"/>
+                    <DataGridTextColumn Header="Usuario" Width="*" Binding="{Binding Usuario}" ElementStyle="{StaticResource GridCellNormalStyle}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

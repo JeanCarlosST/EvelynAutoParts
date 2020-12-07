@@ -72,7 +72,7 @@
             <!--Cliente-->
             <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
                 <Label Content="Cliente"/>
-                <ComboBox x:Name="ClientesComboBox" Width="250" HorizontalAlignment="Left" SelectedValue="{Binding ClienteId}" SelectionChanged="ClientesComboBox_SelectionChanged">
+                <ComboBox x:Name="ClientesComboBox" Width="240" HorizontalAlignment="Left" SelectedValue="{Binding ClienteId}" SelectionChanged="ClientesComboBox_SelectionChanged">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock>
@@ -200,8 +200,6 @@
                     <Label Content="Eliminar" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
-
-            <!--</StackPanel>-->
         </Grid>
     </Grid>
 </Window>
