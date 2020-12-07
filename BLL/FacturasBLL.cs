@@ -232,6 +232,9 @@ namespace BLL
                         case "Vendedor":
                             query = query.Where(f => f.Vendedor.ToLower().Contains(valor.ToLower()));
                             break;
+                        case "Usuario":
+                            query = query.Where(f => f.Usuario.ToLower().Contains(valor.ToLower()));
+                            break;
                     }
                 }
 

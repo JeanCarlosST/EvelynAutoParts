@@ -136,6 +136,61 @@ namespace BLL
             return cobro;
         }
 
+        public static List<object> GetList(string criterio, string valor, DateTime? desde, DateTime? hasta)
+        {
+            List<object> lista;
+            Contexto contexto = new Contexto();
+
+            try
+            {
+                var query = (
+                    from c in contexto.Cobros
+                    join cl in contexto.Clientes on c.ClienteId equals cl.ClienteId
+                    join u in contexto.Usuarios on c.UsuarioId equals u.UsuarioId
+                    select new
+                    {
+                        c.CobroId,
+                        Usuario = u.NombreUsuario,
+                        Cliente = (cl.Nombres + " " + cl.Apellidos),
+                        c.Fecha,
+                        c.Total
+                    }
+                );
+
+                if (criterio.Length != 0)
+                {
+                    switch (criterio)
+                    {
+                        case "CobroId":
+                            query = query.Where(c => c.CobroId == Utilities.ToInt(valor));
+                            break;
+                        case "Cliente":
+                            query = query.Where(c => c.Cliente.ToLower().Contains(valor.ToLower()));
+                            break;
+                        case "Usuario":
+                            query = query.Where(c => c.Usuario.ToLower().Contains(valor.ToLower()));
+                            break;
+                    }
+                }
+
+                if (desde != null && hasta != null)
+                {
+                    query = query.Where(c => c.Fecha >= desde && c.Fecha <= hasta);
+                }
+
+                lista = query.ToList<object>();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                contexto.Dispose();
+            }
+
+            return lista;
+        }
 
         public static List<Cobros> GetList(Expression<Func<Cobros, bool>> criterio)
         {
