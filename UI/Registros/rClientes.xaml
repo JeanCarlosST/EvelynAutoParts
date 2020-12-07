@@ -66,7 +66,7 @@
                 <Label Content="Nombres"/>
                 <TextBox x:Name="NombresTextBox" TextWrapping="Wrap"  BorderBrush="Black" VerticalContentAlignment="Center"
                          Height="23" Text="{Binding Nombres}" TextChanged="NombresTextBox_TextChanged" />
-                <Label x:Name="AdvertenciaNombreLabel"  Visibility="Hidden" Foreground="Red" Height="24" FontSize="11" />
+                <TextBlock x:Name="AdvertenciaNombreLabel" TextWrapping="WrapWithOverflow"  Visibility="Hidden" Foreground="Red" Height="24" FontSize="11" />
             </StackPanel>
 
             <!--Apellidos-->
@@ -74,7 +74,7 @@
                 <Label Content="Apellidos"/>
                 <TextBox x:Name="ApellidosTextBox" BorderBrush="Black" VerticalContentAlignment="Center" 
                          Height="23" Text="{Binding Apellidos}" TextChanged="ApellidosTextBox_TextChanged"/>
-                <Label x:Name="AdvertenciaApellidoLabel" Visibility="Hidden" Foreground="Red" Height="24" FontSize="11" />
+                <TextBlock x:Name="AdvertenciaApellidoLabel" TextWrapping="WrapWithOverflow" Visibility="Hidden" Foreground="Red" Height="24" FontSize="11" />
             </StackPanel>
 
             <!--Direccion-->
@@ -82,7 +82,7 @@
                 <Label Content="Dirección"/>
                 <TextBox x:Name="DireccionTextBox"  BorderBrush="Black" VerticalContentAlignment="Center"
                          Height="23" Text="{Binding Direccion}" TextChanged="DireccionTextBox_TextChanged"/>
-                <Label x:Name="AdvertenciaDireccionLabel" Content="Debe incluir una dirección" Visibility="Hidden" Foreground="Red" Height="24" FontSize="11"/>
+                <TextBlock x:Name="AdvertenciaDireccionLabel" TextWrapping="WrapWithOverflow" Text="Debe incluir una dirección" Visibility="Hidden" Foreground="Red" Height="24" FontSize="11"/>
             </StackPanel>
 
             <!--Telefono-->
@@ -92,7 +92,7 @@
                                          ValueMaskFormat="ExcludePromptAndLiterals" MaskType="RegEx" VerticalContentAlignment="Center"
                                          Mask="\([0-9]\d{2}\) [0-9]\d{2}-[0-9]\d{3}" Value="{Binding Telefono}"
                                          BorderBrush="Black" BorderThickness="1"/>
-                <Label x:Name="AdvertenciaTelefonoLabel"  Visibility="Hidden" Foreground="Red" Height="24" FontSize="11"/>
+                <TextBlock x:Name="AdvertenciaTelefonoLabel" TextWrapping="WrapWithOverflow" Visibility="Hidden" Foreground="Red" Height="24" FontSize="11"/>
             </StackPanel>
 
             <!--Celular-->
@@ -101,7 +101,7 @@
                 <syncfusion:SfMaskedEdit x:Name="CelularMask" TextChanged="CelularMask_TextChanged" Height="23" VerticalContentAlignment="Center"
                                          MaskType="RegEx"  ValueMaskFormat="ExcludePromptAndLiterals" Mask="\([0-9]\d{2}\) [0-9]\d{2}-[0-9]\d{3}" 
                                          Value ="{Binding Celular}" BorderBrush="Black" BorderThickness="1"/>
-                <Label x:Name="AdvertenciaCelularLabel"  Visibility="Hidden" Foreground="Red" Height="24" FontSize="11"/>
+                <TextBlock x:Name="AdvertenciaCelularLabel" TextWrapping="WrapWithOverflow" Visibility="Hidden" Foreground="Red" Height="24" FontSize="11"/>
             </StackPanel>
 
             <!--Cedula-->
@@ -111,7 +111,7 @@
                                          MaskType="RegEx" ValueMaskFormat="ExcludePromptAndLiterals" VerticalContentAlignment="Center"
                                          Mask="\([0-9]\d{2}\) [0-9]\d{6}-[0-9]\d{0}" Value="{Binding Cedula}" 
                                          BorderBrush="Black" BorderThickness="1"/>
-                <Label x:Name="AdvertenciaCedulaLabel"  Visibility="Hidden" Foreground="Red" Height="24" FontSize="11"/>
+                <TextBlock x:Name="AdvertenciaCedulaLabel" TextWrapping="WrapWithOverflow"  Visibility="Hidden" Foreground="Red" Height="24" FontSize="11"/>
             </StackPanel>
 
             <!--Email-->
@@ -120,7 +120,7 @@
                 <syncfusion:SfMaskedEdit x:Name="EmailMask" TextChanged="EmailMask_TextChanged" Height="23" VerticalContentAlignment="Center"
                                          MaskType="RegEx" Mask="[A-Za-z0-9._%-]+@[A-Za-z0-9]+.[A-Za-z]{2,3}" 
                                          Value="{Binding Email}" BorderBrush="Black" BorderThickness="1"/>
-                <Label x:Name="AdvertenciaEmailLabel"  Visibility="Hidden" Foreground="Red" Height="24" FontSize="11"/>
+                <TextBlock x:Name="AdvertenciaEmailLabel" TextWrapping="WrapWithOverflow" Visibility="Hidden" Foreground="Red" Height="24" FontSize="11"/>
             </StackPanel>
 
             <!--Botones-->
