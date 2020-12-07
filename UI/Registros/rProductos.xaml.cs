@@ -41,7 +41,17 @@ namespace UI.Registros
             var producto = ProductosBLL.Buscar(Utilities.ToInt(ProductoIdTextbox.Text));
 
             if (producto != null)
+            {
                 this.producto = producto;
+
+                if(producto.PorcentajeITBIS == 0f)
+                    PorcentajeITBISCombobox.SelectedIndex = 0;
+                else if(producto.PorcentajeITBIS == 0.12f)
+                    PorcentajeITBISCombobox.SelectedIndex = 1;
+                else if(producto.PorcentajeITBIS == 0.18f)
+                    PorcentajeITBISCombobox.SelectedIndex = 2;
+                
+            }
             else
             {
                 this.producto = new Productos();
