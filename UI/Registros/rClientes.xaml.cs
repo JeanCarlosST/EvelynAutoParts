@@ -289,7 +289,7 @@ namespace UI.Registros
         public bool ValidarEmail()
         {
             bool esValido = true;
-            if (EmailMask.Text.Length > 2 && EmailMask.Text.Length < 5)
+            if (EmailMask.Text.Length >= 1 && EmailMask.Text.Length < 5)
             {
                 esValido = false;
                 AdvertenciaEmailLabel.Text = "Debe completar el email";
