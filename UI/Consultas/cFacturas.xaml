@@ -11,11 +11,26 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Icon="/Imagenes/Logo.png">
+    
+    <Window.Resources>
+        <Style x:Key="GridCellMoneyStyle" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+        <Style x:Key="GridCellNormalStyle" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+
     <Grid>
+        
+        <Image Source="/Imagenes/logoCircleGray.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Opacity="0.08"/>
+        
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        
         
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -45,7 +60,7 @@
                 </ComboBox>
             </StackPanel>
 
-            <StackPanel x:Name="CriterioStackPanel" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Visibility="Visible">
+            <StackPanel Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Visibility="Visible">
                 <Label Content="Criterio"/>
                 <editors:SfTextBoxExt  x:Name="CriterioTextBox" AutoCompleteMode="Suggest"                   
                                        IgnoreCase="True" Visibility="Visible" Height="21.96" BorderBrush="Black">
@@ -75,18 +90,35 @@
 
         </Grid>
 
+        <DataGrid x:Name="FacturasDataGrid" Grid.Row="1" Margin="10" AutoGenerateColumns="False" 
+                  IsReadOnly="True" RowHeaderWidth="0" Background="{x:Null}">
+            <DataGrid.Resources>
+                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#F15A24"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                    <Setter Property="Height" Value="24"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="BorderBrush" Value="White"/>
+                    <Setter Property="BorderThickness" Value="0.2,0,0.5,0"/>
+                </Style>
+                <Style BasedOn="{StaticResource {x:Type DataGridRow}}" TargetType="{x:Type DataGridRow}">
+                    <Setter Property="Background" Value="{x:Null}"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Style>
+            </DataGrid.Resources>
 
-        <DataGrid x:Name="FacturasDataGrid" Grid.Row="1" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" RowHeaderWidth="0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="FacturaId" Binding="{Binding FacturaId}" Width=".8*"/>
-                <DataGridTextColumn Header="Cliente" Binding="{Binding Cliente}" Width="*"/>
-                <DataGridTextColumn Header="Vendedor" Binding="{Binding Vendedor}" Width="*"/>
-                <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha}" Width="*"/>
-                <DataGridTextColumn Header="Subtotal" Binding="{Binding Subtotal}" Width="*"/>
-                <DataGridTextColumn Header="ITBIS" Binding="{Binding ITBIS}" Width="*"/>
-                <DataGridTextColumn Header="Total" Binding="{Binding Total}" Width="*"/>
-                <DataGridTextColumn Header="Balance" Binding="{Binding Balance}" Width="*"/>
+                <DataGridTextColumn Header="FacturaId" Binding="{Binding FacturaId}" Width=".8*" ElementStyle="{StaticResource GridCellNormalStyle}"/>
+                <DataGridTextColumn Header="Cliente" Binding="{Binding Cliente}" Width="*" ElementStyle="{StaticResource GridCellNormalStyle}"/>
+                <DataGridTextColumn Header="Vendedor" Binding="{Binding Vendedor}" Width="*" ElementStyle="{StaticResource GridCellNormalStyle}"/>
+                <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha, StringFormat=dd/MM/yyyy}" Width="*" ElementStyle="{StaticResource GridCellNormalStyle}"/>
+                <DataGridTextColumn Header="Subtotal" Binding="{Binding Subtotal}" Width="*" ElementStyle="{StaticResource GridCellMoneyStyle}"/>
+                <DataGridTextColumn Header="ITBIS" Binding="{Binding ITBIS}" Width="*" ElementStyle="{StaticResource GridCellMoneyStyle}"/>
+                <DataGridTextColumn Header="Total" Binding="{Binding Total}" Width="*" ElementStyle="{StaticResource GridCellMoneyStyle}"/>
+                <DataGridTextColumn Header="Balance" Binding="{Binding Balance}" Width="*" ElementStyle="{StaticResource GridCellMoneyStyle}"/>
             </DataGrid.Columns>
         </DataGrid>
+    </Grid>
     </Grid>
 </Window>

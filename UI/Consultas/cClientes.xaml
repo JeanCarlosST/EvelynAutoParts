@@ -6,77 +6,113 @@
         xmlns:local="clr-namespace:UI.Consultas"
         mc:Ignorable="d"
         xmlns:editors="http://schemas.syncfusion.com/wpf"
-        Title="Consulta de Clientes" Height="480" Width="820">
-    <Grid Margin="13,0,13,0">
+        Title="Consulta de clientes" 
+        Height="450" Width="850"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Icon="/Imagenes/Logo.png">
+    
+    <Window.Resources>
+        <Style x:Key="GridCellMoneyStyle" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+        <Style x:Key="GridCellNormalStyle" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Image Source="/Imagenes/logoCircleGray.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Opacity="0.08"/>
+
+        <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" HorizontalAlignment="Stretch">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition MinWidth="190" MaxWidth="290"/>
-                <ColumnDefinition MinWidth="290"/>
-                <ColumnDefinition Width="90"/>
-            </Grid.ColumnDefinitions>
-
-            <StackPanel Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-                <Label Content="Filtro:" />
-                <ComboBox x:Name="FiltroComboBox"  SelectionChanged="FiltroComboBox_SelectionChanged">
-                    <ComboBoxItem Content="ClienteId"/>
-                    <ComboBoxItem Content="Nombre"/>
-                    <ComboBoxItem Content="Apellidos"/>
-                    <ComboBoxItem Content="Dirección"/>
-                    <ComboBoxItem Content="Teléfono"/>
-                    <ComboBoxItem Content="Celular"/>
-                    <ComboBoxItem Content="Cédula"/>
-                    <ComboBoxItem Content="Email"/>
-                    <ComboBoxItem Content="Fecha de Creación"/>
-                </ComboBox>
-            </StackPanel>
-
-            <Grid Grid.Column="1" x:Name="DesdeHastaDatePickers" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,0,10,0">
+            <Grid Grid.Row="0" HorizontalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="120"/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel x:Name="DesdeStackPanel" Grid.Column="0" Visibility="Hidden" Margin="0,0,10,0">
+                <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Label Content="Desde"/>
-                    <DatePicker x:Name="DesdeDatePicker"/>
+                    <DatePicker x:Name="DesdeDatePicker" Width="120" Background="{x:Null}" BorderBrush="Black"/>
                 </StackPanel>
-                <StackPanel Grid.Column="1" x:Name="HastatackPanel" Visibility="Hidden">
+
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Label Content="Hasta"/>
-                    <DatePicker x:Name="HastaDatePicker"/>
+                    <DatePicker x:Name="HastaDatePicker" Width="120" BorderBrush="Black"/>
                 </StackPanel>
-            </Grid>
 
-            <Grid Grid.Column="1" x:Name="CriterioGrid" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                    <Label Content="Filtro:" />
+                    <ComboBox x:Name="FiltroComboBox"  SelectionChanged="FiltroComboBox_SelectionChanged">
+                        <ComboBoxItem Content="ClienteId"/>
+                        <ComboBoxItem Content="Nombre"/>
+                        <ComboBoxItem Content="Apellidos"/>
+                        <ComboBoxItem Content="Dirección"/>
+                        <ComboBoxItem Content="Teléfono"/>
+                        <ComboBoxItem Content="Celular"/>
+                        <ComboBoxItem Content="Cédula"/>
+                        <ComboBoxItem Content="Email"/>
+                        <ComboBoxItem Content="Fecha de Creación"/>
+                    </ComboBox>
+                </StackPanel>
 
-                <StackPanel Grid.Column="1">
+                <StackPanel Grid.Column="3" Margin="5,0">
                     <Label Content="Critero:"/>
-                    <editors:SfTextBoxExt  x:Name="CriterioTextBox" HorizontalAlignment="Center"
-                              AutoCompleteMode="Suggest"                   
-                              IgnoreCase="True"
-                              Visibility="Visible" Width="370" Height="21.96" />
+                    <editors:SfTextBoxExt  x:Name="CriterioTextBox" BorderBrush="Black"
+                              AutoCompleteMode="Suggest" IgnoreCase="True"
+                              Visibility="Visible" Height="25" />
                 </StackPanel>
-            </Grid>
 
-            <Button Grid.Column="2" x:Name="BuscarBoton" Height="30" Background="#FF02A5ED" VerticalAlignment="Bottom" Click="BuscarButton_Click" BorderBrush="Black" >
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="/search.png" Width="32" Height="22"/>
-                    <Label Content="Buscar" Foreground="White" FontWeight="Bold"/>
-                </StackPanel>
-            </Button>
-        </Grid>
-        <Grid Grid.Row="1" HorizontalAlignment="Stretch" Margin="0,15,0,0">
-            <StackPanel HorizontalAlignment="Left" >
-                <DataGrid x:Name="DatosDataGrid" Height="350" Width="777" AutoGenerateColumns="False" IsReadOnly="True">
+                <Button Grid.Column="4" x:Name="BuscarBoton" Height="30" Background="#FF02A5ED" VerticalAlignment="Bottom" Click="BuscarButton_Click" BorderBrush="Black" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Imagenes/search.png" Width="32" Height="22"/>
+                        <Label Content="Buscar"  FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+            
+            <DataGrid x:Name="ClientesDataGrid" Grid.Row="2"  AutoGenerateColumns="False" Margin="0,10"
+                              IsReadOnly="True" Background="{x:Null}" RowHeaderWidth="0">
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                    <Grid Background="{TemplateBinding Background}" Height="20">
+                                        <ContentPresenter VerticalAlignment="Center"/>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </DataGrid.CellStyle>
+
+                <DataGrid.Resources>
+                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="#F15A24"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Height" Value="24"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="BorderThickness" Value="0.2,0,0.5,0"/>
+                    </Style>
+                    <Style BasedOn="{StaticResource {x:Type DataGridRow}}" TargetType="{x:Type DataGridRow}">
+                        <Setter Property="Background" Value="{x:Null}"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                    </Style>
+                </DataGrid.Resources>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ClienteId" Width="*" Binding="{Binding IdCliente}"/>
+                        <DataGridTextColumn Header="ClienteId" Width="*" Binding="{Binding ClienteId}"/>
                         <DataGridTextColumn Header="Nombres" Width="*" Binding="{Binding Nombres}"/>
                         <DataGridTextColumn Header="Apellidos" Width="*" Binding="{Binding Apellidos}"/>
                         <DataGridTextColumn Header="Dirección" Width="*" Binding="{Binding Direccion}"/>
@@ -84,12 +120,9 @@
                         <DataGridTextColumn Header="Celular" Width="*" Binding="{Binding Celular}"/>
                         <DataGridTextColumn Header="Cédula" Width="*" Binding="{Binding Cedula}"/>
                         <DataGridTextColumn Header="Email" Width="*" Binding="{Binding Email}"/>
-                        <DataGridTextColumn Header="Fecha registro" Width="*" Binding="{Binding Fecha}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </StackPanel>
+                        <DataGridTextColumn Header="Fecha registro" Width="*" Binding="{Binding Fecha, StringFormat=dd/MM/yyyy}"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
-        <Frame x:Name="Frame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
-
     </Grid>
 </Window>

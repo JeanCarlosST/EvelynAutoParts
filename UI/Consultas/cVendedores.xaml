@@ -9,7 +9,20 @@
         Height="450" Width="600"
         xmlns:editors="http://schemas.syncfusion.com/wpf"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Icon="/Imagenes/Logo.png">
+
+    <Window.Resources>
+        <Style x:Key="GridCellMoneyStyle" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+        <Style x:Key="GridCellNormalStyle" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Image Source="/Imagenes/logoCircleGray.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Opacity="0.08"/>
 
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
             <Grid Height="58">
@@ -30,28 +43,45 @@
 
                 <StackPanel Grid.Column="1" Margin="5,0" HorizontalAlignment="Stretch">
                     <Label Content="Critero:" Width="Auto"/>
-                    <editors:SfTextBoxExt  x:Name="CriterioTextBox" HorizontalAlignment="Center"
-                              AutoCompleteMode="Suggest"                   
-                              IgnoreCase="True"
-                              Visibility="Visible" Width="340" Height="21.96" />
+                    <editors:SfTextBoxExt  x:Name="CriterioTextBox" 
+                              AutoCompleteMode="Suggest" IgnoreCase="True" BorderBrush="Black"
+                              Visibility="Visible" Height="25" />
             </StackPanel>
 
                 <Button x:Name="BuscarBoton" Grid.Column="2" Width="85" Height="30" Margin="0,0,0,0" Click="BuscarBoton_Click" BorderBrush="Black" Background="#FF02A5ED"  VerticalAlignment="Center" HorizontalAlignment="Right">
                     <StackPanel Orientation="Horizontal">
                         <Image Width="18" Height="18" Source="/Imagenes/search.png"/>
-                        <Label Content="Buscar" Foreground="White" FontWeight="Bold"/>
+                        <Label Content="Buscar" FontWeight="Bold"/>
                     </StackPanel>
                 </Button>
             </Grid>
 
-            <DataGrid x:Name="VendedoresDataGrid" Height="330" Width="Auto" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid x:Name="VendedoresDataGrid" Height="330" Width="Auto" Background="{x:Null}"
+                      AutoGenerateColumns="False" IsReadOnly="True" RowHeaderWidth="0">
+                <DataGrid.Resources>
+                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="#F15A24"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Height" Value="24"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="BorderBrush" Value="White"/>
+                        <Setter Property="BorderThickness" Value="0.2,0,0.5,0"/>
+                    </Style>
+                    <Style BasedOn="{StaticResource {x:Type DataGridRow}}" TargetType="{x:Type DataGridRow}">
+                        <Setter Property="Background" Value="{x:Null}"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                    </Style>
+                </DataGrid.Resources>
+                
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="VendedorId" Binding="{Binding VendedorId}" Width="*"/>
-                    <DataGridTextColumn Header="Nombres" Binding="{Binding Nombres}"  Width="*"/>
-                    <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}"  Width="*"/>
-                    <DataGridTextColumn Header="Comisión" Binding="{Binding Comision}"  Width="*"/>
+                    <DataGridTextColumn Header="VendedorId" Binding="{Binding VendedorId}" Width="*" ElementStyle="{StaticResource GridCellNormalStyle}"/>
+                    <DataGridTextColumn Header="Nombres" Binding="{Binding Nombres}"  Width="*" ElementStyle="{StaticResource GridCellNormalStyle}"/>
+                    <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}"  Width="*" ElementStyle="{StaticResource GridCellNormalStyle}"/>
+                    <DataGridTextColumn Header="Comisión" Binding="{Binding Comision}"  Width="*" ElementStyle="{StaticResource GridCellMoneyStyle}"/>
             </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
+    </Grid>
 
 </Window>
