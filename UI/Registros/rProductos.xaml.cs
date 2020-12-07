@@ -112,7 +112,7 @@ namespace UI.Registros
             if(DescripcionTextbox.Text.Length == 0)
             {
                 esValido = false;
-                AdvertenciaDescripcionLabel.Content = "Introduzca una descripción";
+                AdvertenciaDescripcionLabel.Text = "Introduzca una descripción";
                 AdvertenciaDescripcionLabel.Visibility = Visibility.Visible;
             }
             if (Utilities.ToDouble(InventarioTextbox.Text) <= 0)
