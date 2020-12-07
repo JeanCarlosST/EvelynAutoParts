@@ -6,98 +6,115 @@
         xmlns:local="clr-namespace:UI.Registros"
         mc:Ignorable="d"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-        Title="rUsuarios" Height="509" Width="735">
+        Title="Registro de usuarios" 
+        Height="550" Width="600"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Icon="/Imagenes/Logo.png">
     <Grid>
-        <StackPanel Orientation="Vertical">
+        <Rectangle  Height="40" Fill="#F15A24" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+        <Label Content="Registro de usuarios" Margin="2,0,0,0" FontSize="23" FontWeight="Bold" Foreground="White"/>
+        <Image Source="/Imagenes/logoCircleGray.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="300" Opacity="0.08"/>
+
+        <Grid Margin="50,50,50,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
             <!--Panel de Cliente Id-->
-            <StackPanel HorizontalAlignment="Left"  Margin="19,10,0,0" Orientation="Horizontal" >
-                <Label Content="UsuarioId" Height="26" Width="80" Margin="0,0,20,0"/>
-                <TextBox x:Name="UsuarioIdTextBox" Height="26" TextWrapping="Wrap" Width="80" BorderBrush="Black"/>
-                <Button x:Name="BuscarButton" Height="25" Width="65" Margin="20,0,0,0" Click="BuscarButton_Click" Background="#FF02A5ED">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/Imagenes/search.png"/>
-                        <Label Content="Buscar" Height="26"/>
-                    </StackPanel>
-                </Button>
+
+            <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" Orientation="Vertical" >
+                <Label Content="Usuario Id" Width="80"/>
+                <TextBox x:Name="UsuarioIdTextBox" Height="23" VerticalContentAlignment="Center" TextWrapping="Wrap" Width="180" BorderBrush="Black"/>
             </StackPanel>
 
-            <!--Panel Fecha-->
-            <StackPanel Orientation="Horizontal" Margin="0,13,0,0">
-                <Label Content="Fecha" Margin="19,0,37,0"/>
-                <DatePicker x:Name="FechaDatePicker" Margin="20,0,0,0" BorderBrush="Black" Width="168" Height="34" SelectedDate="{Binding FechaCreacion}"/>
-            </StackPanel>
-
-            <GroupBox BorderBrush="Black" Header="Formulario" Margin="19,15,19,0" Height="271" Width="671">
-                <StackPanel>
-
-                    <!--Panel Nombres y Apellidos-->
-                    <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-                        <StackPanel Orientation="Vertical" Width="295" Margin="20,0,0,0">
-                            <Label Content="Nombres"/>
-                            <TextBox x:Name="NombresTextBox" TextWrapping="Wrap"  BorderBrush="Black" Height="23" Text="{Binding Nombres}" TextChanged="NombresTextBox_TextChanged" />
-                            <Label x:Name="AdvertenciaNombreLabel"  Visibility="Hidden" Foreground="Red" Height="24" Width="292" FontSize="11" />
-                        </StackPanel>
-
-                        <StackPanel Orientation="Vertical" Width="295" Margin="30,0,20,0">
-                            <Label Content="Apellidos"/>
-                            <TextBox x:Name="ApellidosTextBox" TextWrapping="Wrap"  BorderBrush="Black" Height="23" Text="{Binding Apellidos}" TextChanged="ApellidosTextBox_TextChanged" Width="295" />
-                            <Label x:Name="AdvertenciaApellidoLabel" Visibility="Hidden" Foreground="Red" Height="24" />
-                        </StackPanel>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel Orientation="Vertical" Width="295" Margin="20,0,0,0">
-                            <Label Content="Nombre de Usuario"/>
-                            <TextBox x:Name="NombreUsuarioTextBox" TextWrapping="Wrap"  BorderBrush="Black" Height="23" Text="{Binding NombreUsuario}" TextChanged="NombreusuarioTextBox_TextChanged"/>
-                            <Label x:Name="AdvertenciaNombreUsuarioLabel" Visibility="Hidden" Foreground="Red" Height="24" />
-                        </StackPanel>
-
-                        <StackPanel x:Name="ClaveStackPanel" Orientation="Vertical" Width="295" Margin="30,0,0,0">
-                            <Label Content="Clave"/>
-                            <PasswordBox x:Name="ClavePasswordBox" Height="23" Width="294" BorderBrush="Black" PasswordChanged="ClaveTextBox_PasswordChanged"/>
-                            <Label x:Name="AdvertenciaClaveLabel"  Visibility="Hidden" Foreground="Red" Height="24" />
-                        </StackPanel>
-                    </StackPanel>
-
-                    <!--Panel celular y Cedula-->
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel x:Name="ConfirmarClaveStackPanel" Orientation="Vertical" Width="295" Margin="20,0,0,0">
-                            <Label Content="Confirmar clave"/>
-                            <PasswordBox x:Name="ConfirmarClavePasswordBox" Height="23" Width="294" BorderBrush="Black" PasswordChanged="ConfirmarClaveTextBox_PasswordChanged"/>
-                            <Label x:Name="AdvertenciaConfirmarClaveLabel"  Visibility="Hidden" Foreground="Red" Height="24" />
-                        </StackPanel>
-                    </StackPanel>
-                </StackPanel>
-            </GroupBox>
-
-            <!--Barra de BOTONES-->
-            <StackPanel Orientation="Horizontal" Margin="0,30,0,0" Width="317">
-                <Button x:Name="NuevoButton" Margin="10,0" Width="90" Height="28" Click="NuevoButton_Click" Background="#FFFDEE0C">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="\Imagenes/new.png"/>
-                        <Label Content="Nuevo"/>
-                    </StackPanel>
-                </Button>
-                <Button x:Name="GuardarButton" Margin="10,0" Width="90" Height="28" Click="GuardarButton_Click" Background="#FF44E240">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="\Imagenes/save.png"/>
-                        <Label Content="Guardar"/>
-                    </StackPanel>
-                </Button>
-                <Button x:Name="EliminarButton" Margin="10,0" Width="83" Height="28" Click="EliminarButton_Click" Background="#FFF02121" >
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="\Imagenes/delete.png"/>
-                        <Label Content="Eliminar"/>
-                    </StackPanel>
-                </Button>
-            </StackPanel>
-            <Button x:Name="CambiarClaveButton" Height="34" Width="141" Click="CambiarClaveButton_Click" Visibility="Visible" Margin="0,10,0,0" Background="#FF02A5ED">
-                <StackPanel Orientation="Horizontal" >
-                    <Image Source="/Imagenes/form.png"  />
-                    <Label Content="Cambiar Clave" />
+            <Button x:Name="BuscarBoton" Grid.Column="1" Width="85" Height="30" HorizontalAlignment="Left" Margin="0,8,0,0"
+                            Click="BuscarBoton_Click" BorderBrush="Black" Background="#FF02A5ED">
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="18" Height="18" Source="/Imagenes/search.png"/>
+                    <Label Content="Buscar" FontWeight="Bold"/>
                 </StackPanel>
             </Button>
 
-        </StackPanel>
+        <!--Panel Fecha-->
+            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center">
+                <Label Content="Fecha"/>
+                <DatePicker x:Name="FechaDatePicker" VerticalContentAlignment="Center" BorderBrush="Black" Width="180" SelectedDate="{Binding FechaCreacion}"/>
+            </StackPanel>
+
+            <!--Panel Nombres y Apellidos-->
+            <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center">
+                <Label Content="Nombres"/>
+                <TextBox x:Name="NombresTextBox" VerticalContentAlignment="Center" TextWrapping="Wrap" BorderBrush="Black" Width="180" Height="23" Text="{Binding Nombres}" TextChanged="NombresTextBox_TextChanged" />
+                <Label x:Name="AdvertenciaNombreLabel" Visibility="Hidden" Foreground="Red" Height="24" FontSize="11" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center">
+                <Label Content="Apellidos"/>
+                <TextBox x:Name="ApellidosTextBox" VerticalContentAlignment="Center" TextWrapping="Wrap"  BorderBrush="Black" Width="180" Height="23" Text="{Binding Apellidos}" TextChanged="ApellidosTextBox_TextChanged"/>
+                <Label x:Name="AdvertenciaApellidoLabel" Visibility="Hidden" Foreground="Red" Height="24" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center">
+                <Label Content="Nombre de Usuario"/>
+                <TextBox x:Name="NombreUsuarioTextBox" VerticalContentAlignment="Center" TextWrapping="Wrap"  BorderBrush="Black" Width="180" Height="23" Text="{Binding NombreUsuario}" TextChanged="NombreusuarioTextBox_TextChanged"/>
+                <Label x:Name="AdvertenciaNombreUsuarioLabel" Visibility="Hidden" Foreground="Red" Height="24" />
+            </StackPanel>
+
+            <StackPanel x:Name="ClaveStackPanel" Grid.Row="4" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center">
+                <Label Content="Clave"/>
+                <PasswordBox x:Name="ClavePasswordBox" VerticalContentAlignment="Center" Height="23" Width="180" BorderBrush="Black" PasswordChanged="ClaveTextBox_PasswordChanged"/>
+                <Label x:Name="AdvertenciaClaveLabel"  Visibility="Hidden" Foreground="Red" Height="24" />
+            </StackPanel>
+
+                <!--Panel celular y Cedula-->
+            <StackPanel x:Name="ConfirmarClaveStackPanel" Grid.Row="4" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Center">
+                <Label Content="Confirmar clave"/>
+                <PasswordBox x:Name="ConfirmarClavePasswordBox" VerticalContentAlignment="Center" Height="23" Width="180" BorderBrush="Black" PasswordChanged="ConfirmarClaveTextBox_PasswordChanged"/>
+                <Label x:Name="AdvertenciaConfirmarClaveLabel"  Visibility="Hidden" Foreground="Red" Height="24" />
+            </StackPanel>
+
+            <!--Barra de BOTONES-->
+            <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30">
+                <Button x:Name="NuevoBoton" Width="90" Margin="5,0,0,0" Background="#FFFDEE0C" BorderBrush="Black" Click="NuevoBoton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="18" Height="18" Source="/Imagenes/new.png"/>
+                        <Label Content="Nuevo" Foreground="Black" FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="GuardarBoton" Width="90" Margin="20,0,0,0" Background="#FF44E240" BorderBrush="Black" Click="GuardarBoton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="18" Height="18" Source="/Imagenes/save.png"/>
+                        <Label Content="Guardar" FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="EliminarBoton" Width="90" Margin="20,0,0,0" Background="#FFF02121" BorderBrush="Black" Click="EliminarBoton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="18" Height="18" Source="/Imagenes/delete.png"/>
+                        <Label Content="Eliminar" FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        
+            <Button x:Name="CambiarClaveButton" Grid.Row="6" Grid.ColumnSpan="2" Height="34" Width="140" 
+                    Click="CambiarClaveButton_Click" Visibility="Visible" Background="#FF02A5ED" BorderBrush="Black">
+                <StackPanel Orientation="Horizontal" >
+                    <Image Source="/Imagenes/form.png" Width="18"/>
+                    <Label Content="Cambiar Clave" FontWeight="Bold"/>
+                </StackPanel>
+            </Button>
+
+    </Grid>
     </Grid>
 </Window>

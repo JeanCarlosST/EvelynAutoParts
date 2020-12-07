@@ -45,7 +45,7 @@ namespace UI.Registros
             else
             {
                 this.producto = new Productos();
-                MessageBox.Show("No se encontró ningún producto", "Registro de productoes",
+                MessageBox.Show("No se encontró ningún producto", "Registro de productos",
                                 MessageBoxButton.OK, MessageBoxImage.Information);
             }
 

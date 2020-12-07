@@ -5,28 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI"
         mc:Ignorable="d"
-        Title="CambiarClave" Height="309" Width="419">
+        Title="Cambiar Clave" 
+        Height="330" Width="350"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Icon="/Imagenes/Logo.png">
     <Grid>
-        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Height="349">
-            <StackPanel Height="260" Width="345">
-                <StackPanel Orientation="Vertical" Width="295" Margin="20,0,0,0">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                     <Label Content="Clave Actual"/>
-                    <PasswordBox x:Name="ClaveActualPasswordBox" BorderBrush="Black" Height="23"/>
+                    <PasswordBox x:Name="ClaveActualPasswordBox" BorderBrush="Black" Height="23" Width="230"/>
                     <Label x:Name="AdvertenciaClaveLabel" Content="Clave incorrecta" Visibility="Hidden" Foreground="Red" Height="24" />
                 </StackPanel>
 
-                <StackPanel Orientation="Vertical" Width="295" Margin="20,0,0,0">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                     <Label Content="Nueva Clave"/>
-                    <PasswordBox x:Name="NuevaClavePasswordBox"  BorderBrush="Black" Height="23" PasswordChanged="NuevaClavePasswordBox_PasswordChanged"/>
+                    <PasswordBox x:Name="NuevaClavePasswordBox"  BorderBrush="Black" Height="23" Width="230" PasswordChanged="NuevaClavePasswordBox_PasswordChanged"/>
                     <Label x:Name="AdvertenciaNuevaClaveLabel" Visibility="Hidden" Foreground="Red" Height="24" />
                 </StackPanel>
 
-                <StackPanel Orientation="Vertical" Width="295" Margin="20,0,0,0">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                     <Label Content="Confirma nueva Clave"/>
-                    <PasswordBox x:Name="ConfirmarNuevaClavePasswordBox" BorderBrush="Black" Height="23" PasswordChanged="ConfirmarNuevaClavePasswordBox_PasswordChanged"/>
+                    <PasswordBox x:Name="ConfirmarNuevaClavePasswordBox" BorderBrush="Black" Height="23" Width="230" PasswordChanged="ConfirmarNuevaClavePasswordBox_PasswordChanged"/>
                     <Label x:Name="AdvertenciaConfirmarNuevaClaveLabel" Visibility="Hidden" Foreground="Red" Height="24" />
                 </StackPanel>
-                <Button Content="Confirmar" Height="35" Width="210" Click="Button_Click" Background="#FF44E240"/>
+                <Button Content="Confirmar" Height="35" Width="150" Click="Button_Click" 
+                        Background="#FF44E240" FontWeight="Bold" BorderBrush="Black"/>
             </StackPanel>
         </StackPanel>
     </Grid>

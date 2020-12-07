@@ -7,77 +7,84 @@
         mc:Ignorable="d"
         Title="Registro de vendedores" 
         Height="450" Width="400"
-        WindowStartupLocation="CenterScreen">
-    
-    <Grid Margin="20">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+        WindowStartupLocation="CenterScreen"
+        Icon="/Imagenes/Logo.png">
 
-        <!--ID-->
-        <Grid Grid.Row="0" HorizontalAlignment="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="100"/>
-            </Grid.ColumnDefinitions>
+    <Grid>
+        <Rectangle  Height="40" Fill="#F15A24" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+        <Label Content="Registro de vendedores" Margin="2,0,0,0" FontSize="23" FontWeight="Bold" Foreground="White"/>
+        <Image Source="/Imagenes/logoCircleGray.png" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="300" Opacity="0.08"/>
+        
+        <Grid Margin="0,50,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-            <StackPanel Grid.Column="0" HorizontalAlignment="Center">
-                <Label Content="ID"/>
-                <TextBox x:Name="VendedorIdTextbox" Width="80" Height="25" Text="{Binding VendedorId}" VerticalContentAlignment="Center"/>
+            <!--ID-->
+            <Grid Grid.Row="0" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                    <Label Content="ID"/>
+                    <TextBox x:Name="VendedorIdTextbox" Width="80" Height="25" BorderBrush="Black" Text="{Binding VendedorId}" VerticalContentAlignment="Center"/>
+                </StackPanel>
+
+                <Button x:Name="BuscarBoton" Grid.Column="1" Width="85" Height="30" 
+                        Click="BuscarBoton_Click" BorderBrush="Black" Background="#FF02A5ED">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="18" Height="18" Source="/Imagenes/search.png"/>
+                        <Label Content="Buscar" FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <!--Nombres-->
+            <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+                <Label Content="Nombres"/>
+                <TextBox x:Name="NombresTextbox" Width="180" Height="25" BorderBrush="Black" Text="{Binding Nombres}" VerticalContentAlignment="Center"/>
             </StackPanel>
 
-            <Button x:Name="BuscarBoton" Grid.Column="1" Width="85" Height="30" 
-                    Click="BuscarBoton_Click" BorderBrush="Black" Background="#FF02A5ED">
-                <StackPanel Orientation="Horizontal">
-                    <Image Width="18" Height="18" Source="/Imagenes/search.png"/>
-                    <Label Content="Buscar" FontWeight="Bold"/>
-                </StackPanel>
-            </Button>
+            <!--Apellidos-->
+            <StackPanel Grid.Row="2" HorizontalAlignment="Center">
+                <Label Content="Apellidos"/>
+                <TextBox x:Name="ApellidosTextbox" Width="180" Height="25" BorderBrush="Black" Text="{Binding Apellidos}" VerticalContentAlignment="Center"/>
+            </StackPanel>
+
+            <!--Comisión-->
+            <StackPanel Grid.Row="3" HorizontalAlignment="Center">
+                <Label Content="Comisión"/>
+                <TextBox x:Name="ComisionTextbox" Width="180" Height="25" BorderBrush="Black" Text="{Binding Comision}" VerticalContentAlignment="Center" IsReadOnly="True"/>
+            </StackPanel>
+
+            <!--Botones-->
+            <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30">
+                <Button x:Name="NuevoBoton" Width="90" Margin="5,0,0,0" Background="#FFFDEE0C" BorderBrush="Black" Click="NuevoBoton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="18" Height="18" Source="/Imagenes/new.png"/>
+                        <Label Content="Nuevo" Foreground="Black" FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="GuardarBoton" Width="90" Margin="20,0,0,0" Background="#FF44E240" BorderBrush="Black" Click="GuardarBoton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="18" Height="18" Source="/Imagenes/save.png"/>
+                        <Label Content="Guardar" FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="EliminarBoton" Width="90" Margin="20,0,0,0" Background="#FFF02121" BorderBrush="Black" Click="EliminarBoton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="18" Height="18" Source="/Imagenes/delete.png"/>
+                        <Label Content="Eliminar" FontWeight="Bold"/>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
         </Grid>
-
-        <!--Nombres-->
-        <StackPanel Grid.Row="1" HorizontalAlignment="Center">
-            <Label Content="Nombres"/>
-            <TextBox x:Name="NombresTextbox" Width="180" Height="25" Text="{Binding Nombres}" VerticalContentAlignment="Center"/>
-        </StackPanel>
-
-        <!--Apellidos-->
-        <StackPanel Grid.Row="2" HorizontalAlignment="Center">
-            <Label Content="Apellidos"/>
-            <TextBox x:Name="ApellidosTextbox" Width="180" Height="25" Text="{Binding Apellidos}" VerticalContentAlignment="Center"/>
-        </StackPanel>
-
-        <!--Comisión-->
-        <StackPanel Grid.Row="3" HorizontalAlignment="Center">
-            <Label Content="Comisión"/>
-            <TextBox x:Name="ComisionTextbox" Width="180" Height="25" Text="{Binding Comision}" VerticalContentAlignment="Center" IsReadOnly="True"/>
-        </StackPanel>
-
-        <!--Botones-->
-        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30">
-            <Button x:Name="NuevoBoton" Width="90" Margin="5,0,0,0" Background="#FFFDEE0C" BorderBrush="Black" Click="NuevoBoton_Click">
-                <StackPanel Orientation="Horizontal">
-                    <Image Width="18" Height="18" Source="/Imagenes/new.png"/>
-                    <Label Content="Nuevo" Foreground="Black" FontWeight="Bold"/>
-                </StackPanel>
-            </Button>
-            <Button x:Name="GuardarBoton" Width="90" Margin="20,0,0,0" Background="#FF44E240" BorderBrush="Black" Click="GuardarBoton_Click">
-                <StackPanel Orientation="Horizontal">
-                    <Image Width="18" Height="18" Source="/Imagenes/save.png"/>
-                    <Label Content="Guardar" FontWeight="Bold"/>
-                </StackPanel>
-            </Button>
-            <Button x:Name="EliminarBoton" Width="90" Margin="20,0,0,0" Background="#FFF02121" BorderBrush="Black" Click="EliminarBoton_Click">
-                <StackPanel Orientation="Horizontal">
-                    <Image Width="18" Height="18" Source="/Imagenes/delete.png"/>
-                    <Label Content="Eliminar" FontWeight="Bold"/>
-                </StackPanel>
-            </Button>
-
-        </StackPanel>
     </Grid>
 </Window>

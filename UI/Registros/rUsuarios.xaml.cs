@@ -25,7 +25,7 @@ namespace UI.Registros
             Limpiar();
         }
 
-        private void BuscarButton_Click(object sender, RoutedEventArgs e)
+        private void BuscarBoton_Click(object sender, RoutedEventArgs e)
         {
             Contexto context = new Contexto();
 
@@ -41,13 +41,14 @@ namespace UI.Registros
             else
             {
                 this.usuario = new Usuarios();
-                MessageBox.Show("No encontrado", "Error", MessageBoxButton.OK);
+                MessageBox.Show("No se encontró ningún usuario", "Registro de usuarios",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
             }
 
             this.DataContext = usuario;
         }
 
-        private void NuevoButton_Click(object sender, RoutedEventArgs e)
+        private void NuevoBoton_Click(object sender, RoutedEventArgs e)
         {
             Limpiar();
         }
@@ -65,33 +66,37 @@ namespace UI.Registros
             CambiarClaveButton.Visibility = Visibility.Hidden;
         }
 
-        private void GuardarButton_Click(object sender, RoutedEventArgs e)
+        private void GuardarBoton_Click(object sender, RoutedEventArgs e)
         {
             if (!Validar())
                 return;
 
-            usuario.Clave = getHashSha256(ClavePasswordBox.Password.Trim());
+            usuario.Clave = Utilities.getHashSha256(ClavePasswordBox.Password.Trim());
 
             var paso = UsuariosBLL.Guardar(usuario);
             if (paso)
             {
                 Limpiar();
-                MessageBox.Show("Guardado con Exito", "Exito!!", MessageBoxButton.OK);
+                MessageBox.Show("Usuario guardado con éxito", "Registro de usuarios",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
-                MessageBox.Show("Error al guardar", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("No se pudo guardar correctamente", "Registro de usuarios",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
 
         }
 
-        private void EliminarButton_Click(object sender, RoutedEventArgs e)
+        private void EliminarBoton_Click(object sender, RoutedEventArgs e)
         {
             if (UsuariosBLL.Eliminar(Convert.ToInt32(UsuarioIdTextBox.Text)))
             {
                 Limpiar();
-                MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK);
+                MessageBox.Show("Usuario borrado con éxito", "Registro de usuarios",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
-                MessageBox.Show("Error al eliminar", "Error", MessageBoxButton.OK);
+                MessageBox.Show("No se puedo borrar correctamente", "Registro de usuarios",
+                                MessageBoxButton.OK, MessageBoxImage.Error);
 
         }
 
@@ -298,18 +303,6 @@ namespace UI.Registros
             int numero;
             int.TryParse(UsuarioIdTextBox.Text, out numero);
             return numero;
-        }
-        public static string getHashSha256(string clave)
-        {
-            byte[] bytes = Encoding.Unicode.GetBytes(clave);
-            SHA256Managed hashstring = new SHA256Managed();
-            byte[] hash = hashstring.ComputeHash(bytes);
-            string hashString = string.Empty;
-            foreach (byte x in hash)
-            {
-                hashString += String.Format("{0:x2}", x);
-            }
-            return hashString;
         }
 
         private void CambiarClaveButton_Click(object sender, RoutedEventArgs e)
