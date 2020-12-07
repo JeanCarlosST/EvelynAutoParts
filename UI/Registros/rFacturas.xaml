@@ -70,13 +70,40 @@
             <!--Cliente-->
             <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
                 <Label Content="Cliente"/>
-                <ComboBox x:Name="ClienteCombobox" Width="250" HorizontalAlignment="Left" SelectedValue="{Binding ClienteId}"/>
+                <ComboBox x:Name="ClienteCombobox" Width="250" HorizontalAlignment="Left" SelectedValue="{Binding ClienteId}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} {1} - {2} ">
+                                        <Binding Path="Nombres"/>
+                                        <Binding Path="Apellidos"/>
+                                        <Binding Path="Cedula"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </StackPanel>
 
             <!--Vendedor-->
             <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">
                 <Label Content="Vendedor"/>
-                <ComboBox x:Name="VendedorCombobox" Width="250" HorizontalAlignment="Left" SelectedValue="{Binding VendedorId}"/>
+                <ComboBox x:Name="VendedorCombobox" Width="250" HorizontalAlignment="Left" SelectedValue="{Binding VendedorId}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} {1}">
+                                        <Binding Path="Nombres"/>
+                                        <Binding Path="Apellidos"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </StackPanel>
 
             <!--Productos-->

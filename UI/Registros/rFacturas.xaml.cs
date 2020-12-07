@@ -37,12 +37,12 @@ namespace UI.Registros
 
             ClienteCombobox.ItemsSource = ClientesBLL.GetList(c => true);
             ClienteCombobox.SelectedValuePath = "ClienteId";
-            ClienteCombobox.DisplayMemberPath = "Cedula";
+            //ClienteCombobox.DisplayMemberPath = "Cedula";
 
 
             VendedorCombobox.ItemsSource = VendedoresBLL.GetList(v => true);
             VendedorCombobox.SelectedValuePath = "VendedorId";
-            VendedorCombobox.DisplayMemberPath = "Nombres";
+            //VendedorCombobox.DisplayMemberPath = "Nombres";
 
             ProductoCombobox.ItemsSource =ProductosBLL.GetList(p => true);
             ProductoCombobox.SelectedValuePath = "ProductoId";
